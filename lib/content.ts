@@ -10,6 +10,8 @@ export const navLinks = [
   { href: "/customize", label: "Customize" },
   { href: "/use-cases", label: "Use Cases" },
   { href: "/build-system", label: "Build System" },
+  { href: "/trust", label: "Trust" },
+  { href: "/company", label: "Company" },
   { href: "/preorder", label: "Order" },
 ] as const;
 

@@ -1,27 +1,24 @@
 import { AppleScrollShowcase } from "@/components/apple-scroll-showcase";
 import { BodyTypeSelectorSection } from "@/components/body-type-selector-section";
+import { BuyerTrustRibbon } from "@/components/buyer-trust-ribbon";
 import { CtaPair } from "@/components/cta-pair";
 import { CTASection } from "@/components/cta-section";
-import { CustomOrderPathSection } from "@/components/custom-order-path-section";
 import { EmbodimentProvider } from "@/components/embodiment-context";
 import { FeatureCard } from "@/components/feature-card";
 import { HeroSection } from "@/components/hero-section";
 import { HomeFaqSection } from "@/components/home-faq-section";
+import { HomeProductHub } from "@/components/home-product-hub";
 import { InfographicStrip } from "@/components/infographic-strip";
 import {
   ConfigurationsSection,
   ForBuildersSection,
-  PhoneAsBrainSection,
-  SkillSafetySection,
-  TargetSpecsSection,
   WhyExobodSection,
-  WorkRolesSection,
 } from "@/components/home-conversion-sections";
 import { InterestForm } from "@/components/interest-form";
 import { MotionReveal } from "@/components/motion-reveal";
 import { OrderAssuranceStrip } from "@/components/order-assurance-strip";
+import { PrototypeDemoSection } from "@/components/prototype-demo-section";
 import { SectionHeader } from "@/components/section-header";
-import { SkillsEngineSection } from "@/components/skills-engine-section";
 import { StickyOrderBar } from "@/components/sticky-order-bar";
 import { CardShell } from "@/components/card-shell";
 import { primaryCta, secondaryCta } from "@/lib/ctas";
@@ -35,17 +32,18 @@ export default function HomePage() {
       <HeroSection />
       <AppleScrollShowcase />
       <OrderAssuranceStrip />
+      <BuyerTrustRibbon />
 
       <BodyTypeSelectorSection />
 
       <WhyExobodSection />
 
-      <section id="product" className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:space-y-8 sm:px-6 sm:py-12">
+      <section id="product" className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:space-y-8 sm:px-6 sm:py-10">
         <MotionReveal>
           <SectionHeader
             eyebrow="Product"
-            title="A simple configure-to-order robotics platform."
-            description="Pick a body, choose your phone mount, select motion capabilities, and submit one order inquiry."
+            title="Configure once. Understand everything."
+            description="Pick a body, phone mount, motion profile, and accessories - then one order inquiry."
           />
         </MotionReveal>
         <MotionReveal>
@@ -59,20 +57,22 @@ export default function HomePage() {
           />
         </MotionReveal>
         <p className="text-center text-sm text-text-muted">
-          Same experience pattern as modern device ordering: configure, review, submit, and confirm.
+          Capabilities on this site are engineering targets until your agreement locks scope.
         </p>
       </section>
 
+      <HomeProductHub />
+
+      <PrototypeDemoSection />
+
       <ConfigurationsSection />
 
-      <WorkRolesSection />
-
-      <section className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:space-y-8 sm:px-6 sm:py-12">
+      <section className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:space-y-8 sm:px-6 sm:py-10">
         <MotionReveal>
           <SectionHeader
             eyebrow="Order flow"
-            title="Five clear steps from configuration to delivery."
-            description="No confusing jargon. One clear path from choices to confirmation."
+            title="From configuration to delivery."
+            description="Five steps. Human review at every gate."
           />
         </MotionReveal>
         <MotionReveal>
@@ -89,41 +89,31 @@ export default function HomePage() {
         </MotionReveal>
       </section>
 
-      <SkillsEngineSection />
-
-      <TargetSpecsSection />
-
-      <PhoneAsBrainSection />
-
-      <SkillSafetySection />
-
-      <CustomOrderPathSection />
-
-      <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+      <section className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
         <MotionReveal>
           <CTASection
             eyebrow="Custom hardware"
-            title="Request a build sheet, not a shopping cart."
-            description="Pick body architecture, finish, limbs, accessory ports, motion packs, and budget band. We answer with a prototype scope or decline if the load case is outside current lab capacity - never silent shipping promises."
+            title="No mystery checkout."
+            description="You receive a written scope, milestones, and payment structure before major funds move. If we cannot meet your load case or timeline, we say so plainly."
             primary={primaryCta}
             secondary={secondaryCta}
           />
         </MotionReveal>
       </section>
 
-      <section className="border-y border-line/60 bg-surface/28 py-8 sm:py-12">
-        <div className="mx-auto max-w-6xl space-y-6 px-4 sm:space-y-8 sm:px-6">
+      <section className="border-y border-line/60 bg-surface/28 py-8 sm:py-10">
+        <div className="mx-auto max-w-6xl space-y-6 px-4 sm:space-y-7 sm:px-6">
           <MotionReveal>
             <SectionHeader
-              eyebrow="Where it ships first"
-              title="Makers, classrooms, and prototype labs - not toy aisles."
-              description="Each scenario is about mounting the phone you already carry and giving it torque-limited motion for experiments, teaching, or demos."
+              eyebrow="Use cases"
+              title="Built for teams that need embodied AI on a bench."
+              description="Four highlights below. More scenarios on the use cases page."
               align="center"
               className="text-center"
             />
           </MotionReveal>
-          <div className="grid gap-3 sm:gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {homeUseCases.map((item, idx) => (
+          <div className="grid gap-3 sm:grid-cols-2">
+            {homeUseCases.slice(0, 4).map((item, idx) => (
               <MotionReveal key={item.title} delay={idx * 0.015}>
                 <FeatureCard title={item.title} description={item.description} />
               </MotionReveal>
@@ -134,7 +124,7 @@ export default function HomePage() {
               href="/use-cases"
               className="inline-flex items-center justify-center rounded-xl border border-line px-5 py-2.5 text-sm font-semibold text-text-main transition hover:border-accent/50 hover:text-accent-soft"
             >
-              Read scenario briefs
+              All use cases
             </Link>
             <CtaPair className="sm:justify-center" />
           </div>
@@ -145,23 +135,23 @@ export default function HomePage() {
         <MotionReveal>
           <SectionHeader
             eyebrow="Build system"
-            title="3D printed where it should be. Metal where it matters."
-            description="Hybrid shells iterate fast; hardened linkages carry joint torque. Controller packs, fused power, and harness exits are laid out for serviceability on the bench - not hidden glue blobs."
+            title="Hybrid frame. Serviceable layout."
+            description="Printed shells for speed; metal at torque nodes. Details on the build system page."
           />
         </MotionReveal>
         <MotionReveal delay={0.04}>
           <CardShell className="space-y-4" hover={false}>
-            <ul className="space-y-2.5 text-sm text-text-muted">
-              <li>Printed carriers and covers for geometry experiments without CNC lead time.</li>
-              <li>Metal billet or plate linkages at hips, shoulders, and drivetrain nodes that see shock loads.</li>
-              <li>Servo channels matched to each body plan with logged thermal checks during prototype bring-up.</li>
-              <li>Removable mount + field-swappable harness tails so handset upgrades do not scrap limbs.</li>
+            <ul className="grid gap-2 text-sm text-text-muted sm:grid-cols-2">
+              <li className="rounded-lg border border-line/50 bg-background/30 px-3 py-2">Printed carriers for fast geometry iteration.</li>
+              <li className="rounded-lg border border-line/50 bg-background/30 px-3 py-2">Metal linkages at hips, shoulders, drivetrain.</li>
+              <li className="rounded-lg border border-line/50 bg-background/30 px-3 py-2">Servo channels matched to each body plan.</li>
+              <li className="rounded-lg border border-line/50 bg-background/30 px-3 py-2">Removable mount and swappable harness tails.</li>
             </ul>
             <Link
               href="/build-system"
               className="inline-flex w-full items-center justify-center rounded-xl border border-line bg-transparent px-4 py-3 text-sm font-semibold text-text-main transition hover:border-accent/50 hover:text-accent-soft sm:w-auto"
             >
-              See full hardware stack
+              Full hardware stack
             </Link>
           </CardShell>
         </MotionReveal>
@@ -171,17 +161,18 @@ export default function HomePage() {
 
       <ForBuildersSection />
 
-      <section className="bg-gradient-to-b from-background to-surface/35 py-8 sm:py-12">
+      <section className="bg-gradient-to-b from-background to-surface/35 py-8 sm:py-10">
         <div className="mx-auto max-w-4xl space-y-5 px-4 sm:space-y-6 sm:px-6">
           <MotionReveal>
             <div className="space-y-3 text-center">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Order now</p>
-              <h2 className="text-3xl font-semibold text-text-main sm:text-4xl">
-                Tell us what you want to build and deploy.
-              </h2>
+              <h2 className="text-3xl font-semibold text-text-main sm:text-4xl">Tell us what you want to build.</h2>
               <p className="text-sm text-text-muted sm:text-base">
-                Submit your customization goals and we will route your request to the right configuration,
-                quoting path, and production timeline.
+                We route your inquiry to configuration, quote, and milestone planning. See{" "}
+                <Link href="/trust" className="font-semibold text-accent-soft underline-offset-2 hover:underline">
+                  Trust &amp; buyer protections
+                </Link>{" "}
+                first if you need de-risking detail.
               </p>
             </div>
           </MotionReveal>
