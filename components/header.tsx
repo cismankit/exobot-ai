@@ -15,15 +15,15 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line/60 bg-background/85 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+      <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto] items-center gap-x-3 gap-y-2 px-4 py-3 sm:px-6 md:grid-cols-[auto,minmax(0,1fr),auto] md:gap-x-4 md:py-3.5">
         <Link
           href="/"
-          className="group flex shrink-0 items-center gap-3 whitespace-nowrap py-0.5 text-base font-semibold leading-none tracking-[-0.02em] sm:gap-3.5 sm:text-lg sm:tracking-[-0.03em]"
+          className="group flex w-fit max-w-[min(100%,220px)] shrink-0 items-center gap-2.5 whitespace-nowrap sm:max-w-none sm:gap-3"
         >
           <BrandMark size="md" gradientId="exobod-header-mark" />
-          <BrandWordmark />
+          <BrandWordmark className="text-base sm:text-lg" />
         </Link>
-        <nav className="hidden items-center gap-6 text-sm font-medium text-text-muted md:flex">
+        <nav className="col-span-2 hidden min-h-[40px] min-w-0 flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[13px] font-medium text-text-muted md:col-span-1 md:flex lg:gap-x-4 lg:text-sm">
           {navLinks.map((link) => {
             const path = link.href.split("#")[0];
             const active =
@@ -32,25 +32,22 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={cn("transition hover:text-text-main", active && "text-text-main")}
+                className={cn(
+                  "shrink-0 whitespace-nowrap transition hover:text-text-main",
+                  active && "text-text-main",
+                )}
               >
                 {link.label}
               </Link>
             );
           })}
         </nav>
-        <div className="hidden items-center gap-2.5 md:flex">
+        <div className="hidden shrink-0 items-center gap-2 md:flex">
           <Link
             href={primaryCta.href}
-            className="rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-background transition hover:bg-accent-soft"
+            className="rounded-lg bg-accent px-3 py-1.5 text-xs font-semibold text-background transition hover:bg-accent-soft lg:px-3.5 lg:text-sm"
           >
             {primaryCta.label}
-          </Link>
-          <Link
-            href={secondaryCta.href}
-            className="rounded-xl border border-line px-4 py-2 text-sm font-semibold text-text-main transition hover:border-accent/50 hover:text-accent-soft"
-          >
-            {secondaryCta.label}
           </Link>
         </div>
         <button

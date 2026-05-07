@@ -45,14 +45,13 @@ export function BrandWordmark({ className }: { className?: string }) {
   return (
     <span
       className={cn(
-        "font-display text-[1.03em] font-bold leading-none tracking-[-0.028em] text-text-main antialiased",
+        "inline-block font-display text-[1.03em] font-bold leading-none tracking-[-0.02em] antialiased",
         className,
       )}
     >
-      <span className="bg-gradient-to-b from-white via-slate-100 to-slate-300 bg-clip-text text-transparent [text-shadow:0_0_0.8px_rgba(255,255,255,0.92),0_2px_9px_rgba(0,0,0,0.5)]">
-        Exobod
-      </span>
-      <span className="text-accent [text-shadow:0_0_8px_rgba(255,122,26,0.35)]">.ai</span>
+      {/* Solid text (no bg-clip) so Safari never collapses width and runs into nav. */}
+      <span className="text-text-main">Exobod</span>
+      <span className="text-accent">.ai</span>
     </span>
   );
 }

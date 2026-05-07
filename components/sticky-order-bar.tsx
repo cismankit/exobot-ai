@@ -1,12 +1,32 @@
 "use client";
 
 import { primaryCta, secondaryCta } from "@/lib/ctas";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+
+const SHOW_AFTER_SCROLL_Y = 320;
 
 export function StickyOrderBar() {
+  const [revealed, setRevealed] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setRevealed(window.scrollY > SHOW_AFTER_SCROLL_Y);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-3 z-40 px-3 sm:bottom-4 sm:px-6">
-      <div className="pointer-events-auto mx-auto flex w-full max-w-4xl items-center justify-between gap-3 rounded-2xl border border-line/70 bg-background/88 p-2.5 shadow-[0_18px_45px_rgba(0,0,0,0.45)] backdrop-blur-xl">
+    <div
+      className={cn(
+        "fixed inset-x-0 bottom-3 z-40 px-3 transition-[opacity,transform] duration-300 sm:bottom-4 sm:px-6",
+        revealed
+          ? "translate-y-0 opacity-100"
+          : "pointer-events-none translate-y-3 opacity-0",
+      )}
+    >
+      <div className="mx-auto flex w-full max-w-4xl items-center justify-between gap-3 rounded-2xl border border-line/70 bg-background/88 p-2 shadow-[0_18px_45px_rgba(0,0,0,0.45)] backdrop-blur-xl">
         <p className="hidden pl-2 text-xs font-medium text-text-main/90 sm:block">
           Ready to configure your Exobod?
         </p>

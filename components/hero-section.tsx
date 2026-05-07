@@ -1,9 +1,10 @@
 "use client";
 
-import { CtaPair } from "@/components/cta-pair";
 import { HeroProductVisual } from "@/components/hero-product-visual";
 import { MotionReveal } from "@/components/motion-reveal";
+import { primaryCta, secondaryCta } from "@/lib/ctas";
 import { heroTrustChips, site } from "@/lib/content";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -35,11 +36,20 @@ export function HeroSection() {
               quoting, and production scheduling.
             </p>
           </div>
-          <CtaPair
-            className="sm:justify-start"
-            primaryClassName="px-7 py-3.5 text-[15px] shadow-[0_0_48px_-12px_rgba(255,122,26,0.35)]"
-            secondaryClassName="px-7 py-3.5 text-[15px]"
-          />
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <Link
+              href={primaryCta.href}
+              className="inline-flex w-fit items-center justify-center rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-background shadow-[0_0_40px_-10px_rgba(255,122,26,0.35)] transition hover:bg-accent-soft"
+            >
+              {primaryCta.label}
+            </Link>
+            <Link
+              href={secondaryCta.href}
+              className="text-sm font-medium text-text-muted underline-offset-4 transition hover:text-accent-soft hover:underline"
+            >
+              {secondaryCta.label}
+            </Link>
+          </div>
           <p className="font-mono text-[10px] text-text-muted">
             <a href="#embodiment" className="text-accent-soft underline-offset-2 hover:underline">
               Try body types →
