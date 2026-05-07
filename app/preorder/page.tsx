@@ -1,35 +1,47 @@
 import { CtaPair } from "@/components/cta-pair";
+import { InfographicStrip } from "@/components/infographic-strip";
 import { InterestForm } from "@/components/interest-form";
 import { MotionReveal } from "@/components/motion-reveal";
 import { preorderPageCopy } from "@/lib/content";
+import { ClipboardList, FileCheck2, PackageCheck, Settings2 } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Join Preorder List — Exobod.ai",
+  title: "Order Inquiry | Exobod.ai",
   description:
-    "Preorder interest for Exobod prototype builds, maker kits, and custom engineering consultations—concept-stage hardware only.",
+    "Start an order inquiry for Exobod custom builds, team deployments, education kits, and engineering-backed configurations.",
 };
 
 export default function PreorderPage() {
   return (
-    <div className="mx-auto max-w-5xl space-y-8 px-4 py-10 sm:space-y-10 sm:px-6 sm:py-14">
+    <div className="mx-auto max-w-5xl space-y-6 px-4 py-8 sm:space-y-8 sm:px-6 sm:py-10">
       <MotionReveal>
         <div className="space-y-4 text-center">
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-accent">
-            Preorder interest
+            Order inquiry
           </p>
           <h1 className="text-4xl font-semibold leading-tight text-text-main sm:text-5xl">
-            Join the preorder list with your lab constraints.
+            Start your Exobod order with your exact requirements.
           </h1>
           <p className="mx-auto max-w-3xl text-base leading-relaxed text-text-muted sm:text-lg">
-            Tell us which handset you mount, what the body must do on the bench, and how far along your team
-            is. We route qualified notes to prototype shells, articulated kits, or a scoped engineering
-            consult—never silent ship promises.
+            Share your handset, body type, use case, and deployment goals. We match you with the right
+            configuration path and move qualified requests into quoting and production scheduling.
           </p>
           <div className="flex justify-center pt-2">
             <CtaPair className="justify-center" />
           </div>
         </div>
+      </MotionReveal>
+
+      <MotionReveal>
+        <InfographicStrip
+          items={[
+            { title: "Step 1: Configure", caption: "Choose phone type, body, and use case.", icon: Settings2 },
+            { title: "Step 2: Submit", caption: "Send a single order inquiry form.", icon: ClipboardList },
+            { title: "Step 3: Confirm", caption: "Get recommended build + quote path.", icon: FileCheck2 },
+            { title: "Step 4: Build & Ship", caption: "Approved orders move to production scheduling.", icon: PackageCheck },
+          ]}
+        />
       </MotionReveal>
 
       <div className="grid gap-4 md:grid-cols-3 md:gap-5">
@@ -55,13 +67,13 @@ export default function PreorderPage() {
 
       <MotionReveal>
         <div className="rounded-2xl border border-line/70 bg-surface-soft/55 p-5 shadow-panel backdrop-blur sm:p-8">
-          <h2 className="text-xl font-semibold text-text-main sm:text-2xl">Preorder + intake form</h2>
+          <h2 className="text-xl font-semibold text-text-main sm:text-2xl">Order details form</h2>
           <p className="mt-2 text-sm leading-relaxed text-text-muted">
-            No payment fields. Submitting is consent for email follow-up about prototype feasibility—not a
-            binding manufacturing PO.
+            No payment required here. This form starts your sales and engineering review so we can confirm the
+            right build plan before order finalization.
           </p>
           <div className="mt-6">
-            <InterestForm submitLabel="Send preorder request" />
+            <InterestForm submitLabel="Send order inquiry" />
           </div>
         </div>
       </MotionReveal>

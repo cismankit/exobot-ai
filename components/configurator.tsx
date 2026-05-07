@@ -67,7 +67,7 @@ export function Configurator() {
             </p>
             <h2 className="mt-2 text-xl font-semibold text-text-main sm:text-2xl">Lock the options we quote against</h2>
             <p className="mt-2 text-sm leading-relaxed text-text-muted">
-              Client-side only—nothing leaves your browser until you submit the form. Tiers map to render
+              Client-side only - nothing leaves your browser until you submit the form. Tiers map to render
               studies, printed shells, articulated prototypes, or a scoped engineering consult. No inventory
               counters, no implied ship dates.
             </p>

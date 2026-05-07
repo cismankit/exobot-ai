@@ -7,25 +7,25 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Design My Exobod — Exobod.ai",
+  title: "Customize | Exobod.ai",
   description:
-    "Configure phone mount, body architecture, finish, skill pack, accessories, and build tier. Submit a custom prototype request today—response is human, not automated checkout.",
+    "Configure phone mount, body architecture, finish, skill pack, accessories, and build tier. Submit a custom prototype request today - response is human, not automated checkout.",
 };
 
 export default function CustomizePage() {
   return (
-    <div className="mx-auto max-w-6xl space-y-8 px-4 py-10 sm:space-y-10 sm:px-6 sm:py-14">
+    <div className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:space-y-8 sm:px-6 sm:py-10">
       <MotionReveal>
         <div className="space-y-5 text-center">
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-accent">
             Custom build desk
           </p>
           <h1 className="text-4xl font-semibold leading-tight text-text-main sm:text-5xl">
-            Design My Exobod — file a build request today.
+            Design My Exobod - file a build request today.
           </h1>
           <p className="mx-auto max-w-3xl text-base leading-relaxed text-text-muted sm:text-lg">
             Lock your handset family, chassis, finish, motion pack, accessory, and prototype tier. Submitting
-            fires a structured packet to our hardware team; you get a human review—not a fake cart
+            fires a structured packet to our hardware team; you get a human review - not a fake cart
             confirmation. Final BOM, torque, and timelines follow a signed prototype agreement.
           </p>
           <div className="flex flex-col items-center gap-3">

@@ -1,7 +1,7 @@
 export const site = {
   name: "Exobod.ai",
   tagline: "Give your phone a real body.",
-  secondary: "AI in your phone. Motion in the body.",
+  secondary: "AI in your phone. Motion in the world.",
 };
 
 export const navLinks = [
@@ -10,7 +10,7 @@ export const navLinks = [
   { href: "/customize", label: "Customize" },
   { href: "/use-cases", label: "Use Cases" },
   { href: "/build-system", label: "Build System" },
-  { href: "/preorder", label: "Preorder" },
+  { href: "/preorder", label: "Order" },
 ] as const;
 
 export const heroTrustChips = [
@@ -18,7 +18,7 @@ export const heroTrustChips = [
   "Removable handset mount",
   "Four body architectures",
   "BLE / USB + onboard MCU",
-  "Makers · schools · labs",
+  "Global custom-order support",
 ] as const;
 
 export const featureCards = [
@@ -35,7 +35,7 @@ export const featureCards = [
   {
     title: "Configurator + build requests",
     description:
-      "Pick mount geometry, limbs, accessories, and motion packs—then file a prototype or custom-build request. No storefront checkout.",
+      "Pick mount geometry, limbs, accessories, and motion packs - then file a prototype or custom-build request. No storefront checkout.",
   },
 ] as const;
 
@@ -117,7 +117,7 @@ export const homeUseCases = [
   {
     title: "Accessibility Experiments",
     description:
-      "Early research configurations for teams exploring assistive presence—not a medical device.",
+      "Early research configurations for teams exploring assistive presence - not a medical device.",
   },
   {
     title: "Brand Mascot / Demo Bot",
@@ -174,9 +174,9 @@ export const pageUseCases = [
   },
   {
     title: "Accessibility Research",
-    problem: "Teams need responsible testbeds—not medical claims—for presence experiments.",
+    problem: "Teams need responsible testbeds - not medical claims - for presence experiments.",
     role: "Utility and desk configurations for IRB-adjacent lab work with clear guardrails.",
-    example: "Co-presence alerts with gentle motion cues—research-grade, not clinical.",
+    example: "Co-presence alerts with gentle motion cues - research-grade, not clinical.",
     cta: { href: "/preorder", label: "Talk with our team" },
   },
   {
@@ -239,17 +239,17 @@ export const buildMechanicalStack = [
   {
     title: "Actuated joints",
     description:
-      "Servo packages sized per body plan—walker vs rover vs desk bases differ in torque envelopes and cooling paths.",
+      "Servo packages sized per body plan - walker vs rover vs desk bases differ in torque envelopes and cooling paths.",
   },
   {
     title: "Accessory ports",
     description:
-      "Defined bolt circles and bus taps for trays, camera rigs, lights, grippers, and sensor masts—documented per SKU.",
+      "Defined bolt circles and bus taps for trays, camera rigs, lights, grippers, and sensor masts - documented per SKU.",
   },
   {
     title: "Battery + regulation",
     description:
-      "Fused pack sized for burst motion during prototype demos—not marketed runtime guarantees. Engineering sign-off per order.",
+      "Fused pack sized for burst motion during prototype demos - not marketed runtime guarantees. Engineering sign-off per order.",
   },
 ] as const;
 
@@ -257,8 +257,8 @@ export const processSteps = [
   { step: 1, title: "Insert phone", detail: "Seat the handset in the removable core mount and torque fasteners to spec." },
   { step: 2, title: "Open control app", detail: "Load the Exobod control layer, pair over BLE/USB, and pull the prototype safety profile for your SKU." },
   { step: 3, title: "Pair manual controller", detail: "Bind a handheld or desktop override so humans can cut motion instantly." },
-  { step: 4, title: "Pick a body plan", detail: "Walker, desk, rover, or utility—each changes linkage lengths, torque budgets, and accessory ports." },
-  { step: 5, title: "Load skill pack", detail: "Bundle motion presets that match your preorder milestone—not consumer plug-and-play promises." },
+  { step: 4, title: "Pick a body plan", detail: "Walker, desk, rover, or utility - each changes linkage lengths, torque budgets, and accessory ports." },
+  { step: 5, title: "Load skill pack", detail: "Bundle motion presets that match your preorder milestone - not consumer plug-and-play promises." },
   { step: 6, title: "Run motion", detail: "Validated targets stream to the MCU and articulate the frame within clamped speeds." },
 ] as const;
 
@@ -285,15 +285,15 @@ export const customizationOptions = {
 
 export const preorderPageCopy = {
   whoFor:
-    "Makers, robotics educators, lab researchers, and product teams sizing a concept-stage smartphone embodiment rig—not a finished consumer robot.",
+    "Makers, robotics educators, product teams, and AI builders who want a configurable embodied platform they can tailor to real workflows.",
   whatRequest:
-    "Body type, handset family, use case, budget band, and notes on motion or payloads. We route qualified requests to prototype shells, moving kits, or a scoped engineering consult.",
+    "Body type, handset family, use case, budget band, accessories, and deployment goals. We respond with recommended configuration, timeline windows, and quote path.",
   whatNext:
-    "We reply by email with clarifying questions, NDAs if required, and a milestone outline. No payment is collected until a written prototype agreement exists.",
+    "After submission, our team confirms requirements, shares build options, and sends the next step for order confirmation. We also support team and education procurement flows.",
 };
 
 export const footerNote =
-  "Concept-stage custom hardware platform. Specifications may evolve through prototype testing.";
+  "Built-to-order modular hardware platform for custom smartphone embodiment systems.";
 
 /** Homepage preorder journey (distinct from lab “how it works” steps). */
 export const customOrderSteps = [
@@ -305,7 +305,7 @@ export const customOrderSteps = [
   {
     step: 2,
     title: "Choose body type",
-    detail: "Walker, Desk Assistant, Rover, or Utility Helper—each changes linkage, torque budget, and ports.",
+    detail: "Walker, Desk Assistant, Rover, or Utility Helper - each changes linkage, torque budget, and ports.",
   },
   {
     step: 3,
@@ -320,7 +320,7 @@ export const customOrderSteps = [
   {
     step: 5,
     title: "Receive consultation",
-    detail: "Live review of scope, safety limits, and handoff artifacts—still not a retail ship date until agreements are signed.",
+    detail: "Live review of scope, safety limits, and handoff artifacts - still not a retail ship date until agreements are signed.",
   },
 ] as const;
 
@@ -338,7 +338,7 @@ export const skillsEngineNames = [
 export const homeFaq = [
   {
     q: "Is this a phone case?",
-    a: "No. Exobod is a modular exoskeleton frame with mounts, joints, and motion hardware—not a cosmetic shell. Your phone stays the compute and UI core.",
+    a: "No. Exobod is a modular exoskeleton frame with mounts, joints, and motion hardware - not a cosmetic shell. Your phone stays the compute and UI core.",
   },
   {
     q: "Does it work with iPhone and Android?",
@@ -346,11 +346,11 @@ export const homeFaq = [
   },
   {
     q: "Is it available now?",
-    a: "No. Everything on this site is preorder interest, prototype milestones, or custom engineering—not retail inventory or guaranteed ship dates.",
+    a: "No. Everything on this site is preorder interest, prototype milestones, or custom engineering - not retail inventory or guaranteed ship dates.",
   },
   {
     q: "Can it really walk?",
-    a: "Walker-class prototypes explore gait within lab guardrails. No guarantee of outdoor autonomy, uneven-terrain success, or consumer-grade reliability—those require program-specific testing.",
+    a: "Walker-class prototypes explore gait within lab guardrails. No guarantee of outdoor autonomy, uneven-terrain success, or consumer-grade reliability - those require program-specific testing.",
   },
   {
     q: "Can ChatGPT control the body?",
@@ -358,7 +358,7 @@ export const homeFaq = [
   },
   {
     q: "What is customizable?",
-    a: "Body architecture, finish, accessory ports, skill packs, and prototype tier are configured through the desk and app; hardware changes are gated by engineering review—not checkout options.",
+    a: "Body architecture, finish, accessory ports, skill packs, and prototype tier are configured through the desk and app; hardware changes are gated by engineering review - not checkout options.",
   },
   {
     q: "Is this for kids?",
@@ -366,11 +366,11 @@ export const homeFaq = [
   },
   {
     q: "Can schools or makers request kits?",
-    a: "Yes—submit preorder interest with your institution or shop context. We route education and makerspace requests to the same prototype review queue with documentation suited for procurement.",
+    a: "Yes - submit preorder interest with your institution or shop context. We route education and makerspace requests to the same prototype review queue with documentation suited for procurement.",
   },
   {
     q: "How is Exobod different from a humanoid robot?",
-    a: "Full humanoids ship an integrated brain, sensors, and body. Exobod assumes your smartphone is already the brain, display, and connectivity stack—we only engineer the embodiment layer, mounts, and motion hardware around it.",
+    a: "Full humanoids ship an integrated brain, sensors, and body. Exobod assumes your smartphone is already the brain, display, and connectivity stack - we only engineer the embodiment layer, mounts, and motion hardware around it.",
   },
   {
     q: "What does the phone do?",
@@ -378,11 +378,11 @@ export const homeFaq = [
   },
   {
     q: "What does the body do?",
-    a: "It carries structure, joints or wheels, accessory ports, and actuators that turn approved motion targets into physical motion—always within prototype safety tables.",
+    a: "It carries structure, joints or wheels, accessory ports, and actuators that turn approved motion targets into physical motion - always within prototype safety tables.",
   },
   {
     q: "Can customers request custom bodies?",
-    a: "Yes. Custom geometry, accessories, and torque targets go through the configurator + preorder desk, then engineering review. Declined scopes are communicated plainly—no silent yeses.",
+    a: "Yes. Custom geometry, accessories, and torque targets go through the configurator + preorder desk, then engineering review. Declined scopes are communicated plainly - no silent yeses.",
   },
   {
     q: "Is it available for preorder?",
@@ -464,7 +464,7 @@ export const targetSpecs = [
   { label: "Motion", value: "Target: servo-driven limbs or wheeled bases depending on configuration (not interchangeable claims)." },
   { label: "Materials", value: "Target: hybrid 3D-printed shells + metal linkages at torque nodes." },
   { label: "Skills", value: "Target: follow, record, gesture, carry, patrol, dance, assist, teach, present, monitor (per program)." },
-  { label: "Height / footprint", value: "Target ranges issued per configuration after CAD lock—not single numbers pre-billing." },
+  { label: "Height / footprint", value: "Target ranges issued per configuration after CAD lock - not single numbers pre-billing." },
   { label: "Servo count", value: "Target band 8–24+ channels depending on body tier (engineering sign-off)." },
   { label: "Runtime", value: "Target burst minutes for lab demos; no consumer all-day promise." },
   { label: "Payload", value: "Target grams-to-low-kg depending on accessory + body plan." },
@@ -479,7 +479,7 @@ export const phoneAsBrainArchitecture = [
   { title: "Speaker output", detail: "Voice feedback pairs with motion cues for embodied interaction." },
   { title: "App connection", detail: "Exobod control app packages targets, logs telemetry, and enforces prototype clamps." },
   { title: "Controller commands", detail: "BLE/USB streams approved targets to the MCU at a fixed control rate." },
-  { title: "Body movement", detail: "Servos execute calibrated profiles—never raw, unbounded LLM torque." },
+  { title: "Body movement", detail: "Servos execute calibrated profiles - never raw, unbounded LLM torque." },
 ] as const;
 
 export const skillSafetyLayer = {
@@ -493,7 +493,7 @@ export const exobodSkillsLayer = {
   title: "Exobod Skills Layer",
   lines: ["Phone AI decides.", "Controller executes.", "Body acts."] as const,
   supporting:
-    "Desk tasks, classroom demos, creator shots, robotics learning, small-object carrying, AI presence, and custom skill routines—requested through the app/portal, then bounded by firmware.",
+    "Desk tasks, classroom demos, creator shots, robotics learning, small-object carrying, AI presence, and custom skill routines - requested through the app/portal, then bounded by firmware.",
 } as const;
 
 export const forBuilders = {

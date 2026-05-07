@@ -149,9 +149,9 @@ export function InterestForm({
         {form.formState.isSubmitting ? "Sending..." : submitLabel}
       </button>
       <p className="text-xs leading-relaxed text-text-muted">
-        By submitting, you agree we may email you about preorder interest, prototype milestones, and scoped
-        engineering consults. Exobod is concept-stage hardware—not a medical device, not a safety-certified
-        appliance, and not a guarantee of autonomy, gait success, or retail availability.
+        By submitting, you agree we may email you with configuration guidance, quote follow-up, and order
+        planning details. Exobod systems are custom hardware builds and are reviewed case-by-case for scope and
+        safety.
       </p>
     </form>
   );

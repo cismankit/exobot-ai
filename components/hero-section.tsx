@@ -7,12 +7,12 @@ import { heroTrustChips, site } from "@/lib/content";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-x-clip pb-14 pt-10 sm:pb-20 sm:pt-14 lg:pb-24">
+    <section className="relative overflow-x-clip pb-10 pt-8 sm:pb-14 sm:pt-10 lg:pb-16">
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[length:40px_40px] opacity-50" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-accent/10 via-accent/[0.02] to-transparent blur-3xl" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background via-transparent to-transparent" />
-      <div className="relative mx-auto flex max-w-6xl flex-col gap-12 px-4 sm:gap-14 sm:px-6 lg:flex-row lg:items-center lg:gap-20">
-        <MotionReveal className="flex min-w-0 flex-1 flex-col space-y-7">
+      <div className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 sm:gap-12 sm:px-6 lg:flex-row lg:items-center lg:gap-16">
+        <MotionReveal className="flex min-w-0 flex-1 flex-col space-y-6">
           <div className="space-y-4">
             <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-accent">
               Smartphone · exoskeleton · motion
@@ -30,9 +30,9 @@ export function HeroSection() {
           </div>
           <div className="max-w-xl rounded-2xl border border-accent/25 bg-surface-soft/40 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-sm sm:p-5">
             <p className="text-xs leading-relaxed text-text-muted sm:text-sm">
-              <span className="font-semibold text-text-main/95">Prototype &amp; preorder interest only.</span>{" "}
-              Specs evolve as we validate mechanics, thermal, and safety. Nothing on this page is a retail
-              or mass-market ship date.
+              <span className="font-semibold text-text-main/95">Built-to-order customization.</span> Configure
+              your body plan, mounts, motion package, and accessories. We guide each request through review,
+              quoting, and production scheduling.
             </p>
           </div>
           <CtaPair

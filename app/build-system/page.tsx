@@ -5,19 +5,19 @@ import { SectionHeader } from "@/components/section-header";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Build System — Exobod.ai",
+  title: "Build System | Exobod.ai",
   description:
     "Control plane, mechanical stack, MCU, servos, hybrid frame, and power architecture for Exobod smartphone embodiment prototypes.",
 };
 
 export default function BuildSystemPage() {
   return (
-    <div className="mx-auto max-w-6xl space-y-8 px-4 py-10 sm:space-y-10 sm:px-6 sm:py-14">
+    <div className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:space-y-8 sm:px-6 sm:py-10">
       <MotionReveal>
         <SectionHeader
           eyebrow="Hardware"
           title="3D printed where it should be. Metal where it matters."
-          description="Exobod splits cleanly: the handset runs assistants and vision; the frame carries mechanical load; the controller enforces safety clamps before any torque hits the floor. Below is the actual architecture we prototype against—two parallel stacks that meet at the servo harness and mount datum."
+          description="Exobod splits cleanly: the handset runs assistants and vision; the frame carries mechanical load; the controller enforces safety clamps before any torque hits the floor. Below is the actual architecture we prototype against - two parallel stacks that meet at the servo harness and mount datum."
         />
       </MotionReveal>
 
@@ -39,7 +39,7 @@ export default function BuildSystemPage() {
             <h3 className="text-lg font-semibold text-text-main">Power + safety</h3>
             <p className="mt-3 text-sm leading-relaxed text-text-muted">
               Fused battery packs feed burst current into servo banks with monitored bus voltage. Manual
-              estop and software clamps both land on the MCU—dual paths because this is lab hardware, not a
+              estop and software clamps both land on the MCU - dual paths because this is lab hardware, not a
               certified consumer appliance.
             </p>
           </div>

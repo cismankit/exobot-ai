@@ -25,11 +25,11 @@ const display = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://exobod.ai"),
-  title: "Exobod.ai — Give Your Phone a Real Body",
+  title: "Exobod.ai | Give Your Phone a Real Body",
   description:
     "Exobod.ai is a modular smartphone embodiment system that turns iPhone and Android devices into customizable AI-controlled robotic bodies.",
   openGraph: {
-    title: "Exobod.ai — Give Your Phone a Real Body",
+    title: "Exobod.ai | Give Your Phone a Real Body",
     description:
       "Modular smartphone exoskeleton system. Your phone stays the brain. Exobod becomes the body.",
     type: "website",
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Exobod.ai — Give Your Phone a Real Body",
+    title: "Exobod.ai | Give Your Phone a Real Body",
     description:
-      "Modular smartphone embodiment for iPhone and Android—preorder interest and prototype programs.",
+      "Modular smartphone embodiment for iPhone and Android - preorder interest and prototype programs.",
   },
 };
 

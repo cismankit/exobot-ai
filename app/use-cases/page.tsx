@@ -5,14 +5,14 @@ import { pageUseCases } from "@/lib/content";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Use Cases — Exobod.ai",
+  title: "Use Cases | Exobod.ai",
   description:
     "Education, creators, makers, desk assistants, demos, accessibility research, robotics learning, and AI companion R&D with Exobod.",
 };
 
 export default function UseCasesPage() {
   return (
-    <div className="mx-auto max-w-6xl space-y-8 px-4 py-10 sm:space-y-10 sm:px-6 sm:py-14">
+    <div className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:space-y-8 sm:px-6 sm:py-10">
       <MotionReveal>
         <SectionHeader
           eyebrow="Use cases"

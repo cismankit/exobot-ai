@@ -33,7 +33,7 @@ export function SkillsEngineSection() {
           <SectionHeader
             eyebrow="Skills engine"
             title="Skills Engine"
-            description="Walk, dance, follow, patrol, record, carry, gesture, and assist are requested and tuned through the Exobod control app and portal—never hard-coded mystery motion. Each skill maps to joint targets, speed clamps, and estop behavior we ship per prototype program."
+            description="Walk, dance, follow, patrol, record, carry, gesture, and assist are requested and tuned through the Exobod control app and portal - never hard-coded mystery motion. Each skill maps to joint targets, speed clamps, and estop behavior we ship per prototype program."
             align="center"
             className="mx-auto max-w-3xl text-center"
           />

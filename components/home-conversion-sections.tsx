@@ -15,7 +15,7 @@ import Link from "next/link";
 
 export function WhyExobodSection() {
   return (
-    <section id="why-exobod" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-10 sm:px-6 sm:py-14">
+    <section id="why-exobod" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-8 sm:px-6 sm:py-10">
       <MotionReveal>
         <div className="rounded-2xl border border-line/60 bg-gradient-to-br from-surface/80 via-surface-soft/40 to-background p-6 shadow-panel sm:p-10">
           <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-accent">Why Exobod</p>
@@ -35,12 +35,12 @@ export function WhyExobodSection() {
 
 export function ConfigurationsSection() {
   return (
-    <section id="configurations" className="border-y border-line/55 bg-surface/30 py-10 sm:py-14">
-      <div className="mx-auto max-w-6xl space-y-8 px-4 sm:space-y-10 sm:px-6">
+    <section id="configurations" className="border-y border-line/55 bg-surface/30 py-8 sm:py-10">
+      <div className="mx-auto max-w-6xl space-y-6 px-4 sm:space-y-8 sm:px-6">
         <MotionReveal>
           <SectionHeader
             eyebrow="Configurations"
-            title="Pick a chassis like a robotics product page—then prove it on your bench."
+            title="Pick a chassis like a robotics product page - then prove it on your bench."
             description="Six entry paths inspired by platform robotics: four locomotion archetypes plus EDU and prototyping bundles. Every line below is a target or preorder-interest framing, not retail shelf specs."
             align="center"
             className="mx-auto max-w-3xl text-center"
@@ -88,13 +88,13 @@ export function ConfigurationsSection() {
 
 export function WorkRolesSection() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+    <section className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
       <MotionReveal>
         <p className="text-center font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-accent">
           Work-role framing
         </p>
         <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-text-muted">
-          Body configurations for different roles—not a cute assistant toy, but torque-bounded jobs on a desk,
+          Body configurations for different roles - not a cute assistant toy, but torque-bounded jobs on a desk,
           floor, or lab bench.
         </p>
         <div className="mt-5 flex flex-wrap justify-center gap-2">
@@ -114,8 +114,8 @@ export function WorkRolesSection() {
 
 export function TargetSpecsSection() {
   return (
-    <section id="target-specs" className="border-y border-line/50 bg-background py-10 sm:py-14">
-      <div className="mx-auto max-w-6xl space-y-8 px-4 sm:px-6">
+    <section id="target-specs" className="border-y border-line/50 bg-background py-8 sm:py-10">
+      <div className="mx-auto max-w-6xl space-y-6 px-4 sm:px-6">
         <MotionReveal>
           <SectionHeader
             eyebrow="Prototype targets"
@@ -142,7 +142,7 @@ export function TargetSpecsSection() {
 
 export function PhoneAsBrainSection() {
   return (
-    <section className="mx-auto max-w-6xl space-y-8 px-4 py-10 sm:space-y-9 sm:px-6 sm:py-14">
+    <section className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:space-y-8 sm:px-6 sm:py-10">
       <MotionReveal>
         <SectionHeader
           eyebrow="Architecture"
@@ -167,7 +167,7 @@ export function PhoneAsBrainSection() {
 
 export function SkillSafetySection() {
   return (
-    <section className="border-y border-line/55 bg-surface/25 py-10 sm:py-14">
+    <section className="border-y border-line/55 bg-surface/25 py-8 sm:py-10">
       <div className="mx-auto max-w-3xl space-y-5 px-4 text-center sm:px-6">
         <MotionReveal>
           <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-accent">
@@ -185,7 +185,7 @@ export function SkillSafetySection() {
 
 export function ForBuildersSection() {
   return (
-    <section id="builders" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-10 sm:px-6 sm:py-12">
+    <section id="builders" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-8 sm:px-6 sm:py-10">
       <MotionReveal>
         <div className="rounded-2xl border border-accent/25 bg-gradient-to-br from-accent/10 via-surface/80 to-background p-6 shadow-panel sm:p-8">
           <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-accent">

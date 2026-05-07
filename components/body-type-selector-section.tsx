@@ -56,7 +56,7 @@ export function BodyTypeSelectorSection() {
                 href={`/customize?type=${active.slug}`}
                 className="inline-flex items-center justify-center rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-accent-soft"
               >
-                {primaryCta.label} — {active.name}
+                {primaryCta.label} - {active.name}
               </Link>
             </div>
           </div>

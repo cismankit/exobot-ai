@@ -5,12 +5,12 @@ import { customOrderSteps } from "@/lib/content";
 
 export function CustomOrderPathSection() {
   return (
-    <section className="mx-auto max-w-6xl space-y-8 px-4 py-10 sm:space-y-9 sm:px-6 sm:py-14">
+    <section className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:space-y-7 sm:px-6 sm:py-10">
       <MotionReveal>
         <SectionHeader
           eyebrow="Preorder path"
           title="Custom Order Path"
-          description="Five checkpoints from handset choice to human consultation—every step stays inside prototype and preorder-interest language."
+          description="Five checkpoints from handset choice to human consultation - every step stays inside prototype and preorder-interest language."
           align="center"
           className="mx-auto max-w-3xl text-center"
         />

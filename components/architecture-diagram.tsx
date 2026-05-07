@@ -7,7 +7,7 @@ export function ArchitectureDiagram() {
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Control plane</p>
         <p className="text-sm text-text-muted">
           Command direction: handset → transport → MCU → servos. This is the actual electrical/software
-          chain for prototype builds—not a marketing diagram.
+          chain for prototype builds - not a marketing diagram.
         </p>
         <ol className="space-y-0 rounded-2xl border border-line/70 bg-surface/60 p-1">
           {buildControlPath.map((item, index) => (

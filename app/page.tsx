@@ -1,3 +1,4 @@
+import { AppleScrollShowcase } from "@/components/apple-scroll-showcase";
 import { BodyTypeSelectorSection } from "@/components/body-type-selector-section";
 import { CtaPair } from "@/components/cta-pair";
 import { CTASection } from "@/components/cta-section";
@@ -6,6 +7,7 @@ import { EmbodimentProvider } from "@/components/embodiment-context";
 import { FeatureCard } from "@/components/feature-card";
 import { HeroSection } from "@/components/hero-section";
 import { HomeFaqSection } from "@/components/home-faq-section";
+import { InfographicStrip } from "@/components/infographic-strip";
 import {
   ConfigurationsSection,
   ForBuildersSection,
@@ -17,40 +19,47 @@ import {
 } from "@/components/home-conversion-sections";
 import { InterestForm } from "@/components/interest-form";
 import { MotionReveal } from "@/components/motion-reveal";
-import { ProcessStep } from "@/components/process-step";
+import { OrderAssuranceStrip } from "@/components/order-assurance-strip";
 import { SectionHeader } from "@/components/section-header";
 import { SkillsEngineSection } from "@/components/skills-engine-section";
+import { StickyOrderBar } from "@/components/sticky-order-bar";
 import { CardShell } from "@/components/card-shell";
 import { primaryCta, secondaryCta } from "@/lib/ctas";
-import { featureCards, homeUseCases, processSteps } from "@/lib/content";
+import { homeUseCases } from "@/lib/content";
+import { Blocks, ClipboardList, Cpu, ShieldCheck, SlidersHorizontal, Truck } from "lucide-react";
 import Link from "next/link";
 
 export default function HomePage() {
   return (
     <EmbodimentProvider>
       <HeroSection />
+      <AppleScrollShowcase />
+      <OrderAssuranceStrip />
 
       <BodyTypeSelectorSection />
 
       <WhyExobodSection />
 
-      <section id="product" className="mx-auto max-w-6xl space-y-8 px-4 py-10 sm:space-y-10 sm:px-6 sm:py-16">
+      <section id="product" className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:space-y-8 sm:px-6 sm:py-12">
         <MotionReveal>
           <SectionHeader
             eyebrow="Product"
-            title="Not a stand. Not a toy. A body for your AI."
-            description="Exobod is a handset-first embodiment rig: the phone runs assistants and vision; the exoskeleton carries torque, balance, and tooling so commands leave the screen and hit the bench."
+            title="A simple configure-to-order robotics platform."
+            description="Pick a body, choose your phone mount, select motion capabilities, and submit one order inquiry."
           />
         </MotionReveal>
-        <div className="grid gap-4 sm:gap-6 md:grid-cols-3">
-          {featureCards.map((card) => (
-            <MotionReveal key={card.title}>
-              <FeatureCard title={card.title} description={card.description} />
-            </MotionReveal>
-          ))}
-        </div>
+        <MotionReveal>
+          <InfographicStrip
+            items={[
+              { title: "Choose Body", caption: "Walker, Desk, Rover, or Utility.", icon: SlidersHorizontal },
+              { title: "Phone As Brain", caption: "iPhone or Android with removable mount core.", icon: Cpu },
+              { title: "Safe Motion Layer", caption: "Controller clamps speed and behavior profiles.", icon: ShieldCheck },
+              { title: "Built To Your Spec", caption: "Accessories, finishes, and use-case options.", icon: Blocks },
+            ]}
+          />
+        </MotionReveal>
         <p className="text-center text-sm text-text-muted">
-          Your phone already has the intelligence. Exobod gives it motion.
+          Same experience pattern as modern device ordering: configure, review, submit, and confirm.
         </p>
       </section>
 
@@ -58,21 +67,26 @@ export default function HomePage() {
 
       <WorkRolesSection />
 
-      <section className="mx-auto max-w-6xl space-y-8 px-4 py-10 sm:space-y-10 sm:px-6 sm:py-16">
+      <section className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:space-y-8 sm:px-6 sm:py-12">
         <MotionReveal>
           <SectionHeader
-            eyebrow="How it works"
-            title="Same handset. Articulated output."
-            description="Skill intents leave the phone, cross the transport layer, hit the on-body MCU, and become torque at the joints—inside the guardrails we ship for each prototype batch."
+            eyebrow="Order flow"
+            title="Five clear steps from configuration to delivery."
+            description="No confusing jargon. One clear path from choices to confirmation."
           />
         </MotionReveal>
-        <div className="grid gap-3 sm:gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {processSteps.map((step, idx) => (
-            <MotionReveal key={step.title} delay={idx * 0.02}>
-              <ProcessStep {...step} />
-            </MotionReveal>
-          ))}
-        </div>
+        <MotionReveal>
+          <InfographicStrip
+            columns={5}
+            items={[
+              { title: "1. Configure", caption: "Pick body type and phone fit.", icon: SlidersHorizontal },
+              { title: "2. Submit", caption: "Send order inquiry in one form.", icon: ClipboardList },
+              { title: "3. Review", caption: "Team validates scope and options.", icon: ShieldCheck },
+              { title: "4. Approve", caption: "Confirm quote and timeline.", icon: Cpu },
+              { title: "5. Ship", caption: "Receive build-ready package.", icon: Truck },
+            ]}
+          />
+        </MotionReveal>
       </section>
 
       <SkillsEngineSection />
@@ -85,24 +99,24 @@ export default function HomePage() {
 
       <CustomOrderPathSection />
 
-      <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+      <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
         <MotionReveal>
           <CTASection
             eyebrow="Custom hardware"
             title="Request a build sheet, not a shopping cart."
-            description="Pick body architecture, finish, limbs, accessory ports, motion packs, and budget band. We answer with a prototype scope or decline if the load case is outside current lab capacity—never silent shipping promises."
+            description="Pick body architecture, finish, limbs, accessory ports, motion packs, and budget band. We answer with a prototype scope or decline if the load case is outside current lab capacity - never silent shipping promises."
             primary={primaryCta}
             secondary={secondaryCta}
           />
         </MotionReveal>
       </section>
 
-      <section className="border-y border-line/60 bg-surface/28 py-10 sm:py-16">
-        <div className="mx-auto max-w-6xl space-y-8 px-4 sm:space-y-9 sm:px-6">
+      <section className="border-y border-line/60 bg-surface/28 py-8 sm:py-12">
+        <div className="mx-auto max-w-6xl space-y-6 px-4 sm:space-y-8 sm:px-6">
           <MotionReveal>
             <SectionHeader
               eyebrow="Where it ships first"
-              title="Makers, classrooms, and prototype labs—not toy aisles."
+              title="Makers, classrooms, and prototype labs - not toy aisles."
               description="Each scenario is about mounting the phone you already carry and giving it torque-limited motion for experiments, teaching, or demos."
               align="center"
               className="text-center"
@@ -127,12 +141,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl space-y-6 px-4 py-10 sm:space-y-8 sm:px-6 sm:py-14">
+      <section className="mx-auto max-w-6xl space-y-5 px-4 py-8 sm:space-y-6 sm:px-6 sm:py-10">
         <MotionReveal>
           <SectionHeader
             eyebrow="Build system"
             title="3D printed where it should be. Metal where it matters."
-            description="Hybrid shells iterate fast; hardened linkages carry joint torque. Controller packs, fused power, and harness exits are laid out for serviceability on the bench—not hidden glue blobs."
+            description="Hybrid shells iterate fast; hardened linkages carry joint torque. Controller packs, fused power, and harness exits are laid out for serviceability on the bench - not hidden glue blobs."
           />
         </MotionReveal>
         <MotionReveal delay={0.04}>
@@ -157,17 +171,17 @@ export default function HomePage() {
 
       <ForBuildersSection />
 
-      <section className="bg-gradient-to-b from-background to-surface/35 py-10 sm:py-16">
-        <div className="mx-auto max-w-4xl space-y-6 px-4 sm:space-y-8 sm:px-6">
+      <section className="bg-gradient-to-b from-background to-surface/35 py-8 sm:py-12">
+        <div className="mx-auto max-w-4xl space-y-5 px-4 sm:space-y-6 sm:px-6">
           <MotionReveal>
             <div className="space-y-3 text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Preorder interest</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Order now</p>
               <h2 className="text-3xl font-semibold text-text-main sm:text-4xl">
-                Tell us what to prototype around your handset.
+                Tell us what you want to build and deploy.
               </h2>
               <p className="text-sm text-text-muted sm:text-base">
-                Join the list for milestone-based builds—shell studies, articulated prototypes, or scoped
-                engineering consults. Nothing implied about retail shelf timing.
+                Submit your customization goals and we will route your request to the right configuration,
+                quoting path, and production timeline.
               </p>
             </div>
           </MotionReveal>
@@ -176,11 +190,12 @@ export default function HomePage() {
               <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
                 <CtaPair className="sm:justify-center" />
               </div>
-              <InterestForm submitLabel="Send preorder request" />
+              <InterestForm submitLabel="Send order inquiry" />
             </div>
           </MotionReveal>
         </div>
       </section>
+      <StickyOrderBar />
     </EmbodimentProvider>
   );
 }
