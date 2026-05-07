@@ -1,6 +1,6 @@
 "use client";
 
-import { BrandLockup } from "@/components/brand-logo";
+import { BrandFigure, BrandWordmark } from "@/components/brand-logo";
 import { primaryCta, secondaryCta } from "@/lib/ctas";
 import { navLinks } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -16,8 +16,12 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-line/60 bg-background/85 backdrop-blur-xl">
       <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto] items-center gap-x-3 gap-y-2 px-4 py-3 sm:px-6 md:grid-cols-[auto,minmax(0,1fr),auto] md:gap-x-4 md:py-3.5">
-        <Link href="/" className="group inline-flex shrink-0 items-center py-0.5">
-          <BrandLockup priority size="md" />
+        <Link
+          href="/"
+          className="group flex shrink-0 items-center gap-2.5 whitespace-nowrap py-0.5 sm:gap-3"
+        >
+          <BrandFigure size="md" priority />
+          <BrandWordmark className="text-base sm:text-lg" />
         </Link>
         <nav className="col-span-2 hidden min-h-[40px] min-w-0 flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[13px] font-medium text-text-muted md:col-span-1 md:flex lg:gap-x-4 lg:text-sm">
           {navLinks.map((link) => {
