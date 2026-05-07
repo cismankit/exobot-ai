@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #070a0d;
+  --surface: #10151c;
+  --surface-soft: #161d26;
+  --text-main: #f5f7fa;
+  --text-muted: #aab3c0;
+  --accent: #ff7a1a;
+  --accent-soft: #ffb15c;
+  --line: rgba(255, 255, 255, 0.1);
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--text-main);
+}
+
+::selection {
+  background: rgba(255, 122, 26, 0.25);
+  color: var(--text-main);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
