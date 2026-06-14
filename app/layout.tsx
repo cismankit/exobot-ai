@@ -1,3 +1,4 @@
+import { PostHogProvider } from "@/components/posthog-provider";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { EXOBOD_HERO_IMAGE } from "@/lib/site-assets";
@@ -55,11 +56,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${jetbrains.variable} ${display.variable}`}>
       <body className="font-sans antialiased">
-        <div className="flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+        <PostHogProvider>
+          <div className="flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </PostHogProvider>
       </body>
     </html>
   );

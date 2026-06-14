@@ -35,6 +35,18 @@ export const interestFormSchema = z.object({
   budget: z.enum(interestBudgets),
   message: z.string().optional(),
   configurationSummary: z.string().optional(),
+  configurationId: z
+    .string()
+    .regex(/^CFG-\d{4}-\d{4}$/)
+    .optional(),
+  /** Honeypot — must stay empty; validated server-side */
+  website: z.string().optional(),
+  utmSource: z.string().optional(),
+  utmMedium: z.string().optional(),
+  utmCampaign: z.string().optional(),
+  /** Affiliate / creator referral slug from ?ref= */
+  affiliateRef: z.string().optional(),
+  sourcePage: z.string().optional(),
 });
 
 export type InterestFormValues = z.infer<typeof interestFormSchema>;

@@ -1,6 +1,6 @@
 /** Placeholders until legal/onboarding docs are finalized - replace with real entity details. */
 export const companyContact = {
-  legalName: "Exobod Labs (placeholder legal entity name)",
+  legalName: "Exobod Labs, Inc.",
   supportEmail: "support@exobod.ai",
   /** Full street address is shared during onboarding and on signed agreements. */
   addressSummary: "United States - full address provided with purchase agreements and NDAs.",

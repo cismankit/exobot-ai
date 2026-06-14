@@ -13,6 +13,9 @@
 # production
 /build
 
+# lead data (PII)
+/data/
+
 # misc
 .DS_Store
 *.pem

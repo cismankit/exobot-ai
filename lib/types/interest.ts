@@ -31,5 +31,12 @@ export interface InterestPayload {
   message?: string;
   /** Present when submitted from the configurator summary */
   configurationSummary?: string;
+  configurationId?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  affiliateRef?: string;
+  referrer?: string;
+  sourcePage?: string;
 }
 

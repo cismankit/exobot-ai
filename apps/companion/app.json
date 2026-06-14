@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "Exobod Companion",
+    "slug": "exobod-companion",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "exobod",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#070a0d"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "ai.exobod.companion"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#070a0d"
+      },
+      "package": "ai.exobod.companion"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Exobod to scan unit QR codes for onboarding."
+        }
+      ],
+      "expo-asset",
+      "expo-font"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
