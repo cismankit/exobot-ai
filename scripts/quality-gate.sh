@@ -24,9 +24,13 @@ AUTH_HEADER="Authorization: Bearer ${ADMIN_SECRET}"
 
 smoke() {
   local path="$1"
-  local extra_args=("${@:2}")
+  shift
   local code
-  code=$(curl -s -o /dev/null -w "%{http_code}" "${extra_args[@]}" "${BASE_URL}${path}" || echo "000")
+  if (("$#" > 0)); then
+    code=$(curl -s -o /dev/null -w "%{http_code}" "$@" "${BASE_URL}${path}" || echo "000")
+  else
+    code=$(curl -s -o /dev/null -w "%{http_code}" "${BASE_URL}${path}" || echo "000")
+  fi
   if [[ "$code" != "200" && "$code" != "307" && "$code" != "308" ]]; then
     echo "FAIL ${path} → HTTP ${code}"
     return 1
