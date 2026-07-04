@@ -1,0 +1,1399 @@
+{
+ "openapi": "3.1.0",
+ "info": {
+  "title": "Exobod API",
+  "description": "Control plane for Exobod \u2014 phone-as-brain, frame-as-body. Wraps the exobod-core orchestrator; safety decisions live in ReflexCore/firmware only.",
+  "version": "1.0.0"
+ },
+ "paths": {
+  "/health": {
+   "get": {
+    "tags": [
+     "health"
+    ],
+    "summary": "Health",
+    "operationId": "health_health_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   }
+  },
+  "/waitlist": {
+   "post": {
+    "tags": [
+     "waitlist"
+    ],
+    "summary": "Join Waitlist",
+    "operationId": "join_waitlist_waitlist_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/WaitlistIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/WaitlistOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/preorder/checkout": {
+   "post": {
+    "tags": [
+     "preorder"
+    ],
+    "summary": "Create Checkout",
+    "operationId": "create_checkout_preorder_checkout_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/CheckoutIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CheckoutOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/stripe/webhook": {
+   "post": {
+    "tags": [
+     "preorder"
+    ],
+    "summary": "Stripe Webhook",
+    "operationId": "stripe_webhook_stripe_webhook_post",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   }
+  },
+  "/preorder/status/{session_id}": {
+   "get": {
+    "tags": [
+     "preorder"
+    ],
+    "summary": "Preorder Status",
+    "operationId": "preorder_status_preorder_status__session_id__get",
+    "parameters": [
+     {
+      "name": "session_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Session Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/me": {
+   "get": {
+    "tags": [
+     "me"
+    ],
+    "summary": "Me",
+    "operationId": "me_me_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/MeOut"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/me/providers": {
+   "get": {
+    "tags": [
+     "providers"
+    ],
+    "summary": "List Providers",
+    "operationId": "list_providers_me_providers_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "items": {
+          "$ref": "#/components/schemas/ProviderOut"
+         },
+         "type": "array",
+         "title": "Response List Providers Me Providers Get"
+        }
+       }
+      }
+     }
+    }
+   },
+   "put": {
+    "tags": [
+     "providers"
+    ],
+    "summary": "Upsert Provider",
+    "operationId": "upsert_provider_me_providers_put",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ProviderIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "items": {
+          "$ref": "#/components/schemas/ProviderOut"
+         },
+         "type": "array",
+         "title": "Response Upsert Provider Me Providers Put"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/me/providers/{provider}/test": {
+   "post": {
+    "tags": [
+     "providers"
+    ],
+    "summary": "Test Provider",
+    "description": "Ping availability using the real core provider class + stored key.",
+    "operationId": "test_provider_me_providers__provider__test_post",
+    "parameters": [
+     {
+      "name": "provider",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Provider"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/me/routes": {
+   "get": {
+    "tags": [
+     "providers"
+    ],
+    "summary": "Get Routes",
+    "operationId": "get_routes_me_routes_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/RoutesOut"
+        }
+       }
+      }
+     }
+    }
+   },
+   "put": {
+    "tags": [
+     "providers"
+    ],
+    "summary": "Put Routes",
+    "operationId": "put_routes_me_routes_put",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/RoutesIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/RoutesOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/personas": {
+   "get": {
+    "tags": [
+     "personas"
+    ],
+    "summary": "List Personas",
+    "operationId": "list_personas_personas_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "items": {
+          "$ref": "#/components/schemas/PersonaOut"
+         },
+         "type": "array",
+         "title": "Response List Personas Personas Get"
+        }
+       }
+      }
+     }
+    }
+   },
+   "post": {
+    "tags": [
+     "personas"
+    ],
+    "summary": "Create Persona",
+    "operationId": "create_persona_personas_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/PersonaIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/PersonaOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/personas/{persona_id}": {
+   "put": {
+    "tags": [
+     "personas"
+    ],
+    "summary": "Update Persona",
+    "operationId": "update_persona_personas__persona_id__put",
+    "parameters": [
+     {
+      "name": "persona_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Persona Id"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/PersonaIn"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/PersonaOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "delete": {
+    "tags": [
+     "personas"
+    ],
+    "summary": "Delete Persona",
+    "operationId": "delete_persona_personas__persona_id__delete",
+    "parameters": [
+     {
+      "name": "persona_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Persona Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/personas/preview": {
+   "post": {
+    "tags": [
+     "personas"
+    ],
+    "summary": "Voice Preview",
+    "description": "Run one real orchestrator turn against the draft identity (no body,\nthrowaway memory) so editing feels alive before saving.",
+    "operationId": "voice_preview_personas_preview_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/PreviewIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/personas/{persona_id}/facts": {
+   "get": {
+    "tags": [
+     "memory"
+    ],
+    "summary": "List Facts",
+    "operationId": "list_facts_personas__persona_id__facts_get",
+    "parameters": [
+     {
+      "name": "persona_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Persona Id"
+      }
+     },
+     {
+      "name": "q",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Q"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/personas/{persona_id}/facts/{key}": {
+   "delete": {
+    "tags": [
+     "memory"
+    ],
+    "summary": "Delete Fact",
+    "operationId": "delete_fact_personas__persona_id__facts__key__delete",
+    "parameters": [
+     {
+      "name": "persona_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Persona Id"
+      }
+     },
+     {
+      "name": "key",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Key"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/personas/{persona_id}/episodes": {
+   "get": {
+    "tags": [
+     "memory"
+    ],
+    "summary": "List Episodes",
+    "operationId": "list_episodes_personas__persona_id__episodes_get",
+    "parameters": [
+     {
+      "name": "persona_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Persona Id"
+      }
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "default": 50,
+       "title": "Limit"
+      }
+     },
+     {
+      "name": "q",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Q"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/devices/pair": {
+   "post": {
+    "tags": [
+     "devices"
+    ],
+    "summary": "Pair Device",
+    "operationId": "pair_device_devices_pair_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/PairIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/DeviceOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/devices": {
+   "get": {
+    "tags": [
+     "devices"
+    ],
+    "summary": "Fleet",
+    "operationId": "fleet_devices_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "items": {
+          "$ref": "#/components/schemas/DeviceOut"
+         },
+         "type": "array",
+         "title": "Response Fleet Devices Get"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/devices/{device_id}/estop": {
+   "post": {
+    "tags": [
+     "devices"
+    ],
+    "summary": "Device Estop",
+    "operationId": "device_estop_devices__device_id__estop_post",
+    "parameters": [
+     {
+      "name": "device_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Device Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/devices/{device_id}": {
+   "delete": {
+    "tags": [
+     "devices"
+    ],
+    "summary": "Forget Device",
+    "operationId": "forget_device_devices__device_id__delete",
+    "parameters": [
+     {
+      "name": "device_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Device Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "CheckoutIn": {
+    "properties": {
+     "email": {
+      "type": "string",
+      "format": "email",
+      "title": "Email"
+     },
+     "tier": {
+      "type": "string",
+      "title": "Tier",
+      "default": "devkit"
+     }
+    },
+    "type": "object",
+    "required": [
+     "email"
+    ],
+    "title": "CheckoutIn"
+   },
+   "CheckoutOut": {
+    "properties": {
+     "checkout_url": {
+      "type": "string",
+      "title": "Checkout Url"
+     },
+     "order_id": {
+      "type": "string",
+      "title": "Order Id"
+     }
+    },
+    "type": "object",
+    "required": [
+     "checkout_url",
+     "order_id"
+    ],
+    "title": "CheckoutOut"
+   },
+   "DeviceOut": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "name": {
+      "type": "string",
+      "title": "Name"
+     },
+     "pairing_code": {
+      "type": "string",
+      "title": "Pairing Code"
+     },
+     "status": {
+      "type": "string",
+      "title": "Status"
+     },
+     "fw_version": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Fw Version"
+     },
+     "last_pose": {
+      "anyOf": [
+       {
+        "additionalProperties": true,
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Last Pose"
+     },
+     "last_vbat": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Last Vbat"
+     },
+     "estopped": {
+      "type": "boolean",
+      "title": "Estopped"
+     },
+     "last_seen_at": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Last Seen At"
+     },
+     "online": {
+      "type": "boolean",
+      "title": "Online"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "name",
+     "pairing_code",
+     "status",
+     "fw_version",
+     "last_pose",
+     "last_vbat",
+     "estopped",
+     "last_seen_at",
+     "online"
+    ],
+    "title": "DeviceOut"
+   },
+   "HTTPValidationError": {
+    "properties": {
+     "detail": {
+      "items": {
+       "$ref": "#/components/schemas/ValidationError"
+      },
+      "type": "array",
+      "title": "Detail"
+     }
+    },
+    "type": "object",
+    "title": "HTTPValidationError"
+   },
+   "IdentityModel": {
+    "properties": {
+     "name": {
+      "type": "string",
+      "maxLength": 60,
+      "minLength": 1,
+      "title": "Name"
+     },
+     "disposition": {
+      "type": "string",
+      "title": "Disposition",
+      "default": ""
+     },
+     "values": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Values",
+      "default": []
+     },
+     "voice": {
+      "type": "string",
+      "title": "Voice",
+      "default": ""
+     },
+     "hard_rules": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Hard Rules",
+      "default": []
+     },
+     "boot_greeting": {
+      "type": "string",
+      "title": "Boot Greeting",
+      "default": ""
+     },
+     "version": {
+      "type": "string",
+      "title": "Version",
+      "default": "1.0"
+     }
+    },
+    "type": "object",
+    "required": [
+     "name"
+    ],
+    "title": "IdentityModel",
+    "description": "Mirrors packages/core/persona/identity.json."
+   },
+   "MeOut": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "email": {
+      "type": "string",
+      "title": "Email"
+     },
+     "persona_count": {
+      "type": "integer",
+      "title": "Persona Count"
+     },
+     "device_count": {
+      "type": "integer",
+      "title": "Device Count"
+     },
+     "orders": {
+      "items": {
+       "additionalProperties": true,
+       "type": "object"
+      },
+      "type": "array",
+      "title": "Orders"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "email",
+     "persona_count",
+     "device_count",
+     "orders"
+    ],
+    "title": "MeOut"
+   },
+   "PairIn": {
+    "properties": {
+     "name": {
+      "type": "string",
+      "maxLength": 60,
+      "title": "Name",
+      "default": "Exobod unit"
+     }
+    },
+    "type": "object",
+    "title": "PairIn"
+   },
+   "PersonaIn": {
+    "properties": {
+     "name": {
+      "type": "string",
+      "maxLength": 60,
+      "minLength": 1,
+      "title": "Name"
+     },
+     "identity": {
+      "$ref": "#/components/schemas/IdentityModel"
+     },
+     "is_default": {
+      "type": "boolean",
+      "title": "Is Default",
+      "default": false
+     }
+    },
+    "type": "object",
+    "required": [
+     "name",
+     "identity"
+    ],
+    "title": "PersonaIn"
+   },
+   "PersonaOut": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "name": {
+      "type": "string",
+      "title": "Name"
+     },
+     "identity": {
+      "$ref": "#/components/schemas/IdentityModel"
+     },
+     "is_default": {
+      "type": "boolean",
+      "title": "Is Default"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "name",
+     "identity",
+     "is_default"
+    ],
+    "title": "PersonaOut"
+   },
+   "PreviewIn": {
+    "properties": {
+     "identity": {
+      "$ref": "#/components/schemas/IdentityModel"
+     },
+     "stimulus": {
+      "type": "string",
+      "title": "Stimulus",
+      "default": "Introduce yourself in one sentence."
+     }
+    },
+    "type": "object",
+    "required": [
+     "identity"
+    ],
+    "title": "PreviewIn"
+   },
+   "ProviderIn": {
+    "properties": {
+     "provider": {
+      "type": "string",
+      "title": "Provider"
+     },
+     "enabled": {
+      "type": "boolean",
+      "title": "Enabled",
+      "default": true
+     },
+     "api_key": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Api Key"
+     },
+     "model_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Model Id"
+     },
+     "clear_key": {
+      "type": "boolean",
+      "title": "Clear Key",
+      "default": false
+     }
+    },
+    "type": "object",
+    "required": [
+     "provider"
+    ],
+    "title": "ProviderIn"
+   },
+   "ProviderOut": {
+    "properties": {
+     "provider": {
+      "type": "string",
+      "title": "Provider"
+     },
+     "enabled": {
+      "type": "boolean",
+      "title": "Enabled"
+     },
+     "has_key": {
+      "type": "boolean",
+      "title": "Has Key"
+     },
+     "key_masked": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Key Masked"
+     },
+     "model_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Model Id"
+     },
+     "needs_key": {
+      "type": "boolean",
+      "title": "Needs Key"
+     }
+    },
+    "type": "object",
+    "required": [
+     "provider",
+     "enabled",
+     "has_key",
+     "key_masked",
+     "model_id",
+     "needs_key"
+    ],
+    "title": "ProviderOut"
+   },
+   "RoutesIn": {
+    "properties": {
+     "routes": {
+      "additionalProperties": {
+       "items": {
+        "type": "string"
+       },
+       "type": "array"
+      },
+      "type": "object",
+      "title": "Routes"
+     }
+    },
+    "type": "object",
+    "required": [
+     "routes"
+    ],
+    "title": "RoutesIn"
+   },
+   "RoutesOut": {
+    "properties": {
+     "routes": {
+      "additionalProperties": {
+       "items": {
+        "type": "string"
+       },
+       "type": "array"
+      },
+      "type": "object",
+      "title": "Routes"
+     }
+    },
+    "type": "object",
+    "required": [
+     "routes"
+    ],
+    "title": "RoutesOut"
+   },
+   "ValidationError": {
+    "properties": {
+     "loc": {
+      "items": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "integer"
+        }
+       ]
+      },
+      "type": "array",
+      "title": "Location"
+     },
+     "msg": {
+      "type": "string",
+      "title": "Message"
+     },
+     "type": {
+      "type": "string",
+      "title": "Error Type"
+     },
+     "input": {
+      "title": "Input"
+     },
+     "ctx": {
+      "type": "object",
+      "title": "Context"
+     }
+    },
+    "type": "object",
+    "required": [
+     "loc",
+     "msg",
+     "type"
+    ],
+    "title": "ValidationError"
+   },
+   "WaitlistIn": {
+    "properties": {
+     "email": {
+      "type": "string",
+      "format": "email",
+      "title": "Email"
+     },
+     "referred_by": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Referred By"
+     }
+    },
+    "type": "object",
+    "required": [
+     "email"
+    ],
+    "title": "WaitlistIn"
+   },
+   "WaitlistOut": {
+    "properties": {
+     "position": {
+      "type": "integer",
+      "title": "Position"
+     },
+     "already_joined": {
+      "type": "boolean",
+      "title": "Already Joined",
+      "default": false
+     }
+    },
+    "type": "object",
+    "required": [
+     "position"
+    ],
+    "title": "WaitlistOut"
+   }
+  }
+ }
+}
