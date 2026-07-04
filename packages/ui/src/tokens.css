@@ -1,0 +1,62 @@
+/* Exobod design tokens — "living machine".
+   One accent: signal green = the body link is alive.
+   One counter: amber-red = the body's constitution asserting itself.
+   Never a third. */
+
+:root {
+  --bg: #0a0b0d;
+  --surface: #111317;
+  --surface-2: #16191f;
+  --border: #1f2329;
+  --fg: #edeff2;
+  --muted: #8a9099;
+
+  --signal: #3df5a0;
+  --signal-dim: rgba(61, 245, 160, 0.12);
+  --signal-glow: rgba(61, 245, 160, 0.35);
+
+  --danger: #ff5a47;
+  --danger-dim: rgba(255, 90, 71, 0.12);
+  --danger-glow: rgba(255, 90, 71, 0.4);
+
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-display: var(--font-inter-display), var(--font-inter), "Inter Display",
+    "Inter", system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace,
+    "SF Mono", monospace;
+}
+
+html {
+  background: var(--bg);
+  color: var(--fg);
+  color-scheme: dark;
+}
+
+::selection {
+  background: var(--signal);
+  color: var(--bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* instrument-like live numbers */
+.telemetry {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* focus visibility on a dark canvas */
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
