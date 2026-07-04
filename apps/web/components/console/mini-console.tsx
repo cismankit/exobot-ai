@@ -16,6 +16,7 @@ import { IntentLog, MindsRow, PoseReadout } from "./telemetry";
 
 const SUGGESTIONS = [
   "look left",
+  "wave hello",
   "nod if you agree",
   "whip your head around fast",
   "emergency stop",
@@ -51,6 +52,8 @@ export function MiniConsole({ sessionId }: { sessionId: string }) {
           estop={state.estop}
           clampPulse={state.clampPulse}
           thinking={state.busy}
+          gesture={state.gesture}
+          drive={state.drive}
           className="h-[320px] w-full sm:h-[380px]"
         />
         <div className="absolute left-4 top-4">

@@ -60,8 +60,8 @@ export function Hero() {
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-base text-muted sm:text-lg">
             Your phone is already the smartest thing you own. Exobod is the
-            frame it clicks into — eyes, a neck, a voice, and a spine that
-            says no.
+            exoskeleton it docks into — arms, a stance, a face, a voice, and
+            a spine that says no. The phone stays the CPU; the body obeys.
           </p>
           <div className="pointer-events-auto mt-9 flex flex-wrap items-center justify-center gap-3">
             <Link href="/#waitlist">

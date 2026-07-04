@@ -147,6 +147,8 @@ function LiveInner({ sessionId }: { sessionId: string }) {
           estop={state.estop}
           clampPulse={state.clampPulse}
           thinking={state.busy}
+          gesture={state.gesture}
+          drive={state.drive}
           className="h-full min-h-[420px] w-full"
         />
         <div className="absolute left-4 top-4">

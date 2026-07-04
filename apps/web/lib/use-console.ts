@@ -27,6 +27,11 @@ export interface ConsoleState {
   estop: boolean;
   vbat: number | null;
   clampPulse: number; // increments on every clamped ack → UI flashes amber
+  /** last executed gesture ack from the body ("wave", "point", "nod",
+   * "shake") with a counter so repeats retrigger the animation */
+  gesture: { name: string; n: number };
+  /** last drive command the body accepted (already clamped by ReflexCore) */
+  drive: { vx: number; wz: number };
   lastModel: string | null;
   lastLatencyMs: number | null;
   taskType: TaskType;
@@ -44,6 +49,8 @@ const initial: ConsoleState = {
   estop: false,
   vbat: null,
   clampPulse: 0,
+  gesture: { name: "", n: 0 },
+  drive: { vx: 0, wz: 0 },
   lastModel: null,
   lastLatencyMs: null,
   taskType: "conversation",
@@ -140,6 +147,14 @@ export function useConsole(sessionId: string, authed: boolean) {
               const clamped = a.body_acks.some(
                 (k) => k.reason === "clamped",
               );
+              // gestures/drive come back as executed acks from ReflexCore —
+              // the scene animates only what the body actually accepted
+              const gestureAck = a.body_acks.find(
+                (k) => k.executed && k.reason.startsWith("gesture:"),
+              );
+              const driveAck = a.body_acks.find(
+                (k) => k.executed && k.reason === "driving" && k.drive,
+              );
               return {
                 ...s,
                 thinking: [],
@@ -147,6 +162,13 @@ export function useConsole(sessionId: string, authed: boolean) {
                 lastModel: a.model,
                 lastLatencyMs: a.latency_ms,
                 clampPulse: clamped ? s.clampPulse + 1 : s.clampPulse,
+                gesture: gestureAck
+                  ? {
+                      name: gestureAck.reason.slice("gesture:".length),
+                      n: s.gesture.n + 1,
+                    }
+                  : s.gesture,
+                drive: driveAck?.drive ?? s.drive,
               };
             });
             const entries: LogEntry[] = [];

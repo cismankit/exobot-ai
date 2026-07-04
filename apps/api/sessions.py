@@ -20,7 +20,6 @@ import settings
 from core_bridge import (
     DEFAULT_IDENTITY_PATH,
     DEFAULT_ROUTES,
-    MockProvider,
     Orchestrator,
     PersonaState,
     PROVIDER_REGISTRY,
@@ -28,6 +27,7 @@ from core_bridge import (
 )
 from crypto import decrypt_key
 from links import DeviceRelayLink, LocalSimLink, build_session_link
+from mock_ext import PlatformMockProvider, install_platform_mock
 from models import Persona, ProviderConfig, RouteConfig
 
 
@@ -57,7 +57,7 @@ def build_user_providers(configs: list[ProviderConfig], user_id: str) -> dict:
         if cfg.model_id:
             p.model_id = cfg.model_id
         providers[cfg.provider] = p
-    providers.setdefault("mock", MockProvider())
+    providers["mock"] = PlatformMockProvider()
     return providers
 
 
@@ -151,6 +151,7 @@ class SessionManager:
         link = build_session_link()
         await link.connect()
         orch = Orchestrator(persona, link, {"providers": ["mock"]})
+        install_platform_mock(orch)
         sess = ConsoleSession(sid, None, orch, link, "sim", persona.identity["name"])
         sess.start_heartbeat()
         async with self._lock:
@@ -184,6 +185,7 @@ class SessionManager:
         link = device_link or build_session_link()
         await link.connect()
         orch = Orchestrator(persona, link, {"providers": ["mock"]})
+        install_platform_mock(orch)
         if cfg_rows:
             orch.providers = build_user_providers(list(cfg_rows), user_id)
         orch.routes = build_user_routes(list(route_rows))

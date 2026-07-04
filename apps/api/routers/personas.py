@@ -122,6 +122,9 @@ async def voice_preview(body: PreviewIn,
     _ensure_memory_schema(conn)
     persona = PersonaState(body.identity.model_dump(), conn)
     orch = Orchestrator(persona, link=None, config={"providers": ["mock"]})
+    from mock_ext import install_platform_mock
+
+    install_platform_mock(orch)
     cfg_rows = (await db.execute(
         select(ProviderConfig).where(ProviderConfig.user_id == user.id)
     )).scalars().all()

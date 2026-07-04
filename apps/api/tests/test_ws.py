@@ -74,6 +74,22 @@ class TestConsoleWS:
             assert answer["body_acks"][0]["executed"] is False
             assert "estopped" in answer["body_acks"][0]["reason"]
 
+    def test_gesture_vocabulary_over_ws(self, client):
+        """Platform mock covers the exoskeleton demo verbs; the BODY still
+        validates them (gesture/drive acks come from ReflexCore)."""
+        with client.websocket_connect("/ws/console/e2e-gestures") as ws:
+            ws.receive_json()  # hello
+            ws.send_json({"type": "stimulus", "text": "wave hello"})
+            answer, _ = drain_until(ws, "answer")
+            assert answer["intents"][0]["action"] == "wave"
+            assert answer["body_acks"][0]["reason"] == "gesture:wave"
+
+            ws.send_json({"type": "stimulus", "text": "drive forward slowly"})
+            answer, _ = drain_until(ws, "answer")
+            ack = answer["body_acks"][0]
+            assert ack["reason"] == "driving"
+            assert abs(ack["drive"]["vx"]) <= 0.25  # body's speed cap
+
     def test_task_type_switch_and_consensus(self, client):
         with client.websocket_connect("/ws/console/e2e-consensus") as ws:
             ws.receive_json()  # hello

@@ -6,14 +6,14 @@
 import { Reveal } from "./reveal";
 
 const SPECS = [
-  { n: "3", unit: "DOF", d: "pan · tilt · nod — metal-gear servos" },
-  { n: "±80°", unit: "pan", d: "−30°/+45° tilt, enforced in firmware" },
+  { n: "±80°", unit: "gaze pan", d: "−30°/+45° tilt, enforced in firmware" },
   { n: "≤25°", unit: "per command", d: "whip protection, every intent" },
+  { n: "0.25", unit: "m/s drive cap", d: "1.0 rad/s turn — desk-safe by law" },
   { n: "1.0s", unit: "watchdog", d: "brain silent → body neutralizes" },
-  { n: "67", unit: "TOPS", d: "Jetson Orin Nano path — 7–8B models local" },
+  { n: "3", unit: "carriers", d: "USB-C serial · BLE (app) · WiFi" },
+  { n: "9", unit: "intents", d: "gaze nod shake wave point drive face led speak" },
   { n: "5+1", unit: "minds", d: "Claude · GPT · GLM · DeepSeek · Ollama · mock" },
-  { n: "$230–450", unit: "v1 BOM", d: "Pi path to Jetson path, desktop unit" },
-  { n: "20/20", unit: "tests", d: "pipeline, clamps, estop latch — all green" },
+  { n: "$230–450", unit: "v1 BOM", d: "Pi path to Jetson path, printed frame" },
 ];
 
 export function Specs() {

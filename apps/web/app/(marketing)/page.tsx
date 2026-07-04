@@ -1,5 +1,6 @@
 import { Hero } from "@/components/marketing/hero";
 import { Reveal } from "@/components/marketing/reveal";
+import { ExoskeletonSection } from "@/components/marketing/exoskeleton";
 import { Federation } from "@/components/marketing/federation";
 import { Constitution } from "@/components/marketing/constitution";
 import { LiveDemo } from "@/components/marketing/live-demo";
@@ -19,12 +20,13 @@ export default function Landing() {
             Your phone is already the smartest thing you own.
             <br />
             <span className="text-signal">
-              Exobod gives it eyes, a neck, and a voice.
+              Exobod gives it eyes, arms, a stance, and a voice.
             </span>
           </p>
         </Reveal>
       </section>
 
+      <ExoskeletonSection />
       <Federation />
       <Constitution />
       <LiveDemo />
