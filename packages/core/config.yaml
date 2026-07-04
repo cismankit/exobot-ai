@@ -1,0 +1,22 @@
+# Exobod runtime configuration
+identity: persona/identity.json
+memory_db: persona/memory.db
+timeout_s: 25
+
+# Providers to instantiate. 'mock' keeps the system runnable with zero keys.
+providers: [claude, openai, glm, deepseek, ollama, mock]
+
+# Task routing (priority order; first available wins). Consensus fans out.
+routes:
+  conversation: [claude, ollama, mock]
+  reasoning:    [claude, deepseek, ollama, mock]
+  planning:     [claude, openai, ollama, mock]
+  code:         [deepseek, claude, ollama, mock]
+  perception:   [ollama, mock]
+  consensus:    [claude, openai, deepseek, glm, ollama, mock]
+
+link:
+  kind: zmq                    # zmq (simulator) | serial (real MCU)
+  endpoint: tcp://127.0.0.1:5555
+  # port: /dev/ttyACM0         # for serial
+  # baud: 115200

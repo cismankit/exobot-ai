@@ -1,0 +1,51 @@
+# One-command local stack:  docker compose -f infra/docker-compose.yml up
+#   postgres    — platform DB
+#   api         — FastAPI wrapping packages/core (talks to reflex-sim over zmq)
+#   reflex-sim  — the body simulator, same safety constitution as firmware
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: exobod
+      POSTGRES_PASSWORD: exobod
+      POSTGRES_DB: exobod
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U exobod"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  reflex-sim:
+    build:
+      context: ..
+      dockerfile: infra/reflex-sim.Dockerfile
+    command: python reflex/reflex_sim.py
+
+  api:
+    build:
+      context: ..
+      dockerfile: apps/api/Dockerfile
+    environment:
+      DATABASE_URL: postgresql+asyncpg://exobod:exobod@postgres:5432/exobod
+      LINK_KIND: zmq
+      REFLEX_ENDPOINT: tcp://reflex-sim:5555
+      CORS_ORIGINS: http://localhost:3000
+      EXOBOD_DATA_DIR: /data
+    volumes:
+      - apidata:/data
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      reflex-sim:
+        condition: service_started
+
+volumes:
+  pgdata:
+  apidata:

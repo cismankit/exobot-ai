@@ -31,3 +31,13 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# monorepo
+.venv/
+.turbo/
+data/
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+.next/

@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "api",
+      "runtimeExecutable": ".venv/bin/uvicorn",
+      "runtimeArgs": ["main:app", "--app-dir", "apps/api", "--port", "8000", "--reload"],
+      "port": 8000
+    },
+    {
+      "name": "web",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@exobod/web", "dev"],
+      "port": 3000
+    },
+    {
+      "name": "reflex-sim",
+      "runtimeExecutable": ".venv/bin/python",
+      "runtimeArgs": ["packages/core/reflex/reflex_sim.py"],
+      "port": 5555
+    },
+    {
+      "name": "legacy-web-v1",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "legacy/web-v1", "run", "dev"],
+      "port": 3000
+    }
+  ]
+}

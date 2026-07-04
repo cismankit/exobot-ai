@@ -1,0 +1,10 @@
+httpx>=0.27
+pyzmq>=25
+pyyaml>=6
+pyserial>=3.5
+# voice (optional, install on device):
+# openwakeword
+# faster-whisper
+# piper-tts
+# sounddevice
+# numpy
