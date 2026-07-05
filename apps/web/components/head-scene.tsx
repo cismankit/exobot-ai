@@ -165,8 +165,8 @@ function Exoskeleton({
       );
       // idle breath — dead still under estop
       root.current.position.y = estop
-        ? -1.55
-        : -1.55 + Math.sin(t * 1.4) * 0.012;
+        ? -1.8
+        : -1.8 + Math.sin(t * 1.4) * 0.012;
     }
 
     // hero scrub: the phone approaches and docks as the face
@@ -218,7 +218,7 @@ function Exoskeleton({
   );
 
   return (
-    <group ref={root} position={[0, -1.55, 0]}>
+    <group ref={root} position={[0, -1.8, 0]}>
       {/* ---- stance: legs + feet ---- */}
       {[-0.42, 0.42].map((x) => (
         <group key={x} position={[x, 1.05, 0]}>
