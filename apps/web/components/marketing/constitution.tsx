@@ -10,7 +10,7 @@ import { Reveal } from "./reveal";
 
 export function Constitution() {
   return (
-    <section className="border-y border-line bg-surface/40 py-28">
+    <section className="border-y border-line bg-surface/40 py-20">
       <div className="mx-auto max-w-6xl px-5">
         <Reveal>
           <p className="telemetry text-[12px] uppercase tracking-[0.3em] text-danger">

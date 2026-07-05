@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -15,6 +14,7 @@ import {
 } from "lucide-react";
 import { cn } from "@exobod/ui";
 import { CLERK_ENABLED } from "@/lib/config";
+import { LogoMark } from "@/components/marketing/logo";
 import { ClerkGate } from "./clerk-gate";
 
 const NAV = [
@@ -39,12 +39,7 @@ export function ConsoleShell({ children }: { children: React.ReactNode }) {
             href="/"
             className="flex h-14 items-center gap-2.5 border-b border-line px-4"
           >
-            <Image
-              src="/branding/logo-mark-transparent.png"
-              alt=""
-              width={22}
-              height={22}
-            />
+            <LogoMark className="h-5 w-5" />
             <span className="display text-[15px]">exobod</span>
             <span className="telemetry ml-auto text-[10px] text-muted">
               console

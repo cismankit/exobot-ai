@@ -14,6 +14,21 @@ html {
   line-height: 0.98;
 }
 
+/* radial bloom behind the hero copy — keeps white text legible over the
+   3D body without hiding it */
+.hero-bloom {
+  background: radial-gradient(
+    52% 60% at 50% 26%,
+    rgba(10, 11, 13, 0.88) 0%,
+    rgba(10, 11, 13, 0.55) 38%,
+    transparent 68%
+  );
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
 /* thin scanline texture for the cinematic canvas */
 .scanlines::before {
   content: "";

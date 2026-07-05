@@ -12,7 +12,7 @@ const BACKENDS = [
 
 export function Byok() {
   return (
-    <section className="border-t border-line py-28">
+    <section className="border-t border-line py-20">
       <div className="mx-auto max-w-6xl px-5">
         <Reveal>
           <p className="telemetry text-[12px] uppercase tracking-[0.3em] text-signal">

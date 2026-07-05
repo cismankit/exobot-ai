@@ -14,9 +14,9 @@ export default function Landing() {
       <Hero />
 
       {/* the idea in one sentence */}
-      <section className="mx-auto max-w-5xl px-5 py-32 text-center">
+      <section className="mx-auto max-w-5xl px-5 py-24 text-center">
         <Reveal>
-          <p className="display text-3xl leading-tight sm:text-5xl md:text-6xl">
+          <p className="display text-3xl leading-tight sm:text-4xl md:text-5xl">
             Your phone is already the smartest thing you own.
             <br />
             <span className="text-signal">

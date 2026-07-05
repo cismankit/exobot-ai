@@ -61,7 +61,7 @@ export function Waitlist() {
   }
 
   return (
-    <section id="waitlist" className="border-t border-line bg-surface/40 py-28">
+    <section id="waitlist" className="border-t border-line bg-surface/40 py-20">
       <div className="mx-auto max-w-3xl px-5 text-center">
         <Reveal>
           <h2 className="display text-4xl sm:text-6xl">

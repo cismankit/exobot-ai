@@ -18,7 +18,7 @@ const SPECS = [
 
 export function Specs() {
   return (
-    <section className="mx-auto max-w-6xl px-5 py-28">
+    <section className="mx-auto max-w-6xl px-5 py-20">
       <Reveal>
         <p className="telemetry text-[12px] uppercase tracking-[0.3em] text-signal">
           v1 — desktop unit
