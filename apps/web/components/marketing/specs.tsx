@@ -20,7 +20,7 @@ export function Specs() {
   return (
     <section className="mx-auto max-w-6xl px-5 py-20">
       <Reveal>
-        <p className="telemetry text-[12px] uppercase tracking-[0.3em] text-signal">
+        <p className="telemetry text-[12px] uppercase tracking-[0.3em] text-brand">
           v1 — desktop unit
         </p>
         <h2 className="display mt-4 text-4xl sm:text-5xl">
@@ -32,7 +32,7 @@ export function Specs() {
           <Reveal key={s.unit} delay={i * 0.04}>
             <div className="h-full bg-bg p-6">
               <p className="telemetry text-3xl text-fg sm:text-4xl">{s.n}</p>
-              <p className="telemetry mt-1 text-[11px] uppercase tracking-widest text-signal">
+              <p className="telemetry mt-1 text-[11px] uppercase tracking-widest text-brand">
                 {s.unit}
               </p>
               <p className="mt-3 text-[13px] leading-snug text-muted">{s.d}</p>

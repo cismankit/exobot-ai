@@ -19,7 +19,7 @@ export default function Landing() {
           <p className="display text-3xl leading-tight sm:text-4xl md:text-5xl">
             Your phone is already the smartest thing you own.
             <br />
-            <span className="text-signal">
+            <span className="text-brand">
               Exobod gives it eyes, arms, a stance, and a voice.
             </span>
           </p>

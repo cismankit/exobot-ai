@@ -12,6 +12,11 @@ const preset = {
         line: "var(--border)",
         fg: "var(--fg)",
         muted: "var(--muted)",
+        brand: {
+          DEFAULT: "var(--brand)",
+          2: "var(--brand-2)",
+          dim: "var(--brand-dim)",
+        },
         signal: { DEFAULT: "var(--signal)", dim: "var(--signal-dim)" },
         danger: { DEFAULT: "var(--danger)", dim: "var(--danger-dim)" },
       },
@@ -21,6 +26,7 @@ const preset = {
         mono: ["var(--font-mono)"],
       },
       boxShadow: {
+        brand: "0 0 28px var(--brand-glow)",
         signal: "0 0 24px var(--signal-glow)",
         danger: "0 0 24px var(--danger-glow)",
       },

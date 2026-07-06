@@ -18,7 +18,7 @@ export function LiveDemo() {
   return (
     <section id="live" className="mx-auto max-w-6xl px-5 py-20">
       <Reveal>
-        <p className="telemetry text-[12px] uppercase tracking-[0.3em] text-signal">
+        <p className="telemetry text-[12px] uppercase tracking-[0.3em] text-brand">
           live, right now
         </p>
         <h2 className="display mt-4 max-w-2xl text-4xl sm:text-5xl">

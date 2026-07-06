@@ -23,8 +23,13 @@ export function Hero() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const [scrub, setScrub] = useState(0);
-  useMotionValueEvent(scrollYProgress, "change", (v) => setScrub(v * 2.2));
+  // baseline 0.62: the phone is already seating into the dock at first
+  // paint — the product reads instantly; the first scroll settles it and
+  // wakes the face, all within the sticky dwell of the 135vh section.
+  const [scrub, setScrub] = useState(0.62);
+  useMotionValueEvent(scrollYProgress, "change", (v) =>
+    setScrub(0.62 + v * 2.4),
+  );
 
   // once docked (scrub > .65) the head "wakes": meets the viewer's eye
   // with only a subtle sway — it should hold your gaze, not wander off
@@ -56,8 +61,8 @@ export function Hero() {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-xl text-center lg:max-w-[48%] lg:text-left"
           >
-            <p className="telemetry mb-5 text-[12px] uppercase tracking-[0.3em] text-signal">
-              body link: live
+            <p className="telemetry mb-5 text-[12px] uppercase tracking-[0.3em] text-brand">
+              smartphone · exoskeleton · motion
             </p>
             <h1 className="display text-[2.75rem] sm:text-6xl xl:text-[4.5rem]">
               <span className="whitespace-nowrap">Give your phone</span>
@@ -71,7 +76,7 @@ export function Hero() {
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
               <Link href="/#waitlist">
-                <Button size="lg">Join the waitlist</Button>
+                <Button size="lg">Preorder the dev kit</Button>
               </Link>
               <Link href="/#live">
                 <Button size="lg" variant="outline">

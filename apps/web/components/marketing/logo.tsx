@@ -16,14 +16,14 @@ export function LogoMark({ className }: { className?: string }) {
         width="15"
         height="19"
         rx="3"
-        stroke="var(--signal)"
+        stroke="var(--brand)"
         strokeWidth="1.6"
       />
-      <circle cx="9" cy="9" r="1.6" fill="var(--signal)" />
-      <circle cx="15" cy="9" r="1.6" fill="var(--signal)" />
+      <circle cx="9" cy="9" r="1.6" fill="var(--brand)" />
+      <circle cx="15" cy="9" r="1.6" fill="var(--brand)" />
       <path
         d="M9 14.5h6"
-        stroke="var(--signal)"
+        stroke="var(--brand)"
         strokeWidth="1.6"
         strokeLinecap="round"
       />

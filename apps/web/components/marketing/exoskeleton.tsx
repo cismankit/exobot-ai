@@ -48,7 +48,7 @@ export function ExoskeletonSection() {
   return (
     <section className="mx-auto max-w-6xl px-5 py-20">
       <Reveal>
-        <p className="telemetry text-[12px] uppercase tracking-[0.3em] text-signal">
+        <p className="telemetry text-[12px] uppercase tracking-[0.3em] text-brand">
           the exoskeleton
         </p>
         <h2 className="display mt-4 max-w-3xl text-4xl sm:text-5xl">
@@ -65,7 +65,7 @@ export function ExoskeletonSection() {
         {PARTS.map((p, i) => (
           <Reveal key={p.title} delay={i * 0.05}>
             <div className="h-full rounded-2xl border border-line bg-surface p-6">
-              <p.icon className="h-5 w-5 text-signal" aria-hidden />
+              <p.icon className="h-5 w-5 text-brand" aria-hidden />
               <h3 className="display mt-4 text-xl">{p.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{p.d}</p>
             </div>

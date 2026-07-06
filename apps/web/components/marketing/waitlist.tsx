@@ -101,7 +101,7 @@ export function Waitlist() {
             </Button>
           </form>
           {result && (
-            <p className="telemetry mt-4 text-sm text-signal">{result}</p>
+            <p className="telemetry mt-4 text-sm text-brand">{result}</p>
           )}
           <div className="mt-8">
             <Button

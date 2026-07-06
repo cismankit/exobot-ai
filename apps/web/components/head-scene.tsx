@@ -14,12 +14,14 @@
  */
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { ContactShadows, Environment, RoundedBox } from "@react-three/drei";
+import { ContactShadows, RoundedBox } from "@react-three/drei";
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 
 const SIGNAL = new THREE.Color("#3df5a0");
 const DANGER = new THREE.Color("#ff5a47");
+// the face glows near-white like a real screen — not brand-colored
+const FACE = new THREE.Color("#e8f6ee");
 
 interface BodyProps {
   pan: number; // degrees, -80..80 — waist yaw
@@ -174,7 +176,7 @@ function Exoskeleton({
       const s = scrub ?? 1;
       const docked = THREE.MathUtils.smoothstep(s, 0.15, 0.65);
       phone.current.position.z = THREE.MathUtils.lerp(3.8, 0.36, docked);
-      phone.current.position.y = THREE.MathUtils.lerp(2.2, 0.78, docked);
+      phone.current.position.y = THREE.MathUtils.lerp(2.2, 0.52, docked);
       phone.current.rotation.x = THREE.MathUtils.lerp(-0.8, 0, docked);
     }
 
@@ -192,27 +194,29 @@ function Exoskeleton({
     for (const part of [eyeL.current, eyeR.current, mouth.current]) {
       if (part) {
         const m = part.material as THREE.MeshStandardMaterial;
-        m.emissive.lerp(estop ? DANGER : SIGNAL, 0.2);
-        m.emissiveIntensity = estop ? 1.8 : 1.3;
+        m.emissive.lerp(estop ? DANGER : FACE, 0.2);
+        m.emissiveIntensity = estop ? 1.8 : 1.15;
       }
     }
   });
 
+  // industrial two-tone like the product render: orange armor plates
+  // over a dark gunmetal inner frame
   const frameMat = useMemo(
     () =>
       new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#16191f"),
-        metalness: 0.85,
-        roughness: 0.35,
+        color: new THREE.Color("#d95f16"),
+        metalness: 0.45,
+        roughness: 0.42,
       }),
     [],
   );
   const jointMat = useMemo(
     () =>
       new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#0c0e11"),
-        metalness: 0.7,
-        roughness: 0.45,
+        color: new THREE.Color("#23262c"),
+        metalness: 0.65,
+        roughness: 0.32,
       }),
     [],
   );
@@ -257,7 +261,7 @@ function Exoskeleton({
         <torusGeometry args={[0.62, 0.035, 16, 64]} />
         <meshStandardMaterial
           color="#0a0b0d"
-          emissive="#3df5a0"
+          emissive="#e8f6ee"
           emissiveIntensity={0.9}
           metalness={0.5}
           roughness={0.4}
@@ -266,16 +270,46 @@ function Exoskeleton({
 
       {/* ---- upper body: yaw = pan ---- */}
       <group ref={waist} position={[0, 1.42, 0]}>
-        {/* torso chassis with dock opening */}
+        {/* torso: dark inner chassis, orange armor plates over it —
+            the render's two-tone, not a solid orange box */}
         <RoundedBox args={[1.35, 1.25, 0.6]} radius={0.12} smoothness={4} position={[0, 0.62, -0.06]}>
+          <primitive object={jointMat} attach="material" />
+        </RoundedBox>
+        {[-0.62, 0.62].map((x) => (
+          <RoundedBox
+            key={x}
+            args={[0.24, 1.05, 0.55]}
+            radius={0.08}
+            smoothness={4}
+            position={[x, 0.62, -0.03]}
+          >
+            <primitive object={frameMat} attach="material" />
+          </RoundedBox>
+        ))}
+        {/* chest plate under the dock */}
+        <RoundedBox
+          args={[0.9, 0.34, 0.1]}
+          radius={0.05}
+          smoothness={4}
+          position={[0, 0.18, 0.26]}
+        >
           <primitive object={frameMat} attach="material" />
         </RoundedBox>
-        {/* shoulder pods */}
+        {/* shoulder pods: dark hub + orange cap */}
         {[-0.82, 0.82].map((x) => (
-          <mesh key={x} position={[x, 1.05, -0.02]} rotation={[0, 0, Math.PI / 2]}>
-            <cylinderGeometry args={[0.2, 0.2, 0.24, 24]} />
-            <primitive object={jointMat} attach="material" />
-          </mesh>
+          <group key={x}>
+            <mesh position={[x, 1.05, -0.02]} rotation={[0, 0, Math.PI / 2]}>
+              <cylinderGeometry args={[0.2, 0.2, 0.24, 24]} />
+              <primitive object={jointMat} attach="material" />
+            </mesh>
+            <mesh
+              position={[x * 1.16, 1.05, -0.02]}
+              rotation={[0, 0, Math.PI / 2]}
+            >
+              <cylinderGeometry args={[0.16, 0.16, 0.08, 24]} />
+              <primitive object={frameMat} attach="material" />
+            </mesh>
+          </group>
         ))}
 
         {/* the phone: brain + face, docked on a tilt gimbal */}
@@ -287,21 +321,21 @@ function Exoskeleton({
               <primitive object={jointMat} attach="material" />
             </mesh>
             {/* phone slab, portrait — face above the torso line */}
-            <RoundedBox args={[1.02, 1.85, 0.08]} radius={0.07} smoothness={4}>
+            <RoundedBox args={[1.02, 1.45, 0.08]} radius={0.07} smoothness={4}>
               <meshStandardMaterial color="#05070a" metalness={0.6} roughness={0.2} />
             </RoundedBox>
             {/* screen face */}
             <mesh ref={eyeL} position={[-0.24, 0.42, 0.045]}>
               <circleGeometry args={[0.12, 32]} />
-              <meshStandardMaterial color="#0a0b0d" emissive="#3df5a0" emissiveIntensity={1.3} />
+              <meshStandardMaterial color="#0a0b0d" emissive="#e8f6ee" emissiveIntensity={1.3} />
             </mesh>
             <mesh ref={eyeR} position={[0.24, 0.42, 0.045]}>
               <circleGeometry args={[0.12, 32]} />
-              <meshStandardMaterial color="#0a0b0d" emissive="#3df5a0" emissiveIntensity={1.3} />
+              <meshStandardMaterial color="#0a0b0d" emissive="#e8f6ee" emissiveIntensity={1.3} />
             </mesh>
             <mesh ref={mouth} position={[0, 0.08, 0.045]}>
               <planeGeometry args={[0.3, 0.045]} />
-              <meshStandardMaterial color="#0a0b0d" emissive="#3df5a0" emissiveIntensity={1.3} />
+              <meshStandardMaterial color="#0a0b0d" emissive="#e8f6ee" emissiveIntensity={1.3} />
             </mesh>
           </group>
         </group>
@@ -379,11 +413,21 @@ export function HeadScene(props: BodyProps & { className?: string }) {
         frameloop={reduced ? "demand" : "always"}
         gl={{ antialias: true, alpha: true }}
       >
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[3, 5, 5]} intensity={1.15} />
-        <directionalLight position={[-4, 2, -3]} intensity={0.35} color="#3df5a0" />
+        {/* studio rig — no HDR env map (it crashed Safari: one ~4MB HDR
+            fetch + decode per canvas). Key + warm rim + cool fill reads
+            like the product photography instead. */}
+        <hemisphereLight args={["#3a4048", "#0a0b0d", 0.9]} />
+        <directionalLight position={[4, 6, 6]} intensity={1.6} color="#fff4e8" />
+        <directionalLight position={[-6, 3, -4]} intensity={0.9} color="#ff8a3d" />
+        <directionalLight position={[-3, 1.5, 6]} intensity={0.35} color="#9fb3c8" />
+        <spotLight
+          position={[0, 7, 3]}
+          angle={0.5}
+          penumbra={0.9}
+          intensity={1.1}
+          color="#ffd9b0"
+        />
         <Exoskeleton {...props} scrub={reduced ? 1 : props.scrub} />
-        <Environment preset="city" />
       </Canvas>
     </div>
   );

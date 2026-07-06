@@ -1,7 +1,7 @@
 import * as React from "react";
 import { cn } from "./cn";
 
-type Variant = "signal" | "ghost" | "danger" | "outline";
+type Variant = "brand" | "signal" | "ghost" | "danger" | "outline";
 type Size = "sm" | "md" | "lg";
 
 export interface ButtonProps
@@ -11,13 +11,15 @@ export interface ButtonProps
 }
 
 const variants: Record<Variant, string> = {
+  brand:
+    "bg-brand text-bg font-semibold hover:shadow-brand hover:brightness-110 active:brightness-95",
   signal:
     "bg-signal text-bg font-semibold hover:shadow-signal hover:brightness-110 active:brightness-95",
   ghost: "bg-transparent text-fg hover:bg-surface-2",
   danger:
     "bg-danger text-bg font-semibold hover:shadow-danger hover:brightness-110",
   outline:
-    "border border-line bg-transparent text-fg hover:border-signal hover:text-signal",
+    "border border-line bg-transparent text-fg hover:border-brand hover:text-brand",
 };
 
 const sizes: Record<Size, string> = {
@@ -27,7 +29,7 @@ const sizes: Record<Size, string> = {
 };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "signal", size = "md", ...props }, ref) => (
+  ({ className, variant = "brand", size = "md", ...props }, ref) => (
     <button
       ref={ref}
       className={cn(

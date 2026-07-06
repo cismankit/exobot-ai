@@ -15,7 +15,7 @@ export function Byok() {
     <section className="border-t border-line py-20">
       <div className="mx-auto max-w-6xl px-5">
         <Reveal>
-          <p className="telemetry text-[12px] uppercase tracking-[0.3em] text-signal">
+          <p className="telemetry text-[12px] uppercase tracking-[0.3em] text-brand">
             bring your own minds
           </p>
           <h2 className="display mt-4 max-w-2xl text-4xl sm:text-5xl">

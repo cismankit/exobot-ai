@@ -1,7 +1,7 @@
-/* Exobod design tokens — "living machine".
-   One accent: signal green = the body link is alive.
-   One counter: amber-red = the body's constitution asserting itself.
-   Never a third. */
+/* Exobod design tokens — industrial hybrid.
+   Brand accent: exo-orange = the product, CTAs, marketing.
+   Live accent: signal green = the body link is alive (telemetry only).
+   Counter: amber-red = the body's constitution asserting itself. */
 
 :root {
   --bg: #0a0b0d;
@@ -10,6 +10,11 @@
   --border: #1f2329;
   --fg: #edeff2;
   --muted: #8a9099;
+
+  --brand: #f26a1b;
+  --brand-2: #ff8a3d;
+  --brand-dim: rgba(242, 106, 27, 0.12);
+  --brand-glow: rgba(242, 106, 27, 0.38);
 
   --signal: #3df5a0;
   --signal-dim: rgba(61, 245, 160, 0.12);
@@ -33,7 +38,7 @@ html {
 }
 
 ::selection {
-  background: var(--signal);
+  background: var(--brand);
   color: var(--bg);
 }
 

@@ -42,7 +42,7 @@ export function Federation() {
   return (
     <section className="mx-auto max-w-6xl px-5 py-20">
       <Reveal>
-        <p className="telemetry text-[12px] uppercase tracking-[0.3em] text-signal">
+        <p className="telemetry text-[12px] uppercase tracking-[0.3em] text-brand">
           the federation
         </p>
         <h2 className="display mt-4 max-w-2xl text-4xl sm:text-5xl">
@@ -80,7 +80,7 @@ export function Federation() {
               className={cn(
                 "flex items-center justify-between rounded-lg border px-4 py-2.5 transition-all duration-300",
                 lit >= i && lit < MINDS.length + 1
-                  ? "border-signal/60 bg-signal-dim shadow-signal"
+                  ? "border-brand/60 bg-brand-dim shadow-brand"
                   : "border-line bg-surface",
               )}
             >
@@ -96,8 +96,8 @@ export function Federation() {
         <Arrow />
 
         <div className="grid gap-3">
-          <div className="rounded-xl border border-signal/50 bg-surface p-5 text-center">
-            <p className="telemetry text-[11px] uppercase tracking-widest text-signal">
+          <div className="rounded-xl border border-brand/50 bg-surface p-5 text-center">
+            <p className="telemetry text-[11px] uppercase tracking-widest text-brand">
               one persona
             </p>
             <p className="mt-2 text-sm text-muted">
@@ -122,7 +122,7 @@ function Arrow() {
   return (
     <div
       aria-hidden
-      className="hidden h-px w-10 bg-gradient-to-r from-line to-signal/60 lg:block"
+      className="hidden h-px w-10 bg-gradient-to-r from-line to-brand/60 lg:block"
     />
   );
 }
