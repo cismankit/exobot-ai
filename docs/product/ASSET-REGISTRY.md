@@ -114,6 +114,30 @@ Crop default for all product-body plates: **`object-contain`** on dark stage (`#
 
 ---
 
+## 5b. Draft v3 asset package (2026-07-18, second iteration)
+
+Purpose-built plates under `legacy/web-v1/public/exobod/v3/`. Direction: SpaceX/Tesla engineering credibility + Stark-lab industrial precision — dark graphite/black metal, controlled `#ff7a1a` accents, manufacturable mechanisms, phone always readable as removable brain/face. **Original Exobod geometry; user style references (mecha art) used for mood only, never copied or shipped.** **Status: draft — user approval required before any live wiring.** Review at `/preview/visual-system` (v2 vs v3 comparison, noindex).
+
+Crop default: **`object-contain`** on dark stage; no `object-cover` on full-body or Desk One plates.
+
+| File | W×H / AR | Shot ID | Subject | Concept status | Approved placements (after user OK) | Prohibited until approved | Crop / padding |
+|------|----------|---------|---------|----------------|-------------------------------------|---------------------------|----------------|
+| `exobod/v3/walker-hero-front.png` | 1024×1536 / **3:4** | S1/S2 | Walker full body, symmetrical front hero, phone head docked in cradle | **Concept** | Vision / manifesto hero candidate; supersedes `v2/walker-fullbody` | Desk One commercial; body-type stand-in | Full body + feet; **contain**; pad stage |
+| `exobod/v3/walker-rear-threequarter.png` | 1024×1536 / **3:4** | S2 | Rear/side engineering view: service panels, cable routing, battery latch, phone-mount arm | **Concept** | Trust / engineering credibility sections | Desk One; hero slot (secondary angle) | Full body; **contain** |
+| `exobod/v3/walker-mechanical-detail.png` | 1536×1024 / **3:2** | S3 | Macro: phone cradle + harmonic-drive shoulder + printed/machined hybrid | **Concept** | Industrial detail / credibility; supersedes `v2/walker-detail` | As full product hero; as Desk One | Intentional tight crop OK; contain in landscape frame |
+| `exobod/v3/walker-cinematic.png` | 1536×1024 / **3:2** | S1 alt | Walker in orange-lit industrial test bay (launch-documentary, no battlefield) | **Concept** | Wide banners / manifesto atmosphere | Primary hero (robot small in frame); Desk One | Landscape contain |
+| `exobod/v3/desk-one-hero-v3.png` | 1024×1536 / **3:4** | S4 | Plausible 2-axis dock: weighted base, pan bearing seam, tilt cradle, sealed enclosure, USB-C | **Draft EVT** | `/desk-one` hero; customize; Desk tile; supersedes `v2/desk-one-hero` | Homepage Walker hero; “ships now” claims; EVT-accurate claims until checked vs BOM | Full mount + phone; **contain**; pad sides |
+| `exobod/v3/desk-one-exploded.png` | 1536×1024 / **3:2** | S7 | Exploded stack: base, ballast, yaw bearing, servos, ESP32/PCA9685-style PCB, tilt bracket, clamp — **no bitmap labels** | **Draft documentary** | Trust / “what’s inside” / manufacturing story | Certification claims; literal BOM proof until verified vs `docs/desk-one/BOM.md` | Landscape contain |
+| `exobod/v3/exobod-family.png` | 1536×1024 / **3:2** | S5/S6 family | Lineup: Desk One foreground (EVT path), Walker/Rover/Utility behind as concepts, one design DNA | **Draft concept** (labels in HTML, not bitmap) | Body family overview section | Cropping background concepts out as standalone product shots; “all shipping” implication | Landscape contain; keep whole lineup |
+
+**Resolution note:** v3 plates are draft resolution (1024–1536 px). Registry minimums (§4) still unmet — upscale or regenerate before production use if approved.
+
+**AR note:** `walker-mechanical-detail`, `walker-cinematic`, `desk-one-exploded`, `exobod-family` were requested at 16:9 but generated at 3:2 — layout slots should assume 3:2.
+
+**Supersedes (on approval):** `v3/walker-hero-front` → `v2/walker-fullbody`; `v3/walker-mechanical-detail` → `v2/walker-detail`; `v3/desk-one-hero-v3` → `v2/desk-one-hero`. `v2/rover`, `v2/utility`, `v2/companion-app`, `v2/prototype-proof`, `v2/build-cad` remain current drafts.
+
+---
+
 ## 6. Placement quick reference
 
 | Need | Use now | Do not use |
