@@ -57,7 +57,7 @@ export const deskOneFaq: { q: string; a: string }[] = [
   },
   {
     q: "What does early access mean?",
-    a: "You join the builder / EVT queue: parts guidance, printed fixture expectations, and honest engineering limits. Production work orders, serial registry, and companion-app claim flows are not promised until those systems exist and pass QC.",
+    a: "You can place a $99 founder reservation deposit via Stripe (when payments are enabled) or join the waitlist. That reserves a spot in the builder / EVT program — not a ship date. Production work orders, serial registry, and companion-app claim flows are not promised until those systems exist and pass QC.",
   },
   {
     q: "How do I configure a desk build?",

@@ -1,3 +1,4 @@
+import { ReserveCta } from "@/components/early-access/reserve-cta";
 import { MotionReveal } from "@/components/motion-reveal";
 import { SectionHeader } from "@/components/section-header";
 import {
@@ -7,6 +8,12 @@ import {
   deskOneWhatItIs,
   deskOneWhatItIsNot,
 } from "@/lib/desk-one";
+import {
+  earlyOrderPriceCents,
+  formatUsdFromCents,
+  zelleInstructions,
+} from "@/lib/payments/early-access";
+import { isStripeConfigured } from "@/lib/payments/stripe";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -45,7 +52,17 @@ const faqJsonLd = {
   })),
 };
 
-export default function DeskOnePage() {
+type Props = {
+  searchParams?: Promise<{ cancelled?: string }>;
+};
+
+export default async function DeskOnePage({ searchParams }: Props) {
+  const params = (await searchParams) ?? {};
+  const stripeConfigured = isStripeConfigured();
+  const priceCents = earlyOrderPriceCents();
+  const priceLabel = formatUsdFromCents(priceCents);
+  const zelle = zelleInstructions();
+
   return (
     <div className="relative">
       <script
@@ -74,12 +91,12 @@ export default function DeskOnePage() {
               {deskOne.summary}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-              <Link
-                href="/preorder?body=desk-assistant&intent=desk-one-early-access"
+              <a
+                href="#reserve"
                 className="inline-flex items-center justify-center rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-background transition hover:bg-accent-soft"
               >
-                Reserve early access
-              </Link>
+                Reserve Desk One — {priceLabel}
+              </a>
               <Link
                 href="/customize?type=desk-assistant"
                 className="inline-flex items-center justify-center rounded-xl border border-line px-6 py-3 text-sm font-semibold text-text-main transition hover:border-accent/50 hover:text-accent-soft"
@@ -94,8 +111,12 @@ export default function DeskOnePage() {
               </Link>
             </div>
             <p className="mt-4 max-w-xl text-xs leading-relaxed text-text-muted/80">
-              No fake inventory. Early access means builder / EVT queue — not “order now, delivered.” Scope and
-              timelines lock only after review.
+              No fake inventory. {priceLabel} founder reservation is a crowdfund-style deposit for the EVT
+              program — not “order now, delivered.”{" "}
+              <Link href="/legal/refund" className="text-accent-soft hover:underline">
+                Refund &amp; milestone terms
+              </Link>
+              .
             </p>
           </MotionReveal>
         </div>
@@ -154,6 +175,28 @@ export default function DeskOnePage() {
         </div>
       </section>
 
+      {/* Founder reservation / Stripe */}
+      <section id="reserve" className="scroll-mt-24 border-b border-line/50 py-10 sm:py-14">
+        <div className="mx-auto max-w-3xl space-y-6 px-4 sm:px-6">
+          <MotionReveal>
+            <SectionHeader
+              eyebrow="Founder reservation"
+              title={`Reserve Desk One — ${priceLabel}`}
+              description="Crowdfund-style deposit via Stripe Checkout. Receipts and refunds through Stripe. Not a guaranteed ship date — Desk One is an EVT desk mount, not a walker."
+            />
+          </MotionReveal>
+          <MotionReveal delay={0.03}>
+            <ReserveCta
+              stripeConfigured={stripeConfigured}
+              priceCents={priceCents}
+              zelleEmail={zelle?.email}
+              cancelled={params.cancelled === "1"}
+              embedded
+            />
+          </MotionReveal>
+        </div>
+      </section>
+
       {/* EVT framing */}
       <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
         <MotionReveal>
@@ -171,12 +214,12 @@ export default function DeskOnePage() {
               configurator SKU.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/preorder?body=desk-assistant&intent=desk-one-early-access"
+              <a
+                href="#reserve"
                 className="inline-flex items-center justify-center rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-accent-soft"
               >
-                Start early-access inquiry
-              </Link>
+                Reserve Desk One — {priceLabel}
+              </a>
               <Link
                 href="/customize?type=desk-assistant"
                 className="inline-flex items-center justify-center rounded-xl border border-line px-5 py-2.5 text-sm font-semibold text-text-main transition hover:border-accent/45"
