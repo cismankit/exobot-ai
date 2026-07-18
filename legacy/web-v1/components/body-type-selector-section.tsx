@@ -9,25 +9,21 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
-const bodyVisuals: Record<BodyTypeSlug, { src: string; position: string; note: string }> = {
+const bodyVisuals: Record<BodyTypeSlug, { src: string; note: string }> = {
   walker: {
     src: "/exobod/hero-robot.png",
-    position: "object-[50%_40%]",
     note: "Biped concept visualization",
   },
   "desk-assistant": {
     src: "/exobod/story/step-3.png",
-    position: "object-[84%_38%]",
     note: "Desk form shown in concept board",
   },
   rover: {
     src: "/exobod/story/step-3.png",
-    position: "object-[84%_67%]",
     note: "Wheeled concept visualization",
   },
   "utility-helper": {
     src: "/exobod/story/step-4.png",
-    position: "object-[51%_39%]",
     note: "Modular frame concept visualization",
   },
 };
@@ -77,16 +73,21 @@ export function BodyTypeSelectorSection() {
 
         <MotionReveal delay={0.06}>
           <div className="grid overflow-hidden rounded-3xl border border-line/70 bg-background/55 shadow-panel lg:grid-cols-[1.15fr_0.85fr]">
-            <div className="relative min-h-[360px] overflow-hidden sm:min-h-[480px]">
-              <Image
-                key={active.slug}
-                src={visual.src}
-                alt={`${active.name} Exobod ${active.slug === "desk-assistant" ? "form" : "concept"}`}
-                fill
-                className={cn("object-cover transition-opacity duration-300", visual.position)}
-                sizes="(max-width: 1024px) 100vw, 620px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+            {/* Portrait-friendly frame so contain shows full Walker / concept bodies */}
+            <div className="relative aspect-[3/4] min-h-[420px] overflow-hidden sm:min-h-[560px] lg:aspect-auto lg:min-h-[640px]">
+              <div className="absolute inset-0 p-5 sm:p-8">
+                <div className="relative h-full w-full">
+                  <Image
+                    key={active.slug}
+                    src={visual.src}
+                    alt={`${active.name} Exobod ${active.slug === "desk-assistant" ? "form" : "concept"}`}
+                    fill
+                    className="object-contain object-center transition-opacity duration-300"
+                    sizes="(max-width: 1024px) 100vw, 620px"
+                  />
+                </div>
+              </div>
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
               <p className="absolute bottom-4 left-4 rounded-full border border-white/15 bg-black/60 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.18em] text-white/75 backdrop-blur">
                 {visual.note} · not final hardware
               </p>

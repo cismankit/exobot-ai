@@ -180,15 +180,19 @@ export default function HomePage() {
         <MotionReveal delay={0.04}>
           <CardShell className="overflow-hidden p-0" hover={false}>
             <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
-              <div className="relative min-h-[340px]">
-                <Image
-                  src="/exobod/story/step-2.png"
-                  alt="Exobod modular metal-frame concept"
-                  fill
-                  className="object-cover object-[65%_48%]"
-                  sizes="(max-width: 1024px) 100vw, 500px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+              <div className="relative aspect-[3/4] min-h-[360px] sm:min-h-[440px] lg:aspect-auto lg:min-h-[480px]">
+                <div className="absolute inset-0 p-5 sm:p-7">
+                  <div className="relative h-full w-full">
+                    <Image
+                      src="/exobod/story/step-2.png"
+                      alt="Exobod modular metal-frame concept"
+                      fill
+                      className="object-contain object-center"
+                      sizes="(max-width: 1024px) 100vw, 500px"
+                    />
+                  </div>
+                </div>
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
                 <p className="absolute bottom-4 left-4 rounded-full border border-white/15 bg-black/60 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.18em] text-white/75 backdrop-blur">
                   Concept visualization · final BOM varies
                 </p>

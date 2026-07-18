@@ -8,7 +8,6 @@ const story = [
     copy: "Start with Desk One, the stationary pan/tilt EVT path, or brief us on a Walker, Rover, or Utility concept. The body choice determines the frame, actuator plan, safety limits, and what we can honestly prototype.",
     image: "/exobod/story/step-1.png",
     detail: "Desk One available · other bodies by engineering review",
-    position: "object-[68%_48%]",
   },
   {
     step: "02",
@@ -16,7 +15,6 @@ const story = [
     copy: "Your iPhone or Android stays visible and removable. It supplies the screen, camera, microphone, connectivity, and assistant stack while a fitted core secures it to the motion hardware.",
     image: "/exobod/story/step-2.png",
     detail: "Removable core · cable routing confirmed at intake",
-    position: "object-[66%_48%]",
   },
   {
     step: "03",
@@ -24,7 +22,6 @@ const story = [
     copy: "Desk One supports calibrated two-axis pan and tilt today, with speed limits and a manual stop in the control loop. Gaits, wheels, arms, and broader skill packs remain configuration-specific engineering work—not implied features.",
     image: "/exobod/hero-robot.png",
     detail: "Desk One: 2-axis pan/tilt · broader motion is concept scope",
-    position: "object-[50%_38%]",
   },
   {
     step: "04",
@@ -32,7 +29,6 @@ const story = [
     copy: "Reserve Desk One interest or submit a guided build request. We review phone fit, use case, timeline, milestones, and acceptance criteria in writing before major funds move.",
     image: "/exobod/story/step-4.png",
     detail: "Human review · written scope · milestone plan",
-    position: "object-[50%_38%]",
   },
 ];
 
@@ -57,16 +53,25 @@ export function AppleScrollShowcase() {
               key={item.step}
               className="grid overflow-hidden rounded-3xl border border-white/[0.09] bg-[#0a0e13] shadow-[0_28px_90px_rgba(0,0,0,0.38)] lg:grid-cols-2"
             >
-              <div className={cn("relative min-h-[320px] sm:min-h-[420px]", idx % 2 === 1 && "lg:order-2")}>
-                <Image
-                  src={item.image}
-                  alt={`Exobod concept visual for ${item.title}`}
-                  fill
-                  className={cn("object-cover", item.position)}
-                  sizes="(max-width: 1024px) 100vw, 576px"
-                  priority={idx === 0}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050709]/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-[#0a0e13]/25" />
+              <div
+                className={cn(
+                  "relative aspect-[3/4] min-h-[360px] sm:min-h-[480px] lg:aspect-auto lg:min-h-[520px]",
+                  idx % 2 === 1 && "lg:order-2",
+                )}
+              >
+                <div className="absolute inset-0 p-5 sm:p-8">
+                  <div className="relative h-full w-full">
+                    <Image
+                      src={item.image}
+                      alt={`Exobod concept visual for ${item.title}`}
+                      fill
+                      className="object-contain object-center"
+                      sizes="(max-width: 1024px) 100vw, 576px"
+                      priority={idx === 0}
+                    />
+                  </div>
+                </div>
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050709]/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-[#0a0e13]/25" />
                 <span className="absolute bottom-4 left-4 rounded-full border border-white/15 bg-black/65 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.18em] text-white/75 backdrop-blur">
                   Concept visualization · geometry may differ
                 </span>

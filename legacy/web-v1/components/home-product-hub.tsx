@@ -22,15 +22,20 @@ export function HomeProductHub() {
         <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
           <MotionReveal className="min-w-0">
             <div className="relative overflow-hidden rounded-3xl border border-line/60 bg-gradient-to-b from-surface/70 to-background shadow-panel">
-              <div className="relative aspect-[4/3] min-h-[420px] w-full">
-                <Image
-                  src="/exobod/hero-robot.png"
-                  alt="Phone-centered Exobod robot concept"
-                  fill
-                  className="object-cover object-[50%_40%]"
-                  sizes="(max-width: 1024px) 100vw, 576px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+              {/* Tall portrait frame: hero-robot is ~1:2 — contain + padding keeps full body */}
+              <div className="relative aspect-[3/4] min-h-[480px] w-full sm:min-h-[560px]">
+                <div className="absolute inset-0 p-5 sm:p-8">
+                  <div className="relative h-full w-full">
+                    <Image
+                      src="/exobod/hero-robot.png"
+                      alt="Phone-centered Exobod robot concept"
+                      fill
+                      className="object-contain object-center"
+                      sizes="(max-width: 1024px) 100vw, 576px"
+                    />
+                  </div>
+                </div>
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
                   <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">Phone remains the visible core</p>
                   <p className="mt-2 max-w-md text-sm leading-relaxed text-white/80">
