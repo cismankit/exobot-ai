@@ -9,19 +9,29 @@ const SHOW_AFTER_SCROLL_Y = 320;
 
 export function StickyOrderBar() {
   const [revealed, setRevealed] = useState(false);
+  const [orderVisible, setOrderVisible] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setRevealed(window.scrollY > SHOW_AFTER_SCROLL_Y);
+    const orderSection = document.querySelector("#order");
+    const observer = orderSection
+      ? new IntersectionObserver(([entry]) => setOrderVisible(entry.isIntersecting), { threshold: 0.08 })
+      : null;
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    if (orderSection && observer) observer.observe(orderSection);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      observer?.disconnect();
+    };
   }, []);
 
   return (
     <div
       className={cn(
         "fixed inset-x-0 bottom-3 z-40 px-3 transition-[opacity,transform] duration-300 sm:bottom-4 sm:px-6",
-        revealed
+        revealed && !orderVisible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-3 opacity-0",
       )}

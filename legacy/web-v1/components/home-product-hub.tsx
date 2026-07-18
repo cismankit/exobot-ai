@@ -2,7 +2,6 @@
 
 import { MotionReveal } from "@/components/motion-reveal";
 import { SectionHeader } from "@/components/section-header";
-import { EXOBOD_HERO_IMAGE } from "@/lib/site-assets";
 import { targetSpecs } from "@/lib/content";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,25 +20,31 @@ export function HomeProductHub() {
           />
         </MotionReveal>
         <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
-          <MotionReveal>
+          <MotionReveal className="min-w-0">
             <div className="relative overflow-hidden rounded-3xl border border-line/60 bg-gradient-to-b from-surface/70 to-background shadow-panel">
-              <div className="relative aspect-[3/4] w-full max-h-[min(70vh,640px)] mx-auto">
+              <div className="relative aspect-[4/3] min-h-[420px] w-full">
                 <Image
-                  src={EXOBOD_HERO_IMAGE}
-                  alt="Exobod 3D concept render"
+                  src="/exobod/hero-robot.png"
+                  alt="Phone-centered Exobod robot concept"
                   fill
-                  className="object-contain p-4"
-                  sizes="(max-width: 1024px) 100vw, 480px"
-                  priority
+                  className="object-cover object-[50%_40%]"
+                  sizes="(max-width: 1024px) 100vw, 576px"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">Phone remains the visible core</p>
+                  <p className="mt-2 max-w-md text-sm leading-relaxed text-white/80">
+                    The frame adds mounting and motion around hardware you already know. Exact geometry, joints, and materials lock only after configuration review.
+                  </p>
+                </div>
               </div>
               <p className="border-t border-line/50 px-4 py-2 text-center font-mono text-[10px] text-text-muted">
-                3D render for visualization. Production geometry may differ by build tier.
+                Concept visualization · production geometry may differ by build tier
               </p>
             </div>
           </MotionReveal>
-          <MotionReveal delay={0.04}>
-            <div className="grid gap-2 sm:grid-cols-2">
+          <MotionReveal className="min-w-0" delay={0.04}>
+            <div className="grid min-w-0 gap-2 sm:grid-cols-2">
               {highlightSpecs.map((row) => (
                 <div
                   key={row.label}

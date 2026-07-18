@@ -14,10 +14,16 @@ import { secondaryCta } from "@/lib/ctas";
 import Link from "next/link";
 
 export function WhyExobodSection() {
+  const reasons = [
+    ["Keep the capable core", "Camera, microphone, display, connectivity, apps, and on-device intelligence stay on your phone."],
+    ["Add serviceable motion", "Mounts, controller, actuators, and replaceable frame parts are scoped around the job."],
+    ["Upgrade without starting over", "A removable phone core keeps the body useful when the handset or software stack changes."],
+  ];
+
   return (
-    <section id="why-exobod" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-8 sm:px-6 sm:py-10">
+    <section id="why-exobod" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-12 sm:px-6 sm:py-16">
       <MotionReveal>
-        <div className="rounded-2xl border border-line/60 bg-gradient-to-br from-surface/80 via-surface-soft/40 to-background p-6 shadow-panel sm:p-10">
+        <div className="rounded-3xl border border-line/60 bg-gradient-to-br from-surface/80 via-surface-soft/40 to-background p-6 shadow-panel sm:p-10">
           <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-accent">Why Exobod</p>
           <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-tight text-text-main sm:text-4xl">
             {whyExobod.headline}
@@ -26,6 +32,15 @@ export function WhyExobodSection() {
           <div className="mt-6 flex flex-col gap-3 border-l-2 border-accent/50 pl-4 sm:flex-row sm:items-center sm:gap-8">
             <p className="text-lg font-semibold text-text-main">{whyExobod.missionLine}</p>
             <p className="text-sm font-semibold text-accent-soft">{whyExobod.separation}</p>
+          </div>
+          <div className="mt-8 grid gap-3 border-t border-line/50 pt-6 md:grid-cols-3">
+            {reasons.map(([title, detail], idx) => (
+              <div key={title} className="rounded-2xl border border-line/50 bg-background/40 p-4">
+                <p className="font-mono text-[10px] text-accent">{String(idx + 1).padStart(2, "0")}</p>
+                <h3 className="mt-2 text-base font-semibold text-text-main">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-text-muted">{detail}</p>
+              </div>
+            ))}
           </div>
         </div>
       </MotionReveal>

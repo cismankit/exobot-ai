@@ -24,6 +24,7 @@ import { CardShell } from "@/components/card-shell";
 import { primaryCta, secondaryCta } from "@/lib/ctas";
 import { homeUseCases } from "@/lib/content";
 import { Blocks, ClipboardList, Cpu, ShieldCheck, SlidersHorizontal, Truck } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function HomePage() {
@@ -152,8 +153,8 @@ export default function HomePage() {
               className="text-center"
             />
           </MotionReveal>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {homeUseCases.slice(0, 4).map((item, idx) => (
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {homeUseCases.slice(0, 6).map((item, idx) => (
               <MotionReveal key={item.title} delay={idx * 0.015}>
                 <FeatureCard title={item.title} description={item.description} />
               </MotionReveal>
@@ -177,21 +178,40 @@ export default function HomePage() {
           />
         </MotionReveal>
         <MotionReveal delay={0.04}>
-          <CardShell className="space-y-4" hover={false}>
-            <ul className="grid gap-2 text-sm text-text-muted sm:grid-cols-2">
-              <li className="rounded-lg border border-line/50 bg-background/30 px-3 py-2">
-                Printed carriers for fast geometry iteration.
-              </li>
-              <li className="rounded-lg border border-line/50 bg-background/30 px-3 py-2">
-                Metal linkages at hips, shoulders, drivetrain.
-              </li>
-              <li className="rounded-lg border border-line/50 bg-background/30 px-3 py-2">
-                Servo channels matched to each body plan.
-              </li>
-              <li className="rounded-lg border border-line/50 bg-background/30 px-3 py-2">
-                Removable mount and swappable harness tails.
-              </li>
-            </ul>
+          <CardShell className="overflow-hidden p-0" hover={false}>
+            <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
+              <div className="relative min-h-[340px]">
+                <Image
+                  src="/exobod/story/step-2.png"
+                  alt="Exobod modular metal-frame concept"
+                  fill
+                  className="object-cover object-[65%_48%]"
+                  sizes="(max-width: 1024px) 100vw, 500px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+                <p className="absolute bottom-4 left-4 rounded-full border border-white/15 bg-black/60 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.18em] text-white/75 backdrop-blur">
+                  Concept visualization · final BOM varies
+                </p>
+              </div>
+              <div className="flex flex-col justify-center p-5 sm:p-8">
+                <ul className="grid gap-3 text-sm text-text-muted sm:grid-cols-2">
+                  {[
+                    ["Printed carriers", "Fast geometry iteration without replacing the whole assembly."],
+                    ["Metal torque nodes", "Reinforcement where shoulders, hips, and drivetrains carry load."],
+                    ["Matched servo channels", "Actuators and limits selected for the approved body plan."],
+                    ["Serviceable harness", "Removable mount, labeled wiring, and swappable harness tails."],
+                  ].map(([title, detail]) => (
+                    <li key={title} className="rounded-xl border border-line/50 bg-background/35 p-4">
+                      <p className="font-semibold text-text-main">{title}</p>
+                      <p className="mt-1.5 text-xs leading-relaxed text-text-muted">{detail}</p>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-5 border-l-2 border-accent/50 pl-4 text-sm leading-relaxed text-text-muted">
+                  Every approved build receives configuration-specific fit, power, motion, and acceptance notes before production scheduling.
+                </p>
+              </div>
+            </div>
           </CardShell>
         </MotionReveal>
       </section>
