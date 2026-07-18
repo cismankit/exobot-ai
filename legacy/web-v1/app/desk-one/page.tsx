@@ -1,3 +1,4 @@
+import { DeskOneStage } from "@/components/desk-one-stage";
 import { ReserveCta } from "@/components/early-access/reserve-cta";
 import { MotionReveal } from "@/components/motion-reveal";
 import { SectionHeader } from "@/components/section-header";
@@ -70,48 +71,50 @@ export default async function DeskOnePage({ searchParams }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-line/50">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(255,122,26,0.14),transparent_55%),radial-gradient(ellipse_at_90%_40%,rgba(255,122,26,0.06),transparent_45%),linear-gradient(180deg,rgba(18,18,20,0.2),transparent)]"
-        />
-        <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-          <MotionReveal>
+      {/* Hero — matches home cinematic system */}
+      <section className="relative min-h-[min(78vh,820px)] overflow-hidden border-b border-line/40">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_75%_15%,rgba(255,122,26,0.16),transparent_55%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_8%_85%,rgba(40,55,75,0.3),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,#050709_0%,#070a0d_50%,#0a0e14_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.5)_100%)]" />
+        </div>
+        <div className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 py-12 sm:gap-12 sm:px-6 sm:py-16 lg:flex-row lg:items-center lg:gap-14">
+          <MotionReveal className="min-w-0 flex-1 space-y-5 lg:max-w-xl">
             <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-accent">
               {deskOne.sku} · {deskOne.status}
             </p>
-            <h1 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-[1.1] tracking-tight text-text-main sm:text-5xl md:text-6xl">
+            <h1 className="font-display text-4xl font-semibold leading-[1.05] tracking-tight text-text-main sm:text-5xl md:text-6xl">
               Exobod {deskOne.name}
             </h1>
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-text-muted sm:text-xl">
+            <p className="max-w-xl text-lg leading-relaxed text-text-muted sm:text-xl">
               {deskOne.tagline}
             </p>
-            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-text-muted sm:text-base">
+            <p className="max-w-xl text-sm leading-relaxed text-text-muted sm:text-base">
               {deskOne.summary}
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center">
               <a
                 href="#reserve"
-                className="inline-flex items-center justify-center rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-background transition hover:bg-accent-soft"
+                className="inline-flex items-center justify-center rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-background shadow-[0_0_48px_-12px_rgba(255,122,26,0.4)] transition hover:bg-accent-soft"
               >
                 Reserve Desk One — {priceLabel}
               </a>
               <Link
                 href="/customize?type=desk-assistant"
-                className="inline-flex items-center justify-center rounded-xl border border-line px-6 py-3 text-sm font-semibold text-text-main transition hover:border-accent/50 hover:text-accent-soft"
+                className="inline-flex items-center justify-center rounded-xl border border-line/70 px-6 py-3 text-sm font-semibold text-text-main transition hover:border-accent/50 hover:text-accent-soft"
               >
                 Design My Exobod
               </Link>
             </div>
-            <p className="mt-3 text-sm text-text-muted">
+            <p className="text-sm text-text-muted">
               Want a live walkthrough first?{" "}
               <Link href="/demo" className="font-semibold text-accent-soft underline-offset-2 hover:underline">
                 Book a demo
               </Link>
               .
             </p>
-            <p className="mt-4 max-w-xl text-xs leading-relaxed text-text-muted/80">
+            <p className="max-w-xl text-xs leading-relaxed text-text-muted/80">
               No fake inventory. {priceLabel} founder reservation is a crowdfund-style deposit for the EVT
               program — not “order now, delivered.”{" "}
               <Link href="/legal/refund" className="text-accent-soft hover:underline">
@@ -119,6 +122,11 @@ export default async function DeskOnePage({ searchParams }: Props) {
               </Link>
               .
             </p>
+          </MotionReveal>
+          <MotionReveal className="flex min-w-0 flex-1 justify-center lg:justify-end" delay={0.05}>
+            <div className="w-full max-w-md">
+              <DeskOneStage caption="EXB-D1 · pan / tilt dock · EVT geometry" />
+            </div>
           </MotionReveal>
         </div>
       </section>

@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: #070a0d;
-  --surface: #10151c;
-  --surface-soft: #161d26;
-  --text-main: #f5f7fa;
-  --text-muted: #aab3c0;
+  --background: #050709;
+  --surface: #0e141b;
+  --surface-soft: #151c25;
+  --text-main: #f4f6f8;
+  --text-muted: #9aa3b2;
   --accent: #ff7a1a;
   --accent-soft: #ffb15c;
-  --line: rgba(255, 255, 255, 0.1);
+  --line: rgba(255, 255, 255, 0.09);
   --success: #4ade80;
   --warning: #fbbf24;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
@@ -25,7 +25,9 @@ html {
 
 body {
   min-height: 100vh;
-  background: var(--background);
+  background:
+    radial-gradient(ellipse 120% 60% at 50% -10%, rgba(255, 122, 26, 0.06), transparent 50%),
+    var(--background);
   color: var(--text-main);
 }
 

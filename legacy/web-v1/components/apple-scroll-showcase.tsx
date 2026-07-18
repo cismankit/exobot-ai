@@ -3,7 +3,6 @@
 import { EXOBOD_HERO_IMAGE } from "@/lib/site-assets";
 import { cn } from "@/lib/utils";
 import { motion, useMotionValueEvent, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { Cpu, Gauge, ShieldCheck, SlidersHorizontal } from "lucide-react";
 import Image from "next/image";
 import { useRef, useState } from "react";
 
@@ -11,32 +10,34 @@ const story = [
   {
     step: "01",
     title: "Choose your body",
-    copy: "Select Walker, Desk, Rover, or Utility based on how you want Exobod to move.",
-    icon: SlidersHorizontal,
+    copy: "Start with Desk One for honest EVT motion — or explore Walker, Rover, and Utility as concept paths.",
     image: "/exobod/story/step-1.png",
   },
   {
     step: "02",
     title: "Mount your phone core",
-    copy: "Your iPhone or Android remains the brain, interface, voice, and camera stack.",
-    icon: Cpu,
+    copy: "Your iPhone or Android remains the brain — interface, voice, camera, and the assistant stack you already trust.",
     image: "/exobod/story/step-2.png",
   },
   {
     step: "03",
     title: "Tune motion behavior",
-    copy: "Pick motion profile, accessories, and performance preference for your workflow.",
-    icon: Gauge,
+    copy: "Pan/tilt profiles for Desk One today. Broader motion packs stay engineering targets until scope is locked.",
     image: "/exobod/story/step-3.png",
   },
   {
     step: "04",
     title: "Order with confidence",
-    copy: "Confirm configuration and timeline through a guided order inquiry - no confusion.",
-    icon: ShieldCheck,
+    copy: "Reserve early hardware or file a guided build request — written scope before major funds move.",
     image: "/exobod/story/step-4.png",
   },
 ];
+
+/**
+ * Crop baked-in infographic text from concept renders — show product photography zone only.
+ */
+const PRODUCT_OBJECT =
+  "object-cover object-[72%_42%] scale-[1.35] sm:object-[74%_40%] sm:scale-[1.4]";
 
 export function AppleScrollShowcase() {
   const reduceMotion = useReducedMotion();
@@ -47,12 +48,9 @@ export function AppleScrollShowcase() {
   });
   const [activeIdx, setActiveIdx] = useState(0);
 
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.93, 1, 1.04]);
-  const y = useTransform(scrollYProgress, [0, 1], [16, -10]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [-2, 2]);
-  const glow = useTransform(scrollYProgress, [0, 0.45, 1], [0.25, 0.5, 0.35]);
-  const layerBackY = useTransform(scrollYProgress, [0, 1], [-18, 18]);
-  const layerMidY = useTransform(scrollYProgress, [0, 1], [8, -8]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.96, 1, 1.03]);
+  const y = useTransform(scrollYProgress, [0, 1], [12, -8]);
+  const glow = useTransform(scrollYProgress, [0, 0.45, 1], [0.2, 0.45, 0.3]);
   const activeStep = story[activeIdx];
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
@@ -61,129 +59,86 @@ export function AppleScrollShowcase() {
   });
 
   return (
-    <section ref={sectionRef} className="relative border-y border-line/50 bg-background/90">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-8 md:grid-cols-2 md:gap-10 md:px-6">
-        <div className="space-y-4 md:space-y-6">
-          {story.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <article
-                key={item.step}
-                data-active={idx === activeIdx}
-                className={cn(
-                  "min-h-[46vh] rounded-2xl border p-5 backdrop-blur-sm transition md:min-h-[56vh] md:p-6",
-                  idx <= activeIdx
-                    ? "border-accent/35 bg-surface-soft/55"
-                    : "border-line/60 bg-surface/35",
-                )}
-              >
-                <p className="font-mono text-xs font-semibold tracking-[0.28em] text-accent">{item.step}</p>
-                <div className="mt-3 inline-flex size-9 items-center justify-center rounded-lg border border-accent/40 bg-accent/10 text-accent">
-                  <motion.div
-                    animate={
-                      reduceMotion
-                        ? undefined
-                        : idx === activeIdx
-                          ? { scale: [1, 1.12, 1], rotate: [0, -2, 0] }
-                          : { scale: 1, rotate: 0 }
-                    }
-                    transition={{ duration: 0.55, ease: "easeOut" }}
-                  >
-                    <Icon className="size-4.5" />
-                  </motion.div>
-                </div>
-                <h3 className="mt-4 text-2xl font-semibold text-text-main md:text-3xl">{item.title}</h3>
-                <p className="mt-3 max-w-md text-sm leading-relaxed text-text-muted md:text-base">{item.copy}</p>
-              </article>
-            );
-          })}
+    <section ref={sectionRef} className="relative border-y border-line/40 bg-[#050709]">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(255,122,26,0.07),transparent_50%)]" />
+      <div className="relative mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-2 md:gap-12 md:px-6 md:py-14">
+        <div className="space-y-3 md:space-y-4">
+          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-accent">
+            How it works
+          </p>
+          {story.map((item, idx) => (
+            <article
+              key={item.step}
+              data-active={idx === activeIdx}
+              className={cn(
+                "min-h-[42vh] border-l-2 py-5 pl-5 transition md:min-h-[52vh]",
+                idx === activeIdx
+                  ? "border-accent bg-gradient-to-r from-accent/[0.07] to-transparent"
+                  : "border-line/50 opacity-55",
+              )}
+            >
+              <p className="font-mono text-xs font-semibold tracking-[0.28em] text-accent">
+                {item.step}
+              </p>
+              <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-text-main md:text-3xl">
+                {item.title}
+              </h3>
+              <p className="mt-3 max-w-md text-sm leading-relaxed text-text-muted md:text-base">
+                {item.copy}
+              </p>
+            </article>
+          ))}
         </div>
 
         <div className="md:sticky md:top-20 md:h-[78vh]">
           <div className="relative flex h-full items-center justify-center">
             <motion.div
               style={{ opacity: glow }}
-              className="pointer-events-none absolute inset-x-10 bottom-10 h-28 rounded-[999px] bg-[radial-gradient(ellipse_at_center,rgba(255,122,26,0.45),transparent_70%)] blur-xl"
+              className="pointer-events-none absolute inset-x-8 bottom-12 h-24 rounded-[999px] bg-[radial-gradient(ellipse_at_center,rgba(255,122,26,0.4),transparent_70%)] blur-2xl"
             />
             <motion.div
-              style={{ scale, y, rotate }}
-              className={cn(
-                "relative w-full max-w-[460px] overflow-hidden rounded-3xl border border-line/60",
-                "bg-gradient-to-b from-surface/60 to-background shadow-[0_40px_120px_rgba(0,0,0,0.55)]",
-              )}
+              style={reduceMotion ? undefined : { scale, y }}
+              className="relative w-full max-w-[440px] overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0a0e14] shadow-[0_40px_120px_rgba(0,0,0,0.6)]"
             >
               <div className="relative aspect-[3/4] w-full">
-                <motion.div className="pointer-events-none absolute right-3 top-3 z-20 rounded-full border border-line/60 bg-background/60 px-2 py-1 backdrop-blur">
-                  <div className="flex items-center gap-1.5">
-                    {story.map((item, idx) => (
-                      <span
-                        key={item.step}
-                        className={cn(
-                          "block h-1.5 rounded-full transition-all",
-                          idx === activeIdx ? "w-5 bg-accent" : "w-1.5 bg-white/45",
-                        )}
-                      />
-                    ))}
-                  </div>
-                </motion.div>
-
-                {!reduceMotion ? (
-                  <>
-                    <motion.div
-                      key={`${activeStep.step}-bg`}
-                      style={{ y: layerBackY }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 0.35 }}
-                      exit={{ opacity: 0 }}
-                      className="absolute inset-0"
-                    >
-                      <Image
-                        src={activeStep.image ?? EXOBOD_HERO_IMAGE}
-                        alt=""
-                        fill
-                        className="object-cover blur-[7px] saturate-150"
-                        sizes="(max-width: 1024px) 100vw, 480px"
-                      />
-                    </motion.div>
-                    <motion.div
-                      key={`${activeStep.step}-mid`}
-                      style={{ y: layerMidY }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 0.5 }}
-                      className="absolute inset-0"
-                    >
-                      <Image
-                        src={activeStep.image ?? EXOBOD_HERO_IMAGE}
-                        alt=""
-                        fill
-                        className="object-cover opacity-90"
-                        sizes="(max-width: 1024px) 100vw, 480px"
-                      />
-                    </motion.div>
-                  </>
-                ) : null}
+                <div className="pointer-events-none absolute right-3 top-3 z-20 flex items-center gap-1.5 rounded-full border border-white/10 bg-black/50 px-2.5 py-1 backdrop-blur-md">
+                  {story.map((item, idx) => (
+                    <span
+                      key={item.step}
+                      className={cn(
+                        "block h-1 rounded-full transition-all",
+                        idx === activeIdx ? "w-4 bg-accent" : "w-1 bg-white/35",
+                      )}
+                    />
+                  ))}
+                </div>
 
                 {story.map((item, idx) => (
                   <Image
                     key={item.step}
                     src={item.image ?? EXOBOD_HERO_IMAGE}
-                    alt={`Exobod step ${item.step} render`}
+                    alt=""
                     fill
                     className={cn(
-                      "absolute inset-0 z-10 object-cover transition-opacity duration-500",
+                      "absolute inset-0 z-10 transition-opacity duration-500",
+                      PRODUCT_OBJECT,
                       idx === activeIdx ? "opacity-100" : "opacity-0",
                     )}
-                    sizes="(max-width: 1024px) 100vw, 480px"
+                    sizes="(max-width: 1024px) 100vw, 440px"
                     priority={idx === 0}
                   />
                 ))}
-                <motion.div
-                  key={`pulse-${activeStep.step}`}
-                  initial={{ opacity: 0.55 }}
-                  animate={{ opacity: [0.35, 0.6, 0.35] }}
-                  transition={{ duration: 1.1, ease: "easeInOut" }}
-                  className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_70%_35%,rgba(255,122,26,0.2),transparent_55%)]"
-                />
+
+                {/* Filmic grade + vignette — hides residual UI chrome */}
+                <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-[#050709] via-transparent to-[#050709]/50" />
+                <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(0,0,0,0.55)_100%)]" />
+                <div className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(5,7,9,0.55)_0%,transparent_28%)]" />
+
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 px-4 pb-4">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-text-muted">
+                    {activeStep.step} · concept render · not production hardware
+                  </p>
+                </div>
               </div>
             </motion.div>
           </div>

@@ -5,8 +5,10 @@ import type { BodyTypeSlug } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { motion, useReducedMotion } from "framer-motion";
 
-const waveformHeights = [10, 16, 8, 20, 12, 18, 9, 22, 11];
-
+/**
+ * Refined body-concept silhouettes for the embodiment selector.
+ * Industrial metal + orange — not clipart UI chrome.
+ */
 export function ExobodVisual({ bodyType: bodyTypeProp }: { bodyType?: BodyTypeSlug }) {
   const fromCtx = useEmbodimentBody();
   const bodyType = bodyTypeProp ?? fromCtx;
@@ -14,109 +16,84 @@ export function ExobodVisual({ bodyType: bodyTypeProp }: { bodyType?: BodyTypeSl
 
   return (
     <div
-      className="relative mx-auto aspect-[4/5] w-full max-w-[340px]"
+      className="relative mx-auto aspect-[4/5] w-full max-w-[300px]"
       data-body={bodyType}
       aria-hidden
     >
+      <div className="pointer-events-none absolute inset-0 rounded-[28px] bg-[radial-gradient(ellipse_at_50%_20%,rgba(255,122,26,0.14),transparent_55%),linear-gradient(165deg,#121820_0%,#070a0d_100%)]" />
+      <div className="pointer-events-none absolute inset-0 rounded-[28px] border border-white/[0.06]" />
       <div
-        className="pointer-events-none absolute inset-0 rounded-[32px] border border-line/35 bg-[linear-gradient(160deg,rgba(22,29,38,0.92),rgba(5,7,10,0.98))]"
+        className="pointer-events-none absolute inset-0 rounded-[28px] opacity-40"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)",
+          backgroundSize: "28px 28px",
+          maskImage: "radial-gradient(ellipse at 50% 40%, black 30%, transparent 75%)",
+        }}
       />
+
       <motion.div
-        className="pointer-events-none absolute inset-3 rounded-[28px] border border-accent/20"
-        animate={reduceMotion ? undefined : { opacity: [0.25, 0.45, 0.25] }}
+        className="pointer-events-none absolute inset-4 rounded-[22px] border border-accent/15"
+        animate={reduceMotion ? undefined : { opacity: [0.2, 0.4, 0.2] }}
         transition={reduceMotion ? undefined : { duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Shoulder joints */}
+      {/* Shoulder / frame hints */}
       <div
         className={cn(
-          "absolute left-[8%] top-[18%] z-[1] h-14 w-11 rounded-lg border border-accent/25 bg-gradient-to-b from-surface-soft to-background/90 shadow-[inset_0_1px_0_rgba(255,122,26,0.12)]",
-          bodyType === "desk-assistant" && "opacity-50 scale-95",
+          "absolute left-[10%] top-[20%] z-[1] h-12 w-9 rounded-md border border-white/[0.08] bg-gradient-to-b from-[#3a424d] to-[#14191f]",
+          bodyType === "desk-assistant" && "opacity-40 scale-90",
         )}
       />
       <div
         className={cn(
-          "absolute right-[8%] top-[18%] z-[1] h-14 w-11 rounded-lg border border-accent/25 bg-gradient-to-b from-surface-soft to-background/90 shadow-[inset_0_1px_0_rgba(255,122,26,0.12)]",
-          bodyType === "desk-assistant" && "opacity-50 scale-95",
+          "absolute right-[10%] top-[20%] z-[1] h-12 w-9 rounded-md border border-white/[0.08] bg-gradient-to-b from-[#3a424d] to-[#14191f]",
+          bodyType === "desk-assistant" && "opacity-40 scale-90",
         )}
       />
 
-      {/* Arm hints */}
       <div
         className={cn(
-          "absolute left-0 top-[28%] z-0 h-32 w-10 origin-top-right -rotate-[18deg] rounded-md border border-line/50 bg-gradient-to-b from-surface-soft/90 to-transparent",
-          bodyType === "walker" || bodyType === "utility-helper" ? "opacity-100" : "opacity-35",
-          bodyType === "rover" && "top-[32%] h-24 w-8 -rotate-6 opacity-60",
+          "absolute left-[2%] top-[30%] z-0 h-28 w-8 origin-top-right -rotate-[16deg] rounded-md border border-white/[0.06] bg-gradient-to-b from-[#2a313c] to-transparent",
+          bodyType === "walker" || bodyType === "utility-helper" ? "opacity-90" : "opacity-30",
+          bodyType === "rover" && "top-[34%] h-20 w-6 -rotate-6 opacity-55",
         )}
       />
       <div
         className={cn(
-          "absolute right-0 top-[28%] z-0 h-32 w-10 origin-top-left rotate-[18deg] rounded-md border border-line/50 bg-gradient-to-b from-surface-soft/90 to-transparent",
-          bodyType === "walker" || bodyType === "utility-helper" ? "opacity-100" : "opacity-35",
-          bodyType === "rover" && "top-[32%] h-24 w-8 rotate-6 opacity-60",
+          "absolute right-[2%] top-[30%] z-0 h-28 w-8 origin-top-left rotate-[16deg] rounded-md border border-white/[0.06] bg-gradient-to-b from-[#2a313c] to-transparent",
+          bodyType === "walker" || bodyType === "utility-helper" ? "opacity-90" : "opacity-30",
+          bodyType === "rover" && "top-[34%] h-20 w-6 rotate-6 opacity-55",
         )}
       />
 
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-5 pb-10 pt-8">
-        {/* Phone core */}
-        <div className="relative w-[220px] rounded-2xl border border-line/80 bg-[#070a0f] shadow-[0_32px_100px_rgba(0,0,0,0.55)]">
-          <div className="flex items-center justify-between border-b border-line/45 px-3 py-1.5 font-mono text-[9px] text-text-muted">
-            <span>PHONE CORE</span>
-            <span className="text-accent/90">LINK</span>
-          </div>
-          <div className="relative aspect-[10/19] bg-gradient-to-b from-[#0d1219] to-[#030508] px-3 pb-3 pt-3">
-            {/* Orange AI face */}
-            <div className="relative mx-auto mt-6 flex h-[104px] w-[104px] items-center justify-center rounded-2xl border border-accent/40 bg-[radial-gradient(circle_at_30%_20%,rgba(255,177,92,0.35),transparent_55%),linear-gradient(145deg,rgba(255,122,26,0.22),rgba(7,10,13,0.9))]">
-              <div className="absolute inset-2 rounded-xl border border-accent/25 bg-black/20" />
-              <motion.div
-                className="relative h-12 w-12 rounded-full bg-gradient-to-br from-accent via-[#ff8c42] to-[#a84300] shadow-[0_0_40px_rgba(255,122,26,0.45)]"
-                animate={reduceMotion ? undefined : { scale: [1, 1.06, 1], opacity: [0.85, 1, 0.85] }}
-                transition={reduceMotion ? undefined : { duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <span className="absolute bottom-2 font-mono text-[8px] font-semibold uppercase tracking-widest text-accent-soft/90">
-                AI core
-              </span>
-            </div>
+        <div className="relative w-[200px] overflow-hidden rounded-2xl border border-accent/30 bg-[#05070a] shadow-[0_28px_80px_rgba(0,0,0,0.55),0_0_0_1px_rgba(255,122,26,0.1)_inset]">
+          <div className="absolute inset-y-4 left-0 w-0.5 bg-gradient-to-b from-accent-soft via-accent to-[#a84300]" />
+          <div className="absolute inset-y-4 right-0 w-0.5 bg-gradient-to-b from-accent-soft via-accent to-[#a84300]" />
 
-            {/* Voice waveform */}
-            <div className="relative mx-auto mt-4 flex h-9 w-[90%] items-end justify-between gap-0.5 rounded-md border border-line/30 bg-black/35 px-2 py-1.5">
-              {waveformHeights.map((h, i) => (
-                <motion.span
-                  key={i}
-                  className="w-1 origin-bottom rounded-[1px] bg-gradient-to-t from-accent to-accent-soft/90"
-                  style={{ height: h }}
-                  animate={reduceMotion ? undefined : { scaleY: [0.4, 1, 0.55, 0.9, 0.35] }}
-                  transition={
-                    reduceMotion
-                      ? undefined
-                      : { duration: 1.35, repeat: Infinity, delay: i * 0.07, ease: "easeInOut" }
-                  }
-                />
-              ))}
-            </div>
-            <p className="mt-3 text-center font-mono text-[9px] leading-snug text-text-muted">
-              Voice + vision on handset
-            </p>
-          </div>
-          <div className="border-t border-line/45 px-3 py-1.5">
-            <div className="flex items-center justify-between font-mono text-[8px] text-text-muted">
-              <span>VOICE BUS</span>
-              <span>MCU → SERVOS</span>
-            </div>
-            <div className="mt-1 h-1 w-full rounded-sm bg-line/25">
+          <div className="relative aspect-[10/19] px-3 pb-3 pt-4">
+            <div className="mx-auto mt-8 flex h-[88px] w-[88px] items-center justify-center rounded-xl border border-accent/30 bg-[radial-gradient(circle_at_30%_20%,rgba(255,177,92,0.28),transparent_55%),linear-gradient(145deg,rgba(255,122,26,0.18),rgba(7,10,13,0.95))]">
               <motion.div
-                className="h-full rounded-sm bg-accent/85"
-                initial={{ width: "32%" }}
-                animate={reduceMotion ? undefined : { width: ["26%", "74%", "34%", "68%", "30%"] }}
-                transition={reduceMotion ? undefined : { duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
+                className="h-10 w-10 rounded-full bg-gradient-to-br from-accent via-[#ff8c42] to-[#a84300] shadow-[0_0_32px_rgba(255,122,26,0.4)]"
+                animate={reduceMotion ? undefined : { scale: [1, 1.05, 1], opacity: [0.85, 1, 0.85] }}
+                transition={
+                  reduceMotion ? undefined : { duration: 2.8, repeat: Infinity, ease: "easeInOut" }
+                }
               />
             </div>
+            <p className="mt-4 text-center font-mono text-[9px] uppercase tracking-[0.28em] text-accent/75">
+              phone core
+            </p>
           </div>
         </div>
 
-        {/* Leg / base hints */}
         <LegLayer bodyType={bodyType} />
       </div>
+
+      <p className="absolute bottom-3 left-0 right-0 text-center font-mono text-[8px] uppercase tracking-[0.2em] text-text-muted/70">
+        {bodyType === "desk-assistant" ? "Desk path · EVT" : "Concept body"}
+      </p>
     </div>
   );
 }
@@ -124,12 +101,12 @@ export function ExobodVisual({ bodyType: bodyTypeProp }: { bodyType?: BodyTypeSl
 function LegLayer({ bodyType }: { bodyType: BodyTypeSlug }) {
   if (bodyType === "rover") {
     return (
-      <div className="absolute bottom-6 left-1/2 z-[2] flex w-[112%] -translate-x-1/2 items-end justify-between px-1">
-        <div className="flex h-12 w-[88%] items-center justify-between rounded-lg border border-line/55 bg-surface/90 px-3">
+      <div className="absolute bottom-7 left-1/2 z-[2] flex w-[108%] -translate-x-1/2 items-end justify-center px-1">
+        <div className="flex h-11 w-[86%] items-center justify-between rounded-lg border border-white/[0.08] bg-gradient-to-b from-[#1c222b] to-[#0c1016] px-3">
           {[0, 1, 2].map((i) => (
             <div
               key={i}
-              className="h-9 w-9 rounded-full border border-line/60 bg-gradient-to-b from-surface-soft to-background shadow-inner"
+              className="h-8 w-8 rounded-full border border-white/[0.1] bg-gradient-to-b from-[#3a424d] to-[#12161c]"
             />
           ))}
         </div>
@@ -139,36 +116,36 @@ function LegLayer({ bodyType }: { bodyType: BodyTypeSlug }) {
 
   if (bodyType === "desk-assistant") {
     return (
-      <div className="absolute bottom-8 left-1/2 z-[2] h-16 w-24 -translate-x-1/2 rounded-b-xl border border-line/55 bg-gradient-to-b from-surface-soft to-background" />
+      <div className="absolute bottom-8 left-1/2 z-[2] w-28 -translate-x-1/2">
+        <div className="mx-auto h-2 w-8 rounded-sm bg-gradient-to-b from-[#4a5564] to-[#1a1f27]" />
+        <div className="mt-0.5 h-4 rounded-b-lg border border-white/[0.08] bg-gradient-to-b from-[#1c222b] to-[#0a0d12]" />
+        <div className="mx-auto mt-1 h-2.5 w-[92%] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,122,26,0.25),transparent_70%)]" />
+      </div>
     );
   }
 
   if (bodyType === "utility-helper") {
     return (
-      <div className="absolute bottom-5 left-1/2 z-[2] flex w-[124%] -translate-x-1/2 justify-between px-2">
+      <div className="absolute bottom-6 left-1/2 z-[2] flex w-[118%] -translate-x-1/2 justify-between px-2">
         {[0, 1, 2, 3].map((i) => (
           <div
             key={i}
-            className="h-14 w-5 rounded-sm border border-line/55 bg-gradient-to-b from-surface-soft to-background"
+            className="h-12 w-4 rounded-sm border border-white/[0.08] bg-gradient-to-b from-[#2a313c] to-[#0c1016]"
           />
         ))}
       </div>
     );
   }
 
-  /* walker default */
   return (
-    <div className="absolute bottom-6 left-1/2 z-[2] flex w-[100%] -translate-x-1/2 justify-between px-6">
-      <div className="flex flex-col items-center gap-1">
-        <div className="h-8 w-7 rounded-md border border-line/55 bg-gradient-to-b from-surface-soft to-background" />
-        <div className="h-10 w-6 rounded-sm border border-line/50 bg-background/80" />
-        <div className="h-3 w-12 rounded-full border border-line/60 bg-surface/90" />
-      </div>
-      <div className="flex flex-col items-center gap-1">
-        <div className="h-8 w-7 rounded-md border border-line/55 bg-gradient-to-b from-surface-soft to-background" />
-        <div className="h-10 w-6 rounded-sm border border-line/50 bg-background/80" />
-        <div className="h-3 w-12 rounded-full border border-line/60 bg-surface/90" />
-      </div>
+    <div className="absolute bottom-7 left-1/2 z-[2] flex w-full -translate-x-1/2 justify-between px-7">
+      {[0, 1].map((side) => (
+        <div key={side} className="flex flex-col items-center gap-1">
+          <div className="h-7 w-6 rounded-md border border-white/[0.08] bg-gradient-to-b from-[#2a313c] to-[#12161c]" />
+          <div className="h-9 w-5 rounded-sm border border-white/[0.06] bg-[#0a0d12]" />
+          <div className="h-2.5 w-11 rounded-full border border-white/[0.08] bg-[#161b22]" />
+        </div>
+      ))}
     </div>
   );
 }

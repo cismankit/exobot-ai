@@ -36,17 +36,17 @@ export default function HomePage() {
 
       <section
         id="product"
-        className="scroll-mt-24 border-y border-line/55 bg-gradient-to-b from-accent/[0.07] via-surface/30 to-background py-10 sm:py-12"
+        className="scroll-mt-24 border-y border-line/40 bg-gradient-to-b from-accent/[0.05] via-surface/25 to-background py-12 sm:py-16"
       >
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <MotionReveal>
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-2xl space-y-3">
                 <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-accent">
-                  Flagship product
+                  Flagship · EXB-D1
                 </p>
                 <h2 className="font-display text-3xl font-semibold tracking-tight text-text-main sm:text-4xl">
-                  Desk One — phone dock with honest motion.
+                  Desk One — honest motion on a desk.
                 </h2>
                 <p className="text-sm leading-relaxed text-text-muted sm:text-base">
                   Stationary 2-axis pan/tilt for early builders. Your phone stays the brain. Not a walker,
@@ -62,7 +62,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   href="/desk-one"
-                  className="inline-flex items-center justify-center rounded-xl border border-line px-6 py-3 text-sm font-semibold text-text-main transition hover:border-accent/50 hover:text-accent-soft"
+                  className="inline-flex items-center justify-center rounded-xl border border-line/70 px-6 py-3 text-sm font-semibold text-text-main transition hover:border-accent/50 hover:text-accent-soft"
                 >
                   See Desk One
                 </Link>
