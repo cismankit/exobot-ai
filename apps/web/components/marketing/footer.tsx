@@ -1,12 +1,11 @@
 import Link from "next/link";
-import { BrandLockup } from "./logo";
 
 export function Footer() {
   return (
     <footer className="border-t border-line bg-bg">
       <div className="mx-auto grid max-w-6xl gap-8 px-5 py-14 sm:grid-cols-3">
         <div>
-          <BrandLockup markClassName="h-6 w-auto" wordmarkClassName="text-lg" />
+          <p className="display text-lg">exobod</p>
           <p className="mt-2 max-w-[28ch] text-sm text-muted">
             Phone as brain. Frame as body. One persona, many minds, a
             constitution in silicon.
@@ -17,7 +16,6 @@ export function Footer() {
             Product
           </p>
           <ul className="space-y-2 text-muted">
-            <li><Link className="hover:text-fg" href="/demo">Desk One demo</Link></li>
             <li><Link className="hover:text-fg" href="/docs">Docs</Link></li>
             <li><Link className="hover:text-fg" href="/pricing">Pricing</Link></li>
             <li><Link className="hover:text-fg" href="/console">Console</Link></li>
