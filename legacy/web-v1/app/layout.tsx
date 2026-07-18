@@ -1,7 +1,7 @@
 import { PostHogProvider } from "@/components/posthog-provider";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { EXOBOD_HERO_IMAGE } from "@/lib/site-assets";
+import { OG_BANNER } from "@/lib/site-assets";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
@@ -40,15 +40,15 @@ export const metadata: Metadata = {
     url: "https://www.exobod.ai",
     images: [
       {
-        url: EXOBOD_HERO_IMAGE,
-        width: 900,
-        height: 1200,
-        alt: "Exobod modular smartphone embodiment concept",
+        url: OG_BANNER,
+        width: 1536,
+        height: 1024,
+        alt: "Exobod walker robot with a smartphone face, cinematic studio shot",
       },
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Exobod.ai | Give Your Phone a Real Body",
     description:
       "Modular smartphone embodiment for iPhone and Android - preorder interest and prototype programs.",

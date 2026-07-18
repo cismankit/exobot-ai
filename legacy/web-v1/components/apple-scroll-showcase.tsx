@@ -1,3 +1,9 @@
+import {
+  STORY_CHOOSE_BODY,
+  STORY_MOTION,
+  STORY_ORDER_QC,
+  STORY_PHONE_DOCK,
+} from "@/lib/site-assets";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -6,28 +12,32 @@ const story = [
     step: "01",
     title: "Choose your body",
     copy: "Start with Desk One, the stationary pan/tilt EVT path, or brief us on a Walker, Rover, or Utility concept. The body choice determines the frame, actuator plan, safety limits, and what we can honestly prototype.",
-    image: "/exobod/story/step-1.png",
+    image: STORY_CHOOSE_BODY,
+    landscape: true,
     detail: "Desk One available · other bodies by engineering review",
   },
   {
     step: "02",
     title: "Mount your phone core",
     copy: "Your iPhone or Android stays visible and removable. It supplies the screen, camera, microphone, connectivity, and assistant stack while a fitted core secures it to the motion hardware.",
-    image: "/exobod/story/step-2.png",
+    image: STORY_PHONE_DOCK,
+    landscape: false,
     detail: "Removable core · cable routing confirmed at intake",
   },
   {
     step: "03",
     title: "Tune motion behavior",
     copy: "Desk One supports calibrated two-axis pan and tilt today, with speed limits and a manual stop in the control loop. Gaits, wheels, arms, and broader skill packs remain configuration-specific engineering work—not implied features.",
-    image: "/exobod/hero-robot.png",
+    image: STORY_MOTION,
+    landscape: false,
     detail: "Desk One: 2-axis pan/tilt · broader motion is concept scope",
   },
   {
     step: "04",
     title: "Order with confidence",
     copy: "Reserve Desk One interest or submit a guided build request. We review phone fit, use case, timeline, milestones, and acceptance criteria in writing before major funds move.",
-    image: "/exobod/story/step-4.png",
+    image: STORY_ORDER_QC,
+    landscape: false,
     detail: "Human review · written scope · milestone plan",
   },
 ];
@@ -55,23 +65,21 @@ export function AppleScrollShowcase() {
             >
               <div
                 className={cn(
-                  "relative aspect-[3/4] min-h-[360px] sm:min-h-[480px] lg:aspect-auto lg:min-h-[520px]",
+                  "relative bg-[#07090c]",
+                  item.landscape
+                    ? "aspect-[3/2] lg:aspect-auto lg:min-h-[460px]"
+                    : "aspect-[3/4] min-h-[360px] sm:min-h-[480px] lg:aspect-auto lg:min-h-[520px]",
                   idx % 2 === 1 && "lg:order-2",
                 )}
               >
-                <div className="absolute inset-0 p-5 sm:p-8">
-                  <div className="relative h-full w-full">
-                    <Image
-                      src={item.image}
-                      alt={`Exobod concept visual for ${item.title}`}
-                      fill
-                      className="object-contain object-center"
-                      sizes="(max-width: 1024px) 100vw, 576px"
-                      priority={idx === 0}
-                    />
-                  </div>
-                </div>
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050709]/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-[#0a0e13]/25" />
+                <Image
+                  src={item.image}
+                  alt={`Exobod concept visual for ${item.title}`}
+                  fill
+                  className="object-contain object-center"
+                  sizes="(max-width: 1024px) 100vw, 576px"
+                  priority={idx === 0}
+                />
                 <span className="absolute bottom-4 left-4 rounded-full border border-white/15 bg-black/65 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.18em] text-white/75 backdrop-blur">
                   Concept visualization · geometry may differ
                 </span>

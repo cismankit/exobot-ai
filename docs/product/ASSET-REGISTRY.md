@@ -32,6 +32,29 @@ Dimensions from file headers. Quality is editorial judgment for marketing reuse.
 
 **Logo rule (2026-07-18):** the nav/footer mark is `mark-robot-transparent.png` rendered via `BrandFigure` with `object-contain` in a square box. The previous behavior (cover-left slice of the 944×358 lockup) is retired — it read as a cropped photo, not a logo. Do not reintroduce it.
 
+---
+
+## v4 canonical set (2026-07-18) — LIVE
+
+Purpose-built plates under `legacy/web-v1/public/exobod/v4/`, all in the canonical brand language (graphite armor, phone face, orange smile — derived from `branding/mark-robot.png`). **Rule: one slot, one image. No slot may reuse another slot's file.** All paths are exported from `lib/site-assets.ts` — components must import constants, never hardcode paths.
+
+| File | Dims | Slot (unique) | Notes |
+|------|------|---------------|-------|
+| `v4/hero-main.png` | 1024×1536 | Homepage hero | Walker, studio floor, no baked text |
+| `v4/family-lineup.png` | 1536×1024 | Story 01 “Choose your body” | Desk / Walker / Rover / Utility lineup |
+| `v4/phone-dock.png` | 1024×1536 | Story 02 “Mount your phone core” | Hands docking phone macro |
+| `v4/motion-tuning.png` | 1024×1536 | Story 03 “Tune motion behavior” | Walker mid-gesture |
+| `v4/qc-bench.png` | 1024×1536 | Story 04 “Order with confidence” | Workbench QC scene |
+| `v4/body-walker.png` | 1024×1536 | Body selector: Walker | Three-quarter walking pose |
+| `v4/body-desk.png` | 1024×1536 | Body selector: Desk + **Desk One page hero** | Only intentional dual use (same product) |
+| `v4/body-rover.png` | 1024×1536 | Body selector: Rover | Wheeled mast chassis |
+| `v4/body-utility.png` | 1024×1536 | Body selector: Utility | Stout gripper frame |
+| `v4/exploded-build.png` | 1536×1024 | Product hub | Exploded assembly, phone as core |
+| `v4/mechanical-macro.png` | 1024×1536 | Build system | Actuator macro (detail shot — `object-cover` allowed here only) |
+| `v4/og-banner.png` | 1536×1024 | Open Graph / Twitter card | Copy-safe left third; `summary_large_image` |
+
+Old poster set (`exobod/hero.png`, `hero-robot.png`, `story/step-*.png`) is **retired from all live slots** — keep files for archive/decks only. Do not wire them back into pages.
+
 **Live site usage note (apps/web):** hero uses `/exobot-hero.png`; Open Graph uses `/hero.png` (poster). That OG choice should be revisited when a clean landscape plate exists — do not “fix” by regenerating Walker in-session without request.
 
 ---

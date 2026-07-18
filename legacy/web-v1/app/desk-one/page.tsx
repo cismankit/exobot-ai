@@ -9,6 +9,7 @@ import {
   deskOneWhatItIs,
   deskOneWhatItIsNot,
 } from "@/lib/desk-one";
+import { DESK_ONE_HERO_IMAGE } from "@/lib/site-assets";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -103,7 +104,11 @@ export default function DeskOnePage() {
           </MotionReveal>
           <MotionReveal className="flex min-w-0 flex-1 justify-center lg:justify-end" delay={0.05}>
             <div className="w-full max-w-md">
-              <HeroProductVisual />
+              <HeroProductVisual
+                src={DESK_ONE_HERO_IMAGE}
+                alt="Desk One: stationary pan/tilt Exobod with a smartphone face on a weighted base"
+                caption="Desk One EVT concept render · production unit may differ"
+              />
             </div>
           </MotionReveal>
         </div>

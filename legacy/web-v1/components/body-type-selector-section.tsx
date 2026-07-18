@@ -5,26 +5,27 @@ import { MotionReveal } from "@/components/motion-reveal";
 import { SectionHeader } from "@/components/section-header";
 import { secondaryCta } from "@/lib/ctas";
 import { bodyTypes, type BodyTypeSlug } from "@/lib/content";
+import { BODY_DESK, BODY_ROVER, BODY_UTILITY, BODY_WALKER } from "@/lib/site-assets";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
 const bodyVisuals: Record<BodyTypeSlug, { src: string; note: string }> = {
   walker: {
-    src: "/exobod/hero-robot.png",
+    src: BODY_WALKER,
     note: "Biped concept visualization",
   },
   "desk-assistant": {
-    src: "/exobod/story/step-3.png",
-    note: "Desk form shown in concept board",
+    src: BODY_DESK,
+    note: "Desk One EVT form",
   },
   rover: {
-    src: "/exobod/story/step-3.png",
+    src: BODY_ROVER,
     note: "Wheeled concept visualization",
   },
   "utility-helper": {
-    src: "/exobod/story/step-4.png",
-    note: "Modular frame concept visualization",
+    src: BODY_UTILITY,
+    note: "Utility helper concept visualization",
   },
 };
 

@@ -3,6 +3,7 @@
 import { MotionReveal } from "@/components/motion-reveal";
 import { SectionHeader } from "@/components/section-header";
 import { targetSpecs } from "@/lib/content";
+import { PRODUCT_EXPLODED } from "@/lib/site-assets";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,20 +23,16 @@ export function HomeProductHub() {
         <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
           <MotionReveal className="min-w-0">
             <div className="relative overflow-hidden rounded-3xl border border-line/60 bg-gradient-to-b from-surface/70 to-background shadow-panel">
-              {/* Tall portrait frame: hero-robot is ~1:2 — contain + padding keeps full body */}
-              <div className="relative aspect-[3/4] min-h-[480px] w-full sm:min-h-[560px]">
-                <div className="absolute inset-0 p-5 sm:p-8">
-                  <div className="relative h-full w-full">
-                    <Image
-                      src="/exobod/hero-robot.png"
-                      alt="Phone-centered Exobod robot concept"
-                      fill
-                      className="object-contain object-center"
-                      sizes="(max-width: 1024px) 100vw, 576px"
-                    />
-                  </div>
-                </div>
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+              {/* Exploded assembly plate is 3:2 landscape — full-bleed on matching dark bg */}
+              <div className="relative aspect-[3/2] w-full bg-[#07090c]">
+                <Image
+                  src={PRODUCT_EXPLODED}
+                  alt="Exploded view of the Exobod frame showing the phone as the removable core"
+                  fill
+                  className="object-contain object-center"
+                  sizes="(max-width: 1024px) 100vw, 576px"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
                   <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">Phone remains the visible core</p>
                   <p className="mt-2 max-w-md text-sm leading-relaxed text-white/80">
