@@ -25,6 +25,12 @@ Dimensions from file headers. Quality is editorial judgment for marketing reuse.
 | `apps/web/public/branding/logo-mark-transparent.png` | 944×358 / **2.637** | **Byte-identical** to logo-mark-light | Duplicate filename | None — prefer one path | Treating as different asset | Same | Brand duplicate |
 | `apps/web/public/branding/wordmark-art-light.png` | 329×80 / **4.112** | Wordmark art | Fallback | Rare embeds | Replacing live wordmark component | No stretch | Brand |
 | `legacy/web-v1/public/branding/*` | same as apps/web | Copies of branding set | Duplicated tree | Legacy only | New work should use `apps/web` or React logo | Same | Brand duplicates |
+| `legacy/web-v1/public/branding/mark-robot.png` | 1024×1024 / **1.0** | **Canonical brand robot** (phone face, orange smile) on white, no shadow | Master render (2026-07-18, user-approved reference) | Source for cutouts/derivatives only | Direct UI embedding (use transparent version) | Never crop; regenerate derivatives from this | **Brand canonical** |
+| `legacy/web-v1/public/branding/mark-robot-transparent.png` | 986×986 / **1.0** | Same robot, transparent bg, full figure, 4% margin | Primary UI mark | Nav (`BrandFigure`), footer, any square logo slot | Stretching; cropping; `object-cover` | **contain only**, never crop | **Brand canonical** |
+| `legacy/web-v1/public/branding/icon-512.png` / `icon-192.png` / `favicon-64.png` / `favicon-32.png` | squares | Downscaled transparent mark | Favicons / PWA icons | Manifest, favicon slots | Marketing surfaces (too small) | n/a | Brand derivative |
+| `legacy/web-v1/app/icon.png` | 256×256 | Mark on dark `#0b0e12` tile | Next.js app icon (auto-served favicon) | Browser tab icon | n/a | n/a | Brand derivative |
+
+**Logo rule (2026-07-18):** the nav/footer mark is `mark-robot-transparent.png` rendered via `BrandFigure` with `object-contain` in a square box. The previous behavior (cover-left slice of the 944×358 lockup) is retired — it read as a cropped photo, not a logo. Do not reintroduce it.
 
 **Live site usage note (apps/web):** hero uses `/exobot-hero.png`; Open Graph uses `/hero.png` (poster). That OG choice should be revisited when a clean landscape plate exists — do not “fix” by regenerating Walker in-session without request.
 
