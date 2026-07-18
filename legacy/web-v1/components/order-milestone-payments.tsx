@@ -62,7 +62,7 @@ export function OrderMilestonePayments({
       <p className="mt-1 text-xs text-text-muted">
         {stripeConfigured
           ? "Pay milestones securely via Stripe Checkout when invoiced."
-          : "Stripe is not configured — payment links appear once STRIPE_SECRET_KEY is set."}
+          : "Online payment links are not available yet — we will send a secure checkout link when invoiced."}
       </p>
       <ul className="mt-4 space-y-3">
         {sorted.map((m) => (

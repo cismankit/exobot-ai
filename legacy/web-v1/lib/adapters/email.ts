@@ -80,7 +80,7 @@ export async function sendLeadConfirmation(lead: Lead): Promise<SendEmailResult>
       `Budget: ${lead.budget}`,
       lead.configurationSummary ? `\nConfiguration:\n${lead.configurationSummary}` : "",
       "",
-      "— Exobod Labs",
+      "— Exobod.ai",
     ]
       .filter(Boolean)
       .join("\n"),
@@ -136,7 +136,7 @@ export async function sendQuoteAcceptedEmail(input: {
       "",
       "Your deposit milestone will appear in the order portal. Our build desk will follow up with production scheduling.",
       "",
-      "— Exobod Labs",
+      "— Exobod.ai",
     ].join("\n"),
     html: [
       `<p>Hi ${order.customerName},</p>`,

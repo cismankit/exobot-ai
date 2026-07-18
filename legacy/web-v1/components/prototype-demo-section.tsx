@@ -27,7 +27,7 @@ export function PrototypeDemoSection() {
               href="/demo"
               className="inline-flex items-center justify-center rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-accent-soft"
             >
-              Book a demo
+              Request a demo
             </Link>
             <Link href="/trust" className="text-center text-xs font-medium text-accent-soft underline-offset-2 hover:underline sm:text-right">
               How we de-risk orders

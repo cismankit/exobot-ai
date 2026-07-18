@@ -1,9 +1,11 @@
 "use client";
 
+import { InterestForm } from "@/components/interest-form";
 import { MotionReveal } from "@/components/motion-reveal";
 import { buildCalBookingUrl, calComConfig } from "@/lib/demo/cal";
 import { loadConfigFromLocalStorage } from "@/lib/config/state";
 import { demoPageCopy } from "@/lib/content";
+import { companyContact } from "@/lib/trust";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useMemo, useState } from "react";
@@ -14,7 +16,7 @@ type PrepPacket = {
   source: "url" | "localStorage" | "saved" | "none";
 };
 
-function DemoBookingContent() {
+function DemoBookingContent({ calConfigured }: { calConfigured: boolean }) {
   const searchParams = useSearchParams();
   const cfgParam = searchParams.get("cfg");
   const [prep, setPrep] = useState<PrepPacket>({
@@ -61,8 +63,8 @@ function DemoBookingContent() {
   }, [cfgParam]);
 
   const bookingUrl = useMemo(
-    () => buildCalBookingUrl({ configId: prep.configId }),
-    [prep.configId],
+    () => (calConfigured ? buildCalBookingUrl({ configId: prep.configId }) : null),
+    [calConfigured, prep.configId],
   );
 
   return (
@@ -98,7 +100,7 @@ function DemoBookingContent() {
                 </p>
               )}
               <p className="text-xs text-text-muted">
-                This ID is passed to Cal.com as metadata so the build desk opens with your options.
+                Include this ID in your demo request so the build desk opens with your options.
               </p>
             </div>
           ) : (
@@ -113,30 +115,67 @@ function DemoBookingContent() {
       </MotionReveal>
 
       <MotionReveal delay={0.04}>
-        <div className="rounded-2xl border border-accent/30 bg-accent/5 p-5 shadow-panel sm:p-6">
-          <h2 className="text-lg font-semibold text-text-main">{calComConfig.eventName}</h2>
-          <p className="mt-2 text-sm text-text-muted">
-            {calComConfig.durationMinutes}-minute session with the Exobod build desk. Configure{" "}
-            <code className="rounded bg-background/60 px-1 py-0.5 font-mono text-xs">
-              NEXT_PUBLIC_CALCOM_LINK
-            </code>{" "}
-            for your production Cal.com event.
-          </p>
-          <a
-            href={bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-background transition hover:bg-accent-soft sm:w-auto"
-          >
-            Pick a time on Cal.com
-          </a>
-        </div>
+        {bookingUrl ? (
+          <div className="rounded-2xl border border-accent/30 bg-accent/5 p-5 shadow-panel sm:p-6">
+            <h2 className="text-lg font-semibold text-text-main">{calComConfig.eventName}</h2>
+            <p className="mt-2 text-sm text-text-muted">
+              {calComConfig.durationMinutes}-minute session with the Exobod build desk. Pick a time
+              that works — we will open with your prep packet when available.
+            </p>
+            <a
+              href={bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-background transition hover:bg-accent-soft sm:w-auto"
+            >
+              Pick a time
+            </a>
+          </div>
+        ) : (
+          <div className="space-y-5 rounded-2xl border border-accent/30 bg-accent/5 p-5 shadow-panel sm:p-6">
+            <div>
+              <h2 className="text-lg font-semibold text-text-main">Request a demo</h2>
+              <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                Scheduling calendar is not online yet. Send a demo request below and we will follow
+                up by email — or write us directly at{" "}
+                <a
+                  href={`mailto:${companyContact.supportEmail}?subject=Exobod%20demo%20request`}
+                  className="font-semibold text-accent-soft underline-offset-2 hover:underline"
+                >
+                  {companyContact.supportEmail}
+                </a>
+                .
+              </p>
+            </div>
+            <InterestForm
+              defaultBodyType="Desk Assistant"
+              submitLabel="Request a demo"
+              configurationSummary={
+                prep.configId
+                  ? `Demo request — config ${prep.configId}${prep.summary ? `\n${prep.summary}` : ""}`
+                  : "Demo request — no saved configuration"
+              }
+              configurationId={prep.configId}
+            />
+            <p className="text-center text-xs text-text-muted">
+              Prefer the early-access list?{" "}
+              <Link href="/desk-one#reserve" className="font-semibold text-accent-soft underline-offset-2 hover:underline">
+                Join early access
+              </Link>{" "}
+              or{" "}
+              <Link href="/preorder" className="font-semibold text-accent-soft underline-offset-2 hover:underline">
+                start an order inquiry
+              </Link>
+              .
+            </p>
+          </div>
+        )}
       </MotionReveal>
     </div>
   );
 }
 
-export function DemoBookingPage() {
+export function DemoBookingPage({ calConfigured }: { calConfigured: boolean }) {
   return (
     <Suspense
       fallback={
@@ -145,7 +184,7 @@ export function DemoBookingPage() {
         </div>
       }
     >
-      <DemoBookingContent />
+      <DemoBookingContent calConfigured={calConfigured} />
     </Suspense>
   );
 }

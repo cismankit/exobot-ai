@@ -40,8 +40,8 @@ export function ConfigurationsSection() {
         <MotionReveal>
           <SectionHeader
             eyebrow="Configurations"
-            title="Pick a chassis like a robotics product page - then prove it on your bench."
-            description="Six entry paths inspired by platform robotics: four locomotion archetypes plus EDU and prototyping bundles. Every line below is a target or preorder-interest framing, not retail shelf specs."
+            title="Desk One is the buyable path. Everything else is concept."
+            description="EXB-D1 Desk One is the early-access / reservable product. Walker, Rover, Utility, EDU, and prototyping kits are concept paths — configure and inquire, not retail shelf SKUs."
             align="center"
             className="mx-auto max-w-3xl text-center"
           />
@@ -50,7 +50,18 @@ export function ConfigurationsSection() {
           {configurationProducts.map((cfg, idx) => (
             <MotionReveal key={cfg.name} delay={idx * 0.02}>
               <CardShell className="flex h-full flex-col gap-3 p-5" hover>
-                <h3 className="text-lg font-semibold text-text-main">{cfg.name}</h3>
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="text-lg font-semibold text-text-main">{cfg.name}</h3>
+                  <span
+                    className={
+                      cfg.badge === "Available path"
+                        ? "shrink-0 rounded-md border border-accent/40 bg-accent/10 px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-accent"
+                        : "shrink-0 rounded-md border border-line/60 bg-surface-soft/60 px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-text-muted"
+                    }
+                  >
+                    {cfg.badge}
+                  </span>
+                </div>
                 <dl className="space-y-2 text-xs text-text-muted sm:text-sm">
                   <div>
                     <dt className="font-semibold text-text-main">Best for</dt>

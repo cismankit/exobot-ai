@@ -2,7 +2,29 @@
 
 Live site stack: **`legacy/web-v1`** (exobod.ai on Vercel).
 
-## What buyers pay for
+## Current status
+
+**Stripe is OFF** on production until `STRIPE_SECRET_KEY` is set. Sitewide CTAs say **Join early access** and land on `/desk-one#reserve` with the interest form (no fake $99 checkout).
+
+When Stripe keys are added and the app is redeployed, `isStripeConfigured()` flips on and the same `#reserve` section becomes Stripe Checkout automatically.
+
+## Turn Stripe ON — 3 steps
+
+1. **Add secrets on Vercel** (project `exobot.ai` → Settings → Environment Variables → Production):
+   - `STRIPE_SECRET_KEY` = `sk_live_…` (or `sk_test_…` for Preview)
+   - `STRIPE_WEBHOOK_SECRET` = `whsec_…` (required in production)
+   - Confirm `NEXT_PUBLIC_SITE_URL` = `https://www.exobod.ai` (or `https://exobod.ai`)
+
+2. **Register the webhook in Stripe Dashboard**  
+   Developers → Webhooks → Add endpoint  
+   - URL: `https://www.exobod.ai/api/webhooks/stripe`  
+   - Events: `checkout.session.completed`, `checkout.session.expired`  
+   - Copy signing secret → `STRIPE_WEBHOOK_SECRET`
+
+3. **Redeploy** from `legacy/web-v1` (`vercel --prod`).  
+   Smoke-test: open `/desk-one#reserve` → checkout should open (not the interest-only waitlist).
+
+## What buyers pay for (when ON)
 
 | Item | Value |
 |------|--------|
@@ -13,41 +35,18 @@ Live site stack: **`legacy/web-v1`** (exobod.ai on Vercel).
 
 Copy and legal: reservation / deposit for the EVT program. Link: `/legal/refund`.
 
-## Why Stripe (not Zelle) as primary
-
-- **Receipts, refunds, disputes, and webhooks** are first-class — critical for crowdfund-style deposits.
-- Card checkout works for most buyers without sharing bank details in chat.
-- Webhook `checkout.session.completed` marks orders paid without faking success in the UI.
-- **Zelle has no ecommerce API** — it can only be a manual fallback (human confirmation). Prefer Stripe.
-
 ## Environment variables
-
-Set these on the Vercel project **`exobot.ai`** (Production + Preview as needed):
 
 | Variable | Required | Notes |
 |----------|----------|--------|
-| `STRIPE_SECRET_KEY` | Yes for live checkout | `sk_test_…` or `sk_live_…` (restricted key `rk_` also fine) |
+| `STRIPE_SECRET_KEY` | Yes for live checkout | `sk_test_…` or `sk_live_…` |
 | `STRIPE_WEBHOOK_SECRET` | Yes in production | `whsec_…` from Stripe webhook endpoint |
-| `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Optional | Not required for hosted Checkout redirect |
-| `NEXT_PUBLIC_SITE_URL` | Recommended | e.g. `https://exobod.ai` (success/cancel URLs) |
+| `NEXT_PUBLIC_SITE_URL` | Recommended | Success/cancel redirect base |
 | `EARLY_ORDER_PRICE_CENTS` | Optional | Default `9900` ($99) |
-| `ZELLE_EMAIL` or `EARLY_ORDER_ZELLE_EMAIL` | Optional | Shows manual Zelle fallback + warning |
+| `ZELLE_EMAIL` or `EARLY_ORDER_ZELLE_EMAIL` | Optional | Manual Zelle fallback + warning |
 | `ADMIN_SECRET` | For admin list | Bearer token for `/admin/early-orders` |
 
-If `STRIPE_SECRET_KEY` is missing, `/desk-one` shows **Payments opening soon** + waitlist (no fake success).
-
-### Vercel dashboard
-
-1. Project → Settings → Environment Variables  
-2. Paste Stripe keys for Production (and Preview if you test there)  
-3. Redeploy after adding secrets  
-
-### Stripe Dashboard webhook
-
-1. Developers → Webhooks → Add endpoint  
-2. URL: `https://exobod.ai/api/webhooks/stripe`  
-3. Events: `checkout.session.completed`, `checkout.session.expired`  
-4. Copy signing secret → `STRIPE_WEBHOOK_SECRET`
+If `STRIPE_SECRET_KEY` is missing, `/desk-one#reserve` shows **early access interest** (working form) — never a broken checkout.
 
 ## Routes
 
@@ -56,14 +55,14 @@ If `STRIPE_SECRET_KEY` is missing, `/desk-one` shows **Payments opening soon** +
 | GET/POST | `/api/checkout/early-access` | Status / create Checkout Session |
 | POST | `/api/webhooks/stripe` | Verify signature, mark order paid |
 | GET | `/api/admin/early-orders` | List orders (`Authorization: Bearer ADMIN_SECRET`) |
-| Page | `/desk-one` | Product CTA |
+| Page | `/desk-one#reserve` | Product CTA (form or Stripe) |
 | Page | `/early-access` | Redirects to `/desk-one` |
 | Page | `/early-access/success` | Thank-you + next steps |
 | Admin | `/admin/early-orders` | Paid/pending table |
 
 Store file (gitignored): `legacy/web-v1/data/early-orders.json`.
 
-> **Note:** On Vercel serverless, the local filesystem is ephemeral. Treat the JSON store as best-effort until you move to Blob/KV/Postgres. Stripe remains source of truth for money; export from Stripe Dashboard if the file resets.
+> **Note:** On Vercel serverless, the local filesystem is ephemeral. Treat the JSON store as best-effort until you move to Blob/KV/Postgres. Stripe remains source of truth for money.
 
 ## Local test card flow
 
@@ -72,15 +71,6 @@ Store file (gitignored): `legacy/web-v1/data/early-orders.json`.
 3. Open `/desk-one` → Reserve → use Stripe test card `4242 4242 4242 4242`.
 4. Forward webhooks: `stripe listen --forward-to localhost:3000/api/webhooks/stripe` and set `STRIPE_WEBHOOK_SECRET` from the CLI.
 5. Confirm `/early-access/success` and `/admin/early-orders` show `paid`.
-
-## Enable live payments checklist
-
-- [ ] Stripe account activated for live charges  
-- [ ] `STRIPE_SECRET_KEY` (live) on Vercel Production  
-- [ ] Webhook endpoint on production URL + `STRIPE_WEBHOOK_SECRET`  
-- [ ] `NEXT_PUBLIC_SITE_URL=https://exobod.ai`  
-- [ ] Redeploy  
-- [ ] One real or live-test purchase + refund smoke test  
 
 ## Related docs
 

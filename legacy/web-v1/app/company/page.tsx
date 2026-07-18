@@ -20,18 +20,24 @@ export default function CompanyPage() {
       </div>
 
       <section className="rounded-2xl border border-line/70 bg-surface/60 p-5 sm:p-6">
-        <h2 className="text-base font-semibold text-text-main">Registered identity (placeholder)</h2>
+        <h2 className="text-base font-semibold text-text-main">Where we operate</h2>
         <p className="mt-2 text-sm text-text-muted">
-          Legal entity name and registration number will appear here once finalized with counsel. Until then, all
-          commercial work is routed through written agreements naming the contracting party.
+          US-based. For entity documents, W-9, or contracting party details, email{" "}
+          <a
+            href={`mailto:${companyContact.supportEmail}?subject=Entity%20docs%20request`}
+            className="font-semibold text-accent-soft underline-offset-2 hover:underline"
+          >
+            {companyContact.supportEmail}
+          </a>
+          . Commercial work is routed through written agreements that name the contracting party.
         </p>
         <dl className="mt-4 space-y-2 text-sm">
           <div>
-            <dt className="font-semibold text-text-main">Working name</dt>
-            <dd className="text-text-muted">{companyContact.legalName}</dd>
+            <dt className="font-semibold text-text-main">Public brand</dt>
+            <dd className="text-text-muted">{companyContact.brandName}</dd>
           </div>
           <div>
-            <dt className="font-semibold text-text-main">Mailing / HQ</dt>
+            <dt className="font-semibold text-text-main">Location</dt>
             <dd className="text-text-muted">{companyContact.addressSummary}</dd>
           </div>
           <div>
@@ -52,7 +58,14 @@ export default function CompanyPage() {
         <h2 className="text-base font-semibold text-text-main">Team</h2>
         <p className="mt-2 text-sm text-text-muted">
           A dedicated team page with photos, roles, and backgrounds is in preparation. For press, procurement, or
-          partnership vetting, request the team pack through the order inquiry form.
+          partnership vetting, request the team pack through the order inquiry form or{" "}
+          <a
+            href={`mailto:${companyContact.supportEmail}`}
+            className="font-semibold text-accent-soft underline-offset-2 hover:underline"
+          >
+            {companyContact.supportEmail}
+          </a>
+          .
         </p>
       </section>
     </div>

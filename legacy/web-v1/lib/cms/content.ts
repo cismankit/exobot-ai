@@ -24,7 +24,7 @@ export const footerLinks = [
   { href: "/#how-it-works", label: "How it works" },
   { href: "/trust", label: "Trust" },
   { href: "/preorder", label: "Order inquiry" },
-  { href: "/demo", label: "Book a demo" },
+  { href: "/demo", label: "Request a demo" },
   { href: "/faq", label: "FAQ" },
   { href: "/partners", label: "Partners" },
   { href: "/company", label: "Company" },

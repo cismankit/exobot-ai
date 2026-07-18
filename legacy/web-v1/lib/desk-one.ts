@@ -57,7 +57,7 @@ export const deskOneFaq: { q: string; a: string }[] = [
   },
   {
     q: "What does early access mean?",
-    a: "You can place a $99 founder reservation deposit via Stripe (when payments are enabled) or join the waitlist. That reserves a spot in the builder / EVT program — not a ship date. Production work orders, serial registry, and companion-app claim flows are not promised until those systems exist and pass QC.",
+    a: "Join the early-access interest list today. When card checkout is live, a refundable founder reservation deposit will be available via Stripe. Either path is for the builder / EVT program — not a ship date. Production work orders, serial registry, and companion-app claim flows are not promised until those systems exist and pass QC.",
   },
   {
     q: "How do I configure a desk build?",

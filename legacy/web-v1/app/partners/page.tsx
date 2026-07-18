@@ -52,7 +52,7 @@ export default function PartnersPage() {
           <p className="mt-2 text-sm leading-relaxed text-text-muted">
             {forBuilders.copy}{" "}
             <Link href="/demo" className="font-semibold text-accent-soft underline-offset-4 hover:underline">
-              Book a demo
+              Request a demo
             </Link>{" "}
             for a live walkthrough before submitting volume interest.
           </p>

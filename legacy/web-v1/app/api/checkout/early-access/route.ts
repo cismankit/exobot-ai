@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         ok: false,
-        error: "Payments opening soon. Join the waitlist — Stripe is not configured yet.",
+        error: "Paid reservations are not open yet. Join early access on the Desk One page instead.",
         stripeConfigured: false,
       },
       { status: 503 },

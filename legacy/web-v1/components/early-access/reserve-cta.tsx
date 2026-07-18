@@ -61,27 +61,26 @@ export function ReserveCta({
       <div className="space-y-6">
         <div className="rounded-2xl border border-dashed border-line/80 bg-surface-soft/40 px-5 py-5 sm:px-6">
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-accent-soft">
-            Payments opening soon
+            Early access
           </p>
           <h2 className="mt-2 font-display text-2xl font-semibold text-text-main">
-            Desk One founder reservations are not live yet
+            Reserve interest for Desk One
           </h2>
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-text-muted">
-            Stripe Checkout is not configured on this deployment. Join the waitlist —
-            we will email you when the {priceLabel} founder reservation opens. No fake
-            payment success is shown without Stripe.
+            Card checkout is not live yet. Join the early-access list below — we will email you when
+            paid founder reservations open. No charge today.
           </p>
         </div>
         <div className="rounded-2xl border border-line/70 bg-surface/70 p-5 shadow-panel sm:p-6">
-          <h3 className="text-lg font-semibold text-text-main">Join the Desk One waitlist</h3>
+          <h3 className="text-lg font-semibold text-text-main">Join Desk One early access</h3>
           <p className="mt-1 text-sm text-text-muted">
-            Tell us you want EXB-D1 early access. This is interest only — not a charge.
+            Tell us you want EXB-D1. This is interest only — not a payment.
           </p>
           <div className="mt-5">
             <InterestForm
               defaultBodyType="Desk Assistant"
-              submitLabel="Join Desk One waitlist"
-              configurationSummary="Desk One (EXB-D1) founder reservation waitlist — payments not open yet"
+              submitLabel="Join early access"
+              configurationSummary="Desk One (EXB-D1) early-access interest — paid reservation not open yet"
             />
           </div>
         </div>
@@ -157,7 +156,7 @@ export function ReserveCta({
             disabled={loading || !email.trim()}
             className="w-full rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-background transition hover:bg-accent-soft disabled:opacity-50 sm:w-auto"
           >
-            {loading ? "Opening Stripe…" : `Reserve Desk One — ${priceLabel}`}
+            {loading ? "Opening checkout…" : `Reserve Desk One — ${priceLabel}`}
           </button>
         </form>
 

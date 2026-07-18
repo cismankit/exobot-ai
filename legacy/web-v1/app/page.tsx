@@ -88,7 +88,7 @@ export default function HomePage() {
             columns={4}
             items={[
               { title: "1. Configure", caption: "Pick body type and phone fit.", icon: SlidersHorizontal },
-              { title: "2. Submit", caption: "Reserve Desk One or file a build request.", icon: ClipboardList },
+              { title: "2. Submit", caption: "Join Desk One early access or file a build request.", icon: ClipboardList },
               { title: "3. Review", caption: "Team validates scope, quote, and milestones.", icon: ShieldCheck },
               { title: "4. Build", caption: "Approved units move into production scheduling.", icon: Truck },
             ]}
@@ -111,7 +111,7 @@ export default function HomePage() {
         <MotionReveal>
           <InfographicStrip
             items={[
-              { title: "Choose Body", caption: "Walker, Desk, Rover, or Utility.", icon: SlidersHorizontal },
+              { title: "Choose Body", caption: "Desk One (EVT) or concept paths: Walker, Rover, Utility.", icon: SlidersHorizontal },
               { title: "Phone As Brain", caption: "iPhone or Android with removable mount core.", icon: Cpu },
               { title: "Safe Motion Layer", caption: "Controller clamps speed and behavior profiles.", icon: ShieldCheck },
               { title: "Built To Your Spec", caption: "Accessories, finishes, and use-case options.", icon: Blocks },
@@ -206,7 +206,7 @@ export default function HomePage() {
             <div className="space-y-3 text-center">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Next step</p>
               <h2 className="text-3xl font-semibold text-text-main sm:text-4xl">
-                Reserve Desk One, or tell us what to build.
+                Join Desk One early access, or tell us what to build.
               </h2>
               <p className="text-sm text-text-muted sm:text-base">
                 Prefer early hardware access?{" "}
