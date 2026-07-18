@@ -28,7 +28,7 @@ const story = [
   {
     step: "04",
     title: "Order with confidence",
-    copy: "Join Desk One early access or file a guided build request — written scope before major funds move.",
+    copy: "Reserve Desk One interest or file a guided build request — written scope before major funds move.",
     image: "/exobod/story/step-4.png",
   },
 ];

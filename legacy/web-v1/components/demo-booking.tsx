@@ -160,7 +160,7 @@ function DemoBookingContent({ calConfigured }: { calConfigured: boolean }) {
             <p className="text-center text-xs text-text-muted">
               Prefer the early-access list?{" "}
               <Link href="/desk-one#reserve" className="font-semibold text-accent-soft underline-offset-2 hover:underline">
-                Join early access
+                Reserve Desk One
               </Link>{" "}
               or{" "}
               <Link href="/preorder" className="font-semibold text-accent-soft underline-offset-2 hover:underline">

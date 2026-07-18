@@ -1,10 +1,7 @@
-/** Site-wide CTAs — keep labels identical everywhere they appear.
- *  When Stripe is live, desk-one#reserve flips to Checkout; these labels stay
- *  honest ("early access") so we never advertise a fake $99 checkout sitewide.
- */
+/** Site-wide CTAs — keep labels and destinations identical everywhere. */
 export const primaryCta = {
   href: "/desk-one#reserve",
-  label: "Join early access",
+  label: "Reserve Desk One",
 } as const;
 
 export const secondaryCta = {

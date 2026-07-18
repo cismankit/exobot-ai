@@ -61,7 +61,7 @@ export function ReserveCta({
       <div className="space-y-6">
         <div className="rounded-2xl border border-dashed border-line/80 bg-surface-soft/40 px-5 py-5 sm:px-6">
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-accent-soft">
-            Early access
+            Desk One reservation
           </p>
           <h2 className="mt-2 font-display text-2xl font-semibold text-text-main">
             Reserve interest for Desk One
@@ -72,14 +72,14 @@ export function ReserveCta({
           </p>
         </div>
         <div className="rounded-2xl border border-line/70 bg-surface/70 p-5 shadow-panel sm:p-6">
-          <h3 className="text-lg font-semibold text-text-main">Join Desk One early access</h3>
+          <h3 className="text-lg font-semibold text-text-main">Reserve Desk One interest</h3>
           <p className="mt-1 text-sm text-text-muted">
             Tell us you want EXB-D1. This is interest only — not a payment.
           </p>
           <div className="mt-5">
             <InterestForm
               defaultBodyType="Desk Assistant"
-              submitLabel="Join early access"
+              submitLabel="Reserve Desk One"
               configurationSummary="Desk One (EXB-D1) early-access interest — paid reservation not open yet"
             />
           </div>

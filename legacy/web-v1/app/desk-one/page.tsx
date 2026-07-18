@@ -1,5 +1,5 @@
-import { DeskOneStage } from "@/components/desk-one-stage";
 import { ReserveCta } from "@/components/early-access/reserve-cta";
+import { HeroProductVisual } from "@/components/hero-product-visual";
 import { MotionReveal } from "@/components/motion-reveal";
 import { SectionHeader } from "@/components/section-header";
 import {
@@ -9,12 +9,6 @@ import {
   deskOneWhatItIs,
   deskOneWhatItIsNot,
 } from "@/lib/desk-one";
-import {
-  earlyOrderPriceCents,
-  formatUsdFromCents,
-  zelleInstructions,
-} from "@/lib/payments/early-access";
-import { isStripeConfigured } from "@/lib/payments/stripe";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -53,17 +47,7 @@ const faqJsonLd = {
   })),
 };
 
-type Props = {
-  searchParams?: Promise<{ cancelled?: string }>;
-};
-
-export default async function DeskOnePage({ searchParams }: Props) {
-  const params = (await searchParams) ?? {};
-  const stripeConfigured = isStripeConfigured();
-  const priceCents = earlyOrderPriceCents();
-  const priceLabel = formatUsdFromCents(priceCents);
-  const zelle = zelleInstructions();
-
+export default function DeskOnePage() {
   return (
     <div className="relative">
       <script
@@ -96,7 +80,7 @@ export default async function DeskOnePage({ searchParams }: Props) {
                 href="#reserve"
                 className="inline-flex items-center justify-center rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-background shadow-[0_0_48px_-12px_rgba(255,122,26,0.4)] transition hover:bg-accent-soft"
               >
-                {stripeConfigured ? `Reserve Desk One — ${priceLabel}` : "Join early access"}
+                Reserve Desk One
               </a>
               <Link
                 href="/customize?type=desk-assistant"
@@ -113,30 +97,13 @@ export default async function DeskOnePage({ searchParams }: Props) {
               .
             </p>
             <p className="max-w-xl text-xs leading-relaxed text-text-muted/80">
-              {stripeConfigured ? (
-                <>
-                  No fake inventory. {priceLabel} founder reservation is a crowdfund-style deposit for
-                  the EVT program — not “order now, delivered.”{" "}
-                  <Link href="/legal/refund" className="text-accent-soft hover:underline">
-                    Refund &amp; milestone terms
-                  </Link>
-                  .
-                </>
-              ) : (
-                <>
-                  No fake inventory and no fake checkout. Join early access below — paid founder
-                  reservations open when card checkout is live.{" "}
-                  <Link href="/legal/refund" className="text-accent-soft hover:underline">
-                    Refund &amp; milestone terms
-                  </Link>
-                  .
-                </>
-              )}
+              No fake inventory and no fake checkout. Reserve your interest below; no payment is
+              collected today.
             </p>
           </MotionReveal>
           <MotionReveal className="flex min-w-0 flex-1 justify-center lg:justify-end" delay={0.05}>
-            <div className="w-full max-w-sm">
-              <DeskOneStage caption="EXB-D1 · pan / tilt dock · EVT geometry" />
+            <div className="w-full max-w-md">
+              <HeroProductVisual />
             </div>
           </MotionReveal>
         </div>
@@ -200,25 +167,15 @@ export default async function DeskOnePage({ searchParams }: Props) {
         <div className="mx-auto max-w-3xl space-y-6 px-4 sm:px-6">
           <MotionReveal>
             <SectionHeader
-              eyebrow={stripeConfigured ? "Founder reservation" : "Early access"}
-              title={
-                stripeConfigured
-                  ? `Reserve Desk One — ${priceLabel}`
-                  : "Reserve interest for Desk One"
-              }
-              description={
-                stripeConfigured
-                  ? "Crowdfund-style deposit via Stripe Checkout. Receipts and refunds through Stripe. Not a guaranteed ship date — Desk One is an EVT desk mount, not a walker."
-                  : "Join the early-access list for EXB-D1. Interest only until paid reservations open — Desk One is an EVT desk mount, not a walker."
-              }
+              eyebrow="Desk One reservation"
+              title="Reserve interest for Desk One"
+              description="Submit your interest for EXB-D1. No payment is collected today; we review fit, scope, and production timing before any paid commitment."
             />
           </MotionReveal>
           <MotionReveal delay={0.03}>
             <ReserveCta
-              stripeConfigured={stripeConfigured}
-              priceCents={priceCents}
-              zelleEmail={zelle?.email}
-              cancelled={params.cancelled === "1"}
+              stripeConfigured={false}
+              priceCents={0}
               embedded
             />
           </MotionReveal>
@@ -246,7 +203,7 @@ export default async function DeskOnePage({ searchParams }: Props) {
                 href="#reserve"
                 className="inline-flex items-center justify-center rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-accent-soft"
               >
-                {stripeConfigured ? `Reserve Desk One — ${priceLabel}` : "Join early access"}
+                Reserve Desk One
               </a>
               <Link
                 href="/customize?type=desk-assistant"
