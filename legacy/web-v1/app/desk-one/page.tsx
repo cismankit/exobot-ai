@@ -71,13 +71,11 @@ export default async function DeskOnePage({ searchParams }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* Hero — matches home cinematic system */}
-      <section className="relative min-h-[min(78vh,820px)] overflow-hidden border-b border-line/40">
+      {/* Product page hero — quieter than the cinematic home stage */}
+      <section className="relative overflow-hidden border-b border-line/40">
         <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_75%_15%,rgba(255,122,26,0.16),transparent_55%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_8%_85%,rgba(40,55,75,0.3),transparent_50%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,#050709_0%,#070a0d_50%,#0a0e14_100%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.5)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_80%_10%,rgba(255,122,26,0.08),transparent_55%)]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-surface/40 to-background" />
         </div>
         <div className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 py-12 sm:gap-12 sm:px-6 sm:py-16 lg:flex-row lg:items-center lg:gap-14">
           <MotionReveal className="min-w-0 flex-1 space-y-5 lg:max-w-xl">
@@ -124,7 +122,7 @@ export default async function DeskOnePage({ searchParams }: Props) {
             </p>
           </MotionReveal>
           <MotionReveal className="flex min-w-0 flex-1 justify-center lg:justify-end" delay={0.05}>
-            <div className="w-full max-w-md">
+            <div className="w-full max-w-sm">
               <DeskOneStage caption="EXB-D1 · pan / tilt dock · EVT geometry" />
             </div>
           </MotionReveal>
