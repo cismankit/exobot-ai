@@ -129,12 +129,7 @@ export function AppleScrollShowcase() {
                   />
                 ))}
 
-                {/* Filmic grade + vignette — hides residual UI chrome */}
-                <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-[#050709] via-transparent to-[#050709]/50" />
-                <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(0,0,0,0.55)_100%)]" />
-                <div className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(90deg,rgba(5,7,9,0.55)_0%,transparent_28%)]" />
-
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 px-4 pb-4">
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-[#050709]/90 via-[#050709]/40 to-transparent px-4 pb-4 pt-16">
                   <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-text-muted">
                     {activeStep.step} · concept render · not production hardware
                   </p>
