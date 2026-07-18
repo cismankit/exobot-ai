@@ -101,15 +101,16 @@ export default async function DeskOnePage({ searchParams }: Props) {
                 href="/customize?type=desk-assistant"
                 className="inline-flex items-center justify-center rounded-xl border border-line px-6 py-3 text-sm font-semibold text-text-main transition hover:border-accent/50 hover:text-accent-soft"
               >
-                Customize for desk
-              </Link>
-              <Link
-                href="/demo"
-                className="inline-flex items-center justify-center rounded-xl border border-line/70 px-6 py-3 text-sm font-semibold text-text-muted transition hover:border-accent/40 hover:text-text-main"
-              >
-                Book a demo
+                Design My Exobod
               </Link>
             </div>
+            <p className="mt-3 text-sm text-text-muted">
+              Want a live walkthrough first?{" "}
+              <Link href="/demo" className="font-semibold text-accent-soft underline-offset-2 hover:underline">
+                Book a demo
+              </Link>
+              .
+            </p>
             <p className="mt-4 max-w-xl text-xs leading-relaxed text-text-muted/80">
               No fake inventory. {priceLabel} founder reservation is a crowdfund-style deposit for the EVT
               program — not “order now, delivered.”{" "}

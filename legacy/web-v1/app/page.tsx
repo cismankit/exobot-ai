@@ -34,16 +34,78 @@ export default function HomePage() {
       <OrderAssuranceStrip />
       <BuyerTrustRibbon />
 
+      <section
+        id="product"
+        className="scroll-mt-24 border-y border-line/55 bg-gradient-to-b from-accent/[0.07] via-surface/30 to-background py-10 sm:py-12"
+      >
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <MotionReveal>
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <div className="max-w-2xl space-y-3">
+                <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-accent">
+                  Flagship product
+                </p>
+                <h2 className="font-display text-3xl font-semibold tracking-tight text-text-main sm:text-4xl">
+                  Desk One — phone dock with honest motion.
+                </h2>
+                <p className="text-sm leading-relaxed text-text-muted sm:text-base">
+                  Stationary 2-axis pan/tilt for early builders. Your phone stays the brain. Not a walker,
+                  not battery-powered v1, not a finished retail SKU.
+                </p>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <Link
+                  href={primaryCta.href}
+                  className="inline-flex items-center justify-center rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-background transition hover:bg-accent-soft"
+                >
+                  {primaryCta.label}
+                </Link>
+                <Link
+                  href="/desk-one"
+                  className="inline-flex items-center justify-center rounded-xl border border-line px-6 py-3 text-sm font-semibold text-text-main transition hover:border-accent/50 hover:text-accent-soft"
+                >
+                  See Desk One
+                </Link>
+              </div>
+            </div>
+          </MotionReveal>
+        </div>
+      </section>
+
+      <section
+        id="how-it-works"
+        className="mx-auto max-w-6xl scroll-mt-24 space-y-6 px-4 py-10 sm:space-y-8 sm:px-6 sm:py-12"
+      >
+        <MotionReveal>
+          <SectionHeader
+            eyebrow="How it works"
+            title="From configuration to delivery."
+            description="Four steps. Human review at every gate. No mystery checkout."
+          />
+        </MotionReveal>
+        <MotionReveal>
+          <InfographicStrip
+            columns={4}
+            items={[
+              { title: "1. Configure", caption: "Pick body type and phone fit.", icon: SlidersHorizontal },
+              { title: "2. Submit", caption: "Reserve Desk One or file a build request.", icon: ClipboardList },
+              { title: "3. Review", caption: "Team validates scope, quote, and milestones.", icon: ShieldCheck },
+              { title: "4. Build", caption: "Approved units move into production scheduling.", icon: Truck },
+            ]}
+          />
+        </MotionReveal>
+      </section>
+
       <BodyTypeSelectorSection />
 
       <WhyExobodSection />
 
-      <section id="product" className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:space-y-8 sm:px-6 sm:py-10">
+      <section className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:space-y-8 sm:px-6 sm:py-10">
         <MotionReveal>
           <SectionHeader
-            eyebrow="Product"
+            eyebrow="Platform"
             title="Configure once. Understand everything."
-            description="Pick a body, phone mount, motion profile, and accessories - then one order inquiry."
+            description="Pick a body, phone mount, motion profile, and accessories — then one clear next step."
           />
         </MotionReveal>
         <MotionReveal>
@@ -67,28 +129,6 @@ export default function HomePage() {
 
       <ConfigurationsSection />
 
-      <section className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:space-y-8 sm:px-6 sm:py-10">
-        <MotionReveal>
-          <SectionHeader
-            eyebrow="Order flow"
-            title="From configuration to delivery."
-            description="Five steps. Human review at every gate."
-          />
-        </MotionReveal>
-        <MotionReveal>
-          <InfographicStrip
-            columns={5}
-            items={[
-              { title: "1. Configure", caption: "Pick body type and phone fit.", icon: SlidersHorizontal },
-              { title: "2. Submit", caption: "Send order inquiry in one form.", icon: ClipboardList },
-              { title: "3. Review", caption: "Team validates scope and options.", icon: ShieldCheck },
-              { title: "4. Approve", caption: "Confirm quote and timeline.", icon: Cpu },
-              { title: "5. Ship", caption: "Receive build-ready package.", icon: Truck },
-            ]}
-          />
-        </MotionReveal>
-      </section>
-
       <section className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
         <MotionReveal>
           <CTASection
@@ -101,13 +141,13 @@ export default function HomePage() {
         </MotionReveal>
       </section>
 
-      <section className="border-y border-line/60 bg-surface/28 py-8 sm:py-10">
+      <section id="use-cases" className="scroll-mt-24 border-y border-line/60 bg-surface/28 py-8 sm:py-10">
         <div className="mx-auto max-w-6xl space-y-6 px-4 sm:space-y-7 sm:px-6">
           <MotionReveal>
             <SectionHeader
               eyebrow="Use cases"
               title="Built for teams that need embodied AI on a bench."
-              description="Four highlights below. More scenarios on the use cases page."
+              description="Makers, classrooms, desks, and labs — same phone brain, different motion jobs."
               align="center"
               className="text-center"
             />
@@ -119,40 +159,39 @@ export default function HomePage() {
               </MotionReveal>
             ))}
           </div>
-          <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Link
-              href="/use-cases"
-              className="inline-flex items-center justify-center rounded-xl border border-line px-5 py-2.5 text-sm font-semibold text-text-main transition hover:border-accent/50 hover:text-accent-soft"
-            >
-              All use cases
-            </Link>
+          <div className="flex justify-center">
             <CtaPair className="sm:justify-center" />
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl space-y-5 px-4 py-8 sm:space-y-6 sm:px-6 sm:py-10">
+      <section
+        id="build-system"
+        className="mx-auto max-w-6xl scroll-mt-24 space-y-5 px-4 py-8 sm:space-y-6 sm:px-6 sm:py-10"
+      >
         <MotionReveal>
           <SectionHeader
             eyebrow="Build system"
             title="Hybrid frame. Serviceable layout."
-            description="Printed shells for speed; metal at torque nodes. Details on the build system page."
+            description="Printed shells for speed; metal at torque nodes. Removable mount, matched servo channels, swappable harness tails."
           />
         </MotionReveal>
         <MotionReveal delay={0.04}>
           <CardShell className="space-y-4" hover={false}>
             <ul className="grid gap-2 text-sm text-text-muted sm:grid-cols-2">
-              <li className="rounded-lg border border-line/50 bg-background/30 px-3 py-2">Printed carriers for fast geometry iteration.</li>
-              <li className="rounded-lg border border-line/50 bg-background/30 px-3 py-2">Metal linkages at hips, shoulders, drivetrain.</li>
-              <li className="rounded-lg border border-line/50 bg-background/30 px-3 py-2">Servo channels matched to each body plan.</li>
-              <li className="rounded-lg border border-line/50 bg-background/30 px-3 py-2">Removable mount and swappable harness tails.</li>
+              <li className="rounded-lg border border-line/50 bg-background/30 px-3 py-2">
+                Printed carriers for fast geometry iteration.
+              </li>
+              <li className="rounded-lg border border-line/50 bg-background/30 px-3 py-2">
+                Metal linkages at hips, shoulders, drivetrain.
+              </li>
+              <li className="rounded-lg border border-line/50 bg-background/30 px-3 py-2">
+                Servo channels matched to each body plan.
+              </li>
+              <li className="rounded-lg border border-line/50 bg-background/30 px-3 py-2">
+                Removable mount and swappable harness tails.
+              </li>
             </ul>
-            <Link
-              href="/build-system"
-              className="inline-flex w-full items-center justify-center rounded-xl border border-line bg-transparent px-4 py-3 text-sm font-semibold text-text-main transition hover:border-accent/50 hover:text-accent-soft sm:w-auto"
-            >
-              Full hardware stack
-            </Link>
           </CardShell>
         </MotionReveal>
       </section>
@@ -161,18 +200,24 @@ export default function HomePage() {
 
       <ForBuildersSection />
 
-      <section className="bg-gradient-to-b from-background to-surface/35 py-8 sm:py-10">
+      <section id="order" className="scroll-mt-24 bg-gradient-to-b from-background to-surface/35 py-8 sm:py-10">
         <div className="mx-auto max-w-4xl space-y-5 px-4 sm:space-y-6 sm:px-6">
           <MotionReveal>
             <div className="space-y-3 text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Order now</p>
-              <h2 className="text-3xl font-semibold text-text-main sm:text-4xl">Tell us what you want to build.</h2>
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">Next step</p>
+              <h2 className="text-3xl font-semibold text-text-main sm:text-4xl">
+                Reserve Desk One, or tell us what to build.
+              </h2>
               <p className="text-sm text-text-muted sm:text-base">
-                We route your inquiry to configuration, quote, and milestone planning. See{" "}
+                Prefer early hardware access?{" "}
+                <Link href={primaryCta.href} className="font-semibold text-accent-soft underline-offset-2 hover:underline">
+                  {primaryCta.label}
+                </Link>
+                . Need buyer de-risking detail first? See{" "}
                 <Link href="/trust" className="font-semibold text-accent-soft underline-offset-2 hover:underline">
                   Trust &amp; buyer protections
-                </Link>{" "}
-                first if you need de-risking detail.
+                </Link>
+                .
               </p>
             </div>
           </MotionReveal>

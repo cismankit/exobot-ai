@@ -2,6 +2,7 @@
 export {
   demoPageCopy,
   featureCards,
+  footerLinks,
   footerNote,
   forBuilders,
   heroTrustChips,

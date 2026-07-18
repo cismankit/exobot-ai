@@ -1,5 +1,5 @@
 import { BrandFigure, BrandWordmark } from "@/components/brand-logo";
-import { footerNote, navLinks, site } from "@/lib/content";
+import { footerLinks, footerNote, site } from "@/lib/content";
 import { companyContact, legalNav } from "@/lib/trust";
 import Link from "next/link";
 
@@ -23,14 +23,11 @@ export function Footer() {
         <div>
           <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-text-main/80">Explore</p>
           <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-text-muted">
-            {navLinks.map((link) => (
+            {footerLinks.map((link) => (
               <Link key={link.href} href={link.href} className="hover:text-text-main">
                 {link.label}
               </Link>
             ))}
-            <Link href="/faq" className="hover:text-text-main">
-              FAQ
-            </Link>
           </div>
         </div>
         <div>

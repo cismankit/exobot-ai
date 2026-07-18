@@ -1,3 +1,16 @@
-/** Site-wide primary / secondary actions - keep labels identical everywhere. */
-export const primaryCta = { href: "/customize", label: "Design My Exobod" } as const;
-export const secondaryCta = { href: "/preorder", label: "Start Order Inquiry" } as const;
+/** Site-wide CTAs — keep labels identical everywhere they appear. */
+export const primaryCta = {
+  href: "/desk-one#reserve",
+  label: "Reserve Desk One",
+} as const;
+
+export const secondaryCta = {
+  href: "/customize",
+  label: "Design My Exobod",
+} as const;
+
+/** Legacy order-inquiry form (not a nav item). */
+export const orderInquiryCta = {
+  href: "/preorder",
+  label: "Start Order Inquiry",
+} as const;

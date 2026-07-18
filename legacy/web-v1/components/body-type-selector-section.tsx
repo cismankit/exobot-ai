@@ -6,7 +6,7 @@ import { SectionHeader } from "@/components/section-header";
 import { bodyTypes } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { primaryCta } from "@/lib/ctas";
+import { secondaryCta } from "@/lib/ctas";
 
 export function BodyTypeSelectorSection() {
   const { body, setBody } = useEmbodiment();
@@ -64,7 +64,7 @@ export function BodyTypeSelectorSection() {
                     href="/customize?type=desk-assistant"
                     className="inline-flex items-center justify-center rounded-xl border border-line px-5 py-2.5 text-sm font-semibold text-text-main transition hover:border-accent/45"
                   >
-                    {primaryCta.label} - Desk
+                    {secondaryCta.label} - Desk
                   </Link>
                 </>
               ) : (
@@ -72,7 +72,7 @@ export function BodyTypeSelectorSection() {
                   href={`/customize?type=${active.slug}`}
                   className="inline-flex items-center justify-center rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-accent-soft"
                 >
-                  {primaryCta.label} - {active.name}
+                  {secondaryCta.label} - {active.name}
                 </Link>
               )}
             </div>

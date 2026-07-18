@@ -28,7 +28,7 @@ export function StickyOrderBar() {
     >
       <div className="mx-auto flex w-full max-w-4xl items-center justify-between gap-3 rounded-2xl border border-line/70 bg-background/88 p-2 shadow-[0_18px_45px_rgba(0,0,0,0.45)] backdrop-blur-xl">
         <p className="hidden pl-2 text-xs font-medium text-text-main/90 sm:block">
-          Ready to configure your Exobod?
+          Reserve Desk One or design your build.
         </p>
         <div className="ml-auto flex w-full gap-2 sm:w-auto">
           <Link

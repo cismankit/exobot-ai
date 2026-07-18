@@ -14,7 +14,7 @@ export function HomeFaqSection() {
           <SectionHeader
             eyebrow="FAQ"
             title="Straight answers before you order."
-            description="Short preview below. Full list on the FAQ page."
+            description="Straight answers. Full list available if you need more detail."
             align="center"
             className="text-center"
           />

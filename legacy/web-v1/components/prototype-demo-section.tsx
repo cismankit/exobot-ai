@@ -24,10 +24,10 @@ export function PrototypeDemoSection() {
           </div>
           <div className="flex shrink-0 flex-col gap-2 sm:items-end">
             <Link
-              href="/preorder"
+              href="/demo"
               className="inline-flex items-center justify-center rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-accent-soft"
             >
-              Request demo access
+              Book a demo
             </Link>
             <Link href="/trust" className="text-center text-xs font-medium text-accent-soft underline-offset-2 hover:underline sm:text-right">
               How we de-risk orders

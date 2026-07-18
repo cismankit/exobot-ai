@@ -52,10 +52,10 @@ export function HomeProductHub() {
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
               <Link
-                href="/build-system"
+                href="/#build-system"
                 className="inline-flex items-center rounded-xl border border-line px-4 py-2.5 text-xs font-semibold text-text-main transition hover:border-accent/45 hover:text-accent-soft"
               >
-                Full architecture
+                Build system
               </Link>
               <Link
                 href="/trust"

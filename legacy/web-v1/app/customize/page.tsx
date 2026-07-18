@@ -1,7 +1,7 @@
 import { Configurator } from "@/components/configurator";
 import { CtaPair } from "@/components/cta-pair";
 import { MotionReveal } from "@/components/motion-reveal";
-import { secondaryCta } from "@/lib/ctas";
+import { orderInquiryCta, primaryCta } from "@/lib/ctas";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -31,11 +31,18 @@ export default function CustomizePage() {
           <div className="flex flex-col items-center gap-3">
             <CtaPair className="justify-center" />
             <p className="max-w-xl text-xs text-text-muted">
-              Already locked options elsewhere?{" "}
-              <Link href={secondaryCta.href} className="font-semibold text-accent-soft underline-offset-4 hover:underline">
-                {secondaryCta.label}
-              </Link>{" "}
-              with a shorter form.
+              Prefer Desk One early access?{" "}
+              <Link href={primaryCta.href} className="font-semibold text-accent-soft underline-offset-4 hover:underline">
+                {primaryCta.label}
+              </Link>
+              . Or send a shorter{" "}
+              <Link
+                href={orderInquiryCta.href}
+                className="font-semibold text-accent-soft underline-offset-4 hover:underline"
+              >
+                {orderInquiryCta.label.toLowerCase()}
+              </Link>
+              .
             </p>
           </div>
         </div>

@@ -10,7 +10,7 @@ import {
   whyExobod,
   workRoles,
 } from "@/lib/content";
-import { primaryCta } from "@/lib/ctas";
+import { secondaryCta } from "@/lib/ctas";
 import Link from "next/link";
 
 export function WhyExobodSection() {
@@ -74,7 +74,7 @@ export function ConfigurationsSection() {
                     href={cfg.href}
                     className="inline-flex w-full items-center justify-center rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-background transition hover:bg-accent-soft"
                   >
-                    {cfg.href === "/desk-one" ? "See Desk One" : primaryCta.label}
+                    {cfg.href === "/desk-one" ? "See Desk One" : secondaryCta.label}
                   </Link>
                 </div>
               </CardShell>
@@ -195,16 +195,16 @@ export function ForBuildersSection() {
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-muted sm:text-base">{forBuilders.copy}</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link
-              href="/preorder"
+              href="/partners"
               className="inline-flex flex-1 items-center justify-center rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-background transition hover:bg-accent-soft sm:flex-none"
             >
               Partner with Exobod
             </Link>
             <Link
-              href={primaryCta.href}
+              href={secondaryCta.href}
               className="inline-flex flex-1 items-center justify-center rounded-xl border border-line px-6 py-3 text-sm font-semibold text-text-main transition hover:border-accent/45 hover:text-accent-soft sm:flex-none"
             >
-              {primaryCta.label}
+              {secondaryCta.label}
             </Link>
           </div>
         </div>

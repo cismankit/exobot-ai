@@ -9,18 +9,25 @@ export const site = {
   secondary: "AI in your phone. Motion in the world.",
 };
 
+/** Primary header nav — keep sparse (≈5). Extra routes live in footerLinks. */
 export const navLinks = [
-  { href: "/#product", label: "Product" },
   { href: "/desk-one", label: "Desk One" },
-  { href: "/#why-exobod", label: "Why Exobod" },
+  { href: "/#how-it-works", label: "How it works" },
   { href: "/customize", label: "Customize" },
-  { href: "/use-cases", label: "Use Cases" },
-  { href: "/build-system", label: "Build System" },
   { href: "/trust", label: "Trust" },
-  { href: "/company", label: "Company" },
+] as const;
+
+/** Footer explore links — high-intent + folded destinations, not a sitemap dump. */
+export const footerLinks = [
+  { href: "/desk-one", label: "Desk One" },
+  { href: "/customize", label: "Customize" },
+  { href: "/#how-it-works", label: "How it works" },
+  { href: "/trust", label: "Trust" },
+  { href: "/preorder", label: "Order inquiry" },
+  { href: "/demo", label: "Book a demo" },
+  { href: "/faq", label: "FAQ" },
   { href: "/partners", label: "Partners" },
-  { href: "/demo", label: "Book demo" },
-  { href: "/preorder", label: "Order" },
+  { href: "/company", label: "Company" },
 ] as const;
 
 export const heroTrustChips = [
