@@ -1,0 +1,25 @@
+---
+description: Exobod product/visual anti-churn — read product docs before marketing changes; preview-only; freeze hero/logo/nav.
+alwaysApply: true
+---
+
+# Exobod product direction (anti-churn)
+
+Before changing marketing pages, product visuals, heroes, logos, CTAs, or commercial copy, read:
+
+1. `docs/product/PRODUCT-CONSTITUTION.md`
+2. `docs/product/VISUAL-SYSTEM.md`
+3. `docs/product/ASSET-REGISTRY.md`
+4. `docs/product/PAGE-STORYBOARDS.md`
+5. `docs/product/RELEASE-GATE.md`
+
+## Hard rules
+
+- **No production deploys** of visual/marketing work without a preview URL, release-gate checklist, and **explicit user approval**.
+- **Freeze** homepage hero treatment, logo mark/wordmark, and primary nav chrome unless the user explicitly requests a change.
+- **Do not redesign pages** to “improve” branding on your own. Prefer following storyboards and the asset registry.
+- Walker is **concept**; Desk One (EXB-D1) is the first reservable/manufacturable product — never silently swap their visuals or claims.
+- Do not invent missing product shots; register gaps in `ASSET-REGISTRY.md` instead.
+- Run `./scripts/visual-audit.sh` when touching image usage (read-only).
+
+Phone = brain/face/AI. Exobod = physical body. Honesty over hype.

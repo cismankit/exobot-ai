@@ -103,6 +103,19 @@ returned only masked, never logged (set `FERNET_KEY` in production).
   purchase.
 - Seed a demo persona + waitlist: `.venv/bin/python infra/seed.py`
 
+
+## Product and visual source of truth
+
+Before changing marketing pages, heroes, logos, or product claims, read:
+
+- [Product constitution](./docs/product/PRODUCT-CONSTITUTION.md)
+- [Visual system](./docs/product/VISUAL-SYSTEM.md)
+- [Asset registry](./docs/product/ASSET-REGISTRY.md)
+- [Page storyboards](./docs/product/PAGE-STORYBOARDS.md)
+- [Release gate (preview-first)](./docs/product/RELEASE-GATE.md)
+
+Read-only image hygiene: `./scripts/visual-audit.sh`
+
 ## Honesty ledger
 
 What this is: a working control plane over a tested simulator + a real
