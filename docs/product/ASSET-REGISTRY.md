@@ -89,19 +89,45 @@ Register new files in this table when they land under `apps/web/public/` (prefer
 
 ---
 
-## 5. Placement quick reference
+## 5. Draft v2 asset package (2026-07-18)
 
-| Need | Use now | Do not use |
-|------|---------|------------|
-| Live homepage hero | `exobot-hero.png` + concept caption | `hero.png` poster |
-| Desk One commercial | Placeholder copy / demo UI until S4 | Walker full-body |
-| Body family grid | Wait for S4–S6; or explicitly labeled concept thumbs from step-3 **with** disclaimer | Same `hero-robot` four times |
-| Logo in nav | React `BrandLockup` | Raster `logo-mark*.png` squashed |
-| OG image | Temporary `hero.png` or future S1 landscape | Unlabeled concept as “product photo” |
+Purpose-built plates under `legacy/web-v1/public/exobod/v2/`. **Status: draft — user approval required before any homepage / live marketing wiring.** Preview-only review surface: `/preview/visual-system` (not in public nav; `noindex`).
+
+Crop default for all product-body plates: **`object-contain`** on dark stage (`#0a0b0d` / `#050709`) with padding so limbs/feet/wheels stay visible. Do **not** use `object-cover` on full-body or Desk One plates.
+
+| File | W×H / AR | Shot ID | Subject | Concept status | Approved placements (after user OK) | Prohibited until approved | Crop / padding |
+|------|----------|---------|---------|----------------|-------------------------------------|---------------------------|----------------|
+| `exobod/v2/desk-one-hero.png` | 1024×1536 / **3:4** | S4 | Stationary 2-axis phone dock; desk-scale; phone as face | **Draft concept / EVT-honest render** — not shipping photo | `/desk-one` hero; customize Desk One; body family Desk tile | Homepage Walker hero; biped slots; unlabeled “ships now” | Full mount + clamp visible; **contain**; pad sides |
+| `exobod/v2/walker-fullbody.png` | 1024×1536 / **3:4** | S2 | Full biped Walker, head-to-feet | **Concept** | Vision / manifesto / trust concept plate; optional future S1 if approved | Desk One commercial; body-type stand-in for Desk/Rover/Utility | Full body + feet; **contain**; pad stage |
+| `exobod/v2/walker-detail.png` | 1024×1024 / **1:1** | S3 | Shoulder / joint / phone-mount closeup | **Concept** | Credibility / industrial detail sections | As full product hero; as Desk One | Intentional tight crop OK; contain in square frame |
+| `exobod/v2/rover.png` | 1024×1536 / **3:4** | S5 | Wheeled / tracked phone embodiment | **Concept** | Body family Rover tile only | Desk One; Walker hero | Full chassis + wheels; **contain** |
+| `exobod/v2/utility.png` | 1024×1536 / **3:4** | S6 | Utility / payload frame concept | **Concept** | Body family Utility tile only | Desk One; Walker hero | Full frame + payload; **contain** |
+| `exobod/v2/build-cad.png` | 1536×1024 / **3:2** | S7 | Parts / PCB / servos BOM aesthetic | **Draft documentary** (has part labels in bitmap — not certification) | Trust / manufacturing / Desk One “what’s included” | Fake cert badges; live hero; “UL/CE approved” claims | Landscape contain; do not crop out honesty of parts layout |
+| `exobod/v2/companion-app.png` | 1024×1536 / **3:4** | S8 | Phone face UI + listening waveform | **Concept UI mock** | Software / companion / demo story | Fake store ratings; hardware proof | Phone + UI readable; **contain** |
+| `exobod/v2/prototype-proof.png` | 1536×1024 / **3:2** | S9 | Bench prototype (ESP32 / servos / dock) | **Draft EVT honesty** (generated documentary look — prefer real photo when available) | Trust / Desk One honesty sections | Polished “finished product” hero | Landscape contain; imperfect bench OK |
+
+**Resolution note:** Current files are draft resolution (~1K–1.5K). Registry min targets (e.g. 1600×2133) are not yet met — upscale or regenerate before production marketing if approved.
+
+**Hard separation:** Never reuse `walker-fullbody` / `walker-detail` for Desk One. Never reuse `desk-one-hero` as Walker vision. Rover ≠ Utility ≠ Desk One.
+
+**Missing-shot checklist status:** S2–S9 have draft v2 plates; S1 homepage hero remains frozen on live `exobot-hero.png` until explicit user request.
 
 ---
 
-## 6. Audit helper
+## 6. Placement quick reference
+
+| Need | Use now | Do not use |
+|------|---------|------------|
+| Live homepage hero | `exobot-hero.png` + concept caption | `hero.png` poster; **v2 drafts until approved** |
+| Desk One commercial | Placeholder / demo UI; **or** `v2/desk-one-hero.png` only after user approval | Walker full-body |
+| Body family grid | `v2` Desk / Rover / Utility / Walker after approval; else labeled placeholders | Same `hero-robot` four times |
+| Logo in nav | React `BrandLockup` | Raster `logo-mark*.png` squashed |
+| OG image | Temporary `hero.png` or future S1 landscape | Unlabeled concept as “product photo” |
+| Asset review | `/preview/visual-system` (legacy web-v1) | Linking preview from public nav |
+
+---
+
+## 7. Audit helper
 
 Run read-only checks:
 
