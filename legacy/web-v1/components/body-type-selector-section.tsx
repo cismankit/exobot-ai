@@ -51,13 +51,30 @@ export function BodyTypeSelectorSection() {
             <h3 className="mt-2 text-xl font-semibold text-text-main">{active.name}</h3>
             <p className="mt-3 text-sm leading-relaxed text-text-muted">{active.purpose}</p>
             <p className="mt-2 text-xs leading-relaxed text-text-muted sm:text-sm">{active.bestFor}</p>
-            <div className="mt-5">
-              <Link
-                href={`/customize?type=${active.slug}`}
-                className="inline-flex items-center justify-center rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-accent-soft"
-              >
-                {primaryCta.label} - {active.name}
-              </Link>
+            <div className="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:justify-center">
+              {active.slug === "desk-assistant" ? (
+                <>
+                  <Link
+                    href="/desk-one"
+                    className="inline-flex items-center justify-center rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-accent-soft"
+                  >
+                    See Desk One (EXB-D1)
+                  </Link>
+                  <Link
+                    href="/customize?type=desk-assistant"
+                    className="inline-flex items-center justify-center rounded-xl border border-line px-5 py-2.5 text-sm font-semibold text-text-main transition hover:border-accent/45"
+                  >
+                    {primaryCta.label} - Desk
+                  </Link>
+                </>
+              ) : (
+                <Link
+                  href={`/customize?type=${active.slug}`}
+                  className="inline-flex items-center justify-center rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-accent-soft"
+                >
+                  {primaryCta.label} - {active.name}
+                </Link>
+              )}
             </div>
           </div>
         </MotionReveal>

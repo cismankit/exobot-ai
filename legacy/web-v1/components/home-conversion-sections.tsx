@@ -74,7 +74,7 @@ export function ConfigurationsSection() {
                     href={cfg.href}
                     className="inline-flex w-full items-center justify-center rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-background transition hover:bg-accent-soft"
                   >
-                    {primaryCta.label}
+                    {cfg.href === "/desk-one" ? "See Desk One" : primaryCta.label}
                   </Link>
                 </div>
               </CardShell>

@@ -137,7 +137,7 @@ export const pageUseCases = [
     problem: "Voice assistants lack physical presence for reminders and focus cues.",
     role: "Desk Assistant bodies add motion cues, display positioning, and assistive gestures.",
     example: "Timers, stand reminders, and subtle motion prompts beside your monitor.",
-    cta: { href: "/customize?type=desk-assistant", label: "Configure Desk Assistant" },
+    cta: { href: "/desk-one", label: "See Desk One (EXB-D1)" },
   },
   {
     title: "Product Demos",
@@ -308,7 +308,7 @@ export const configurationProducts = [
   },
   {
     name: "Exobod Desk",
-    href: "/customize?type=desk-assistant",
+    href: "/desk-one",
     bestFor: "Classrooms, studios, and hybrid desks that want mounted handset motion.",
     motionType: "Target: compact base + reduced-DOF upper focus (not a full biped).",
     skillExamples: ["Assist", "Present", "Gesture", "Monitor"],

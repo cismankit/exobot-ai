@@ -11,6 +11,7 @@ export const site = {
 
 export const navLinks = [
   { href: "/#product", label: "Product" },
+  { href: "/desk-one", label: "Desk One" },
   { href: "/#why-exobod", label: "Why Exobod" },
   { href: "/customize", label: "Customize" },
   { href: "/use-cases", label: "Use Cases" },
